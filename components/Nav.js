@@ -33,7 +33,7 @@ const Nav = () => {
         </div>
         <div className={styles.menuList}>
           {pages.map((entry, i) => (
-            <Nav_Entry lable={entry.lable} index={i + 1} slug={entry.slug} setNav={setNav}/>
+            <Nav_Entry key={i} lable={entry.lable} index={i + 1} slug={entry.slug} setNav={setNav}/>
           ))}
         </div>
       </div>

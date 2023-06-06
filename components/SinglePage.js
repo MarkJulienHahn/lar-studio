@@ -37,6 +37,7 @@ const SinglePage = ({ arbeiten, id }) => {
       <div>
         {arbeit.bilder.bilder.map((bild, i) => (
           <ImageComponent
+            key={i}
             url={bild.bild.asset.url}
             index={1}
             right={bild.bild.bild.right}
