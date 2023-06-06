@@ -1,0 +1,52 @@
+.icon {
+  position: fixed;
+  z-index: 10;
+  right: var(--spaceMedium);
+  top: var(--spaceMedium);
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.menu {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.close {
+  position: absolute;
+  right: var(--spaceMedium);
+  top: var(--spaceMedium);
+}
+
+.menuList {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.listIndex {
+  font-family: "Signifier-Light-Italic";
+  font-size: 15pt;
+  line-height: 40pt;
+  padding-right: 10px;
+  vertical-align: top;
+}
+
+.listEntry {
+  font-family: "Signifier-Light";
+  font-size: 30pt;
+  line-height: 50pt;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  cursor: pointer;
+}
