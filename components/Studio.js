@@ -17,6 +17,7 @@ const Studio = ({ studio }) => {
             (windowHeight) * studio.bild.metadata.dimensions.aspectRatio
           }
           height={windowHeight}
+          alt={studio.introImage.alt}
         />
       </div>
 
@@ -24,6 +25,7 @@ const Studio = ({ studio }) => {
         header={studio.beschreibung.headline}
         text={studio.beschreibung.text}
         padding={30}
+        index={1}
       />
     </>
   );

@@ -35,7 +35,18 @@ export async function getArbeiten() {
 
 export async function getGalerie() {
   return client.fetch(
-    groq`*[_type == "galerie"]{..., exhibitions[]{..., "bild": {"bild": bild.asset->{...}, "alt": bild.alt, "alt": bild.alt}}, "introImage": {"bild": introImage.bild.asset->{...}, "alt": introImage.alt}}`
+    groq`*[_type == "galerie"]
+    {..., exhibitions[]
+      {..., "bild": 
+         {"bild": bild.asset->{...}, 
+          "alt": bild.alt},
+          "bilder": bilder[]{..., "bild":bild{..., "asset": asset->{...}}}
+      }, 
+     "introImage": 
+       {"bild": introImage.bild.asset->{...}, 
+        "alt": introImage.alt
+       },
+    }`
   );
 }
 

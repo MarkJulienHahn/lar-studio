@@ -7,7 +7,7 @@ export default async function Page({ searchParams }) {
 
   return (
     <main className="arbeitenSinglePageWrapper">
-      <SinglePage arbeiten={arbeiten} id={searchParams.id} />
+      <SinglePage contents={arbeiten} id={searchParams.id} />
     </main>
   );
 }

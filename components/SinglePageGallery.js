@@ -6,22 +6,22 @@ import ImageComponent from "./ImageComponent";
 // import img01 from "../../../../public/images/02.png";
 import Text from "./Text";
 
-const SinglePage = ({ contents, id }) => {
-  const content = contents[id - 1];
+const SinglePageGallery = ({ contents, id }) => {
+  const content = contents[0].exhibitions[id];
   return (
     <>
       <ImageComponent
-        url={content.bild.asset.url}
+        url={content.bild.bild.url}
         index={1}
         right={false}
-        dimensions={content.bild.asset.metadata.dimensions}
+        dimensions={content.bild.bild.metadata.dimensions}
         alt={content.bild.alt}
       />
       <Text
         header={content.title}
-        text={content.text}
+        text={content.beschreibung}
         padding={10}
-        index={id}
+        index={+id + 1}
         info={[
           { partner: content.infos?.partner },
           { licht: content.infos?.licht },
@@ -29,17 +29,18 @@ const SinglePage = ({ contents, id }) => {
           { jahr: content.infos?.jahr },
           { ort: content.infos?.ort },
         ]}
+        dates={{ vernissage: content.start, finissage: content.end }}
       />
 
       <div>
-        {content.bilder.bilder.map((bild, i) => (
+        {content.bilder.map((bild, i) => (
           <ImageComponent
             key={i}
             url={bild.bild.asset.url}
             index={1}
-            right={bild.bild.bild.right}
-            dimensions={bild.bild.asset.metadata.dimensions}
             alt={bild.bild.alt}
+            right={bild.bild.right}
+            dimensions={bild.bild.asset.metadata.dimensions}
           />
         ))}
       </div>
@@ -47,4 +48,4 @@ const SinglePage = ({ contents, id }) => {
   );
 };
 
-export default SinglePage;
+export default SinglePageGallery;

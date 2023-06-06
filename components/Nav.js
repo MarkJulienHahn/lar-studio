@@ -25,7 +25,7 @@ const Nav = () => {
   return (
     <>
       <div className={styles.icon} onClick={() => setNav(!nav)}>
-        <Image src={logo} width={100} height={50} alt="Studio Lar Icon" />
+        <Image src={logo} width={100} height={50} alt="Studio Lar Icon" priority/>
       </div>
       <div className={styles.menu} style={nav ? active : inactive}>
         <div className={styles.close} onClick={() => setNav(!nav)}>

@@ -41,8 +41,6 @@ const ImageComponent = ({
     );
   }, []);
 
-  console.log(right);
-
   return (
     <div className={right ? "sectionRight" : "sectionLeft"}>
       <div className="imageWrapper">

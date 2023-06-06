@@ -1,13 +1,23 @@
 import { useRef, useState, useEffect } from "react";
 
-
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
 import Image from "next/image";
+import Link from "next/link";
 
-const ExhibitionEntry = ({ image, dimensions, name, title, start, end, right }) => {
+const ExhibitionEntry = ({
+  image,
+  images,
+  dimensions,
+  name,
+  title,
+  start,
+  end,
+  right,
+  slug,
+  index
+}) => {
   const [show, setShow] = useState(false);
-
 
   const { windowHeight } = useWindowDimensions();
 
@@ -29,16 +39,19 @@ const ExhibitionEntry = ({ image, dimensions, name, title, start, end, right }) 
   return (
     <div className={right ? "sectionRight" : "sectionLeft"}>
       <div className="imageWrapper">
-        <Image
-          ref={imgRef}
-          src={image}
-          width={
-            (windowHeight) * dimensions.aspectRatio
-          }
-          height={windowHeight}
-          onMouseEnter={() => setShow(true)}
-          onMouseLeave={() => setShow(false)}
-        />
+        <Link
+          href={{ pathname: `/galerie/${slug}`, query: { id: index } }}
+          // as={`/arbeiten/${slug}`}
+        >
+          <Image
+            ref={imgRef}
+            src={image}
+            width={windowHeight * dimensions.aspectRatio}
+            height={windowHeight}
+            onMouseEnter={() => setShow(true)}
+            onMouseLeave={() => setShow(false)}
+          />
+        </Link>
       </div>
 
       {!right ? (

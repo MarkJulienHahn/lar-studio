@@ -140,7 +140,6 @@ ul {
   position: fixed;
   padding-left: 30px;
   font-size: 18pt;
-  /* transition: opacity 0.1s; */
   transform: translateY(-15px);
   display: flex;
   pointer-events: none;

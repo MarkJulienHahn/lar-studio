@@ -29,12 +29,15 @@ const Galerie = ({ galerie }) => {
           <ExhibitionEntry
             key={i}
             image={exhibition.bild.bild.url}
+            images={exhibition.bilder}
             name={exhibition.name}
             title={exhibition.title}
             start={exhibition.start}
             end={exhibition.end}
             dimensions={exhibition.bild.bild.metadata.dimensions}
             right={i % 2 == 0 ? false : true}
+            slug={exhibition.slug.current}
+            index={i}
           />
         ))}
       </div>
