@@ -15,51 +15,84 @@
 }
 
 .headline {
-    display: flex;
+  display: flex;
 }
 
 .headline h1 {
-    letter-spacing: 5px;
-    text-transform: uppercase;
+  letter-spacing: 5px;
+  text-transform: uppercase;
 }
 
 .headline p {
-    font-family: "Signifier-Light-Italic";
-    cursor: pointer;
-    padding-left: 5px;
+  font-family: "Signifier-Light-Italic";
+  cursor: pointer;
+  padding-left: 5px;
 }
 
 .text {
-    font-family: "Signifier-Light-Italic";
-    letter-spacing: 0.5px;
-    width: 42vw
+  font-family: "Signifier-Light-Italic";
+  letter-spacing: 0.5px;
+  width: 42vw;
 }
 
 .text p {
-    padding-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 .textWrapper {
-    transition: opacity 1s ease-out 0.5s
+  transition: opacity 1s ease-out 0.5s;
 }
 
 .cookiesRight {
-    display: flex;
-    justify-content: space-between;
-    width: 450px;
+  display: flex;
+  justify-content: space-between;
+  width: 450px;
 }
 
 .cookiesRight h1 {
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    cursor: pointer;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .cookiesRight p {
-    font-family: "Signifier-Light-Italic";
+  font-family: "Signifier-Light-Italic";
 }
 
 @keyframes fadeIn {
-    0% {opacity: 0}
-    100% {opacity: 1}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .headline {
+    width: 170px;
+    flex-wrap: wrap;
+  }
+  .cookiesRight {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+    text-align: center;
+    line-height: 10pt;
+  }
+
+  .cookiesWrapper h1,
+  .cookiesWrapper p {
+    line-height: 24pt;
+  }
+
+  .cookiesRight p {
+    display: none;
+  }
+
+  .text {
+    position: absolute;
+    width: calc(100vw - 40px);
+  }
 }
