@@ -2,8 +2,8 @@ import { defineField, defineType } from "sanity";
 import { orderRankField } from "@sanity/orderable-document-list";
 
 export default defineType({
-  name: "arbeiten",
-  title: "Arbeiten",
+  name: "marken",
+  title: "Marken",
   type: "document",
   fields: [
     defineField({
@@ -28,44 +28,38 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     },
 
-    {
-      name: "kleiner",
-      title: "Previewbild: Kleines Querformat",
-      type: "boolean",
-    },
-
-    {
-      name: "infos",
-      title: "Infos",
-      type: "object",
-      fields: [
-        {
-          name: "partner",
-          title: "Partner",
-          type: "string",
-        },
-        {
-          name: "licht",
-          title: "Licht",
-          type: "string",
-        },
-        {
-          name: "fotos",
-          title: "Fotos",
-          type: "string",
-        },
-        {
-          name: "jahr",
-          title: "Jahr",
-          type: "string",
-        },
-        {
-          name: "ort",
-          title: "Ort",
-          type: "string",
-        },
-      ],
-    },
+    // {
+    //   name: "infos",
+    //   title: "Infos",
+    //   type: "object",
+    //   fields: [
+    //     {
+    //       name: "partner",
+    //       title: "Partner",
+    //       type: "string",
+    //     },
+    //     {
+    //       name: "licht",
+    //       title: "Licht",
+    //       type: "string",
+    //     },
+    //     {
+    //       name: "fotos",
+    //       title: "Fotos",
+    //       type: "string",
+    //     },
+    //     {
+    //       name: "jahr",
+    //       title: "Jahr",
+    //       type: "string",
+    //     },
+    //     {
+    //       name: "ort",
+    //       title: "Ort",
+    //       type: "string",
+    //     },
+    //   ],
+    // },
 
     {
       name: "bilder",
@@ -83,7 +77,9 @@ export default defineType({
               title: "bild",
               type: "image",
               validation: (Rule) => Rule.required(),
-              fields: [{ name: "alt", title: "Alt", type: "string" }],
+              fields: [
+                { name: "alt", title: "Alt", type: "string" },
+              ],
             },
           ],
           preview: {

@@ -77,6 +77,13 @@ export default defineType({
               title: "Alt",
               type: "string",
             },
+            {
+              name: "slug",
+              title: "Slug",
+              type: "slug",
+              options: { source: "document.marken.marken.name" },
+              validation: (Rule) => Rule.required(),
+            },
           ],
         },
       ],

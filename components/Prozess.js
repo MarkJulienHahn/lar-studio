@@ -7,7 +7,7 @@ import PortableText from "react-portable-text";
 
 const Prozess = ({ prozess, prozessIntro }) => {
   const location = useRouter();
-  console.log(prozessIntro[0].prozessIntro)
+  console.log(prozessIntro[0].prozessIntro);
 
   return (
     <AnimatePresence wait onExitComplete={() => window.scrollTo(0, 0)}>

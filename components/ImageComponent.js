@@ -13,6 +13,7 @@ const ImageComponent = ({
   index,
   slug,
   alt,
+  kleiner,
 }) => {
   const [show, setShow] = useState(false);
   const [imageHeight, setImageHeight] = useState();
@@ -45,18 +46,33 @@ const ImageComponent = ({
             <Link
               href={{ pathname: `/projekte/${slug}`, query: { id: index } }}
             >
-              <Image
-                ref={imgRef}
-                src={url}
-                height={imageHeight}
-                width={imageHeight * dimensions.aspectRatio}
-                alt={alt}
-                blurDataURL={blurDataURL}
-                placeholder={"blur"}
-                onMouseEnter={() => setShow(true)}
-                onMouseLeave={() => setShow(false)}
-                style={{ cursor: "pointer" }}
-              />
+              {!kleiner ? (
+                <Image
+                  ref={imgRef}
+                  src={url}
+                  height={imageHeight}
+                  width={imageHeight * dimensions.aspectRatio}
+                  alt={alt}
+                  blurDataURL={blurDataURL}
+                  placeholder={"blur"}
+                  onMouseEnter={() => setShow(true)}
+                  onMouseLeave={() => setShow(false)}
+                  style={{ cursor: "pointer" }}
+                />
+              ) : (
+                <Image
+                  ref={imgRef}
+                  src={url}
+                  height={imageHeight * 0.8}
+                  width={imageHeight * 0.8  * dimensions.aspectRatio}
+                  alt={alt}
+                  blurDataURL={blurDataURL}
+                  placeholder={"blur"}
+                  onMouseEnter={() => setShow(true)}
+                  onMouseLeave={() => setShow(false)}
+                  style={{ cursor: "pointer" }}
+                />
+              )}
             </Link>
           )}
         </div>
@@ -84,7 +100,6 @@ const ImageComponent = ({
               href={{ pathname: `/projekte/${slug}`, query: { id: index } }}
             >
               <Image
-                ref={imgRef}
                 src={url}
                 height={
                   dimensions.aspectRatio < 1

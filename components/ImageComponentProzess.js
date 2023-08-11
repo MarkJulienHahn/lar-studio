@@ -20,7 +20,7 @@ const imageComponentProzess = ({
   const [show, setShow] = useState(false);
   const [imageHeight, setImageHeight] = useState();
 
-  const { windowHeight } = useWindowDimensions();
+  const { windowHeight, windowWidth } = useWindowDimensions();
   const imgRef = useRef();
 
   const [y, setY] = useState();
@@ -41,54 +41,121 @@ const imageComponentProzess = ({
   }, []);
 
   return (
-    <div className={"sectionLeft"}>
-      <div className="imageWrapper">
-        {imageHeight && (
-          <a href={link} target="_blank">
-            <Image
-              ref={imgRef}
-              src={url}
-              height={
-                dimensions.aspectRatio < 1
-                  ? imageHeight
-                  : imageHeight / dimensions.aspectRatio
+    <>
+      <div className={"sectionLeft"}>
+        <div className="imageWrapper">
+          {imageHeight &&
+            (link ? (
+              <a href={link} target="_blank">
+                <Image
+                  ref={imgRef}
+                  src={url}
+                  height={
+                    dimensions.aspectRatio < 1
+                      ? imageHeight
+                      : imageHeight / dimensions.aspectRatio
+                  }
+                  width={
+                    dimensions.aspectRatio < 1
+                      ? imageHeight * dimensions.aspectRatio
+                      : imageHeight
+                  }
+                  alt={alt}
+                  blurDataURL={blurDataURL}
+                  placeholder={"blur"}
+                  onMouseEnter={() => setShow(true)}
+                  onMouseLeave={() => setShow(false)}
+                  style={{ cursor: "pointer" }}
+                />
+              </a>
+            ) : (
+              <Image
+                ref={imgRef}
+                src={url}
+                height={
+                  dimensions.aspectRatio < 1
+                    ? imageHeight
+                    : imageHeight / dimensions.aspectRatio
+                }
+                width={
+                  dimensions.aspectRatio < 1
+                    ? imageHeight * dimensions.aspectRatio
+                    : imageHeight
+                }
+                alt={alt}
+                blurDataURL={blurDataURL}
+                placeholder={"blur"}
+                onMouseEnter={() => setShow(true)}
+                onMouseLeave={() => setShow(false)}
+              />
+            ))}
+        </div>
+
+        {lable && (
+          <>
+            <div
+              className={
+                show ? "caption captionVisible" : "caption captionHidden"
               }
-              width={
-                dimensions.aspectRatio < 1
-                  ? imageHeight * dimensions.aspectRatio
-                  : imageHeight
-              }
-              alt={alt}
-              blurDataURL={blurDataURL}
-              placeholder={"blur"}
-              onMouseEnter={() => setShow(true)}
-              onMouseLeave={() => setShow(false)}
-              style={{ cursor: "pointer" }}
-            />
-          </a>
+              style={{ top: y, left: imgRef.current?.clientWidth + 30 }}
+            >
+              <div className="line"></div>
+              <div style={{ paddingLeft: "10px" }}>
+                <span className="lable">{lable}</span>
+                <span>
+                  <br />
+                  <br />
+                  <PortableText content={description} />
+                </span>
+              </div>
+            </div>
+          </>
         )}
       </div>
 
-      {lable && (
-        <>
-          <div
-            className={
-              show ? "caption captionVisible" : "caption captionHidden"
-            }
-            style={{ top: y, left: imgRef.current?.clientWidth + 30 }}
-          >
-            <div className="line"></div>
-            <div style={{paddingLeft: "10px"}}>
-              <span className="lable">{lable}</span>
-              <span>
-                <br/><br/>
-                <PortableText content={description} />
-              </span>
-            </div>
+      <div className={"sectionMobile"}>
+        <div className="imageWrapper">
+          {imageHeight &&
+            (link ? (
+              <a href={link} target="_blank">
+                <Image
+                  src={url}
+                  height={(windowWidth - 40) / dimensions.aspectRatio}
+                  width={windowWidth - 40}
+                  alt={alt}
+                  blurDataURL={blurDataURL}
+                  placeholder={"blur"}
+                  onMouseEnter={() => setShow(true)}
+                  onMouseLeave={() => setShow(false)}
+                  style={{ cursor: "pointer" }}
+                />
+              </a>
+            ) : (
+              <Image
+                ref={imgRef}
+                src={url}
+                height={(windowWidth - 40) / dimensions.aspectRatio}
+                width={windowWidth - 40}
+                alt={alt}
+                blurDataURL={blurDataURL}
+                placeholder={"blur"}
+                onMouseEnter={() => setShow(true)}
+                onMouseLeave={() => setShow(false)}
+              />
+            ))}
+        </div>
+        <div className={"captionMobile"}>
+          <div>
+            <span className="index">{index}</span>
+            <span className="lable">{lable}</span>
           </div>
-        </>
-      )}
-    </div>
+          <div className="line"></div>
+          <span>
+            <PortableText content={description} />
+          </span>
+        </div>
+      </div>
+    </>
   );
 };
 

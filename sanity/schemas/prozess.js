@@ -22,7 +22,6 @@ export default defineType({
       name: "link",
       title: "Link",
       type: "url",
-      validation: (Rule) => Rule.required(),
     }),
     {
       name: "bild",

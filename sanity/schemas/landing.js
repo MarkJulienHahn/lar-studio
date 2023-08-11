@@ -13,19 +13,6 @@ export default defineType({
       fields: [{ name: "alt", title: "Alt", type: "string" }],
       validation: (Rule) => Rule.required(),
     },
-    {
-      name: "arbeiten",
-      type: "object",
-      fields: [
-        {
-          title: "Arbeiten",
-          name: "arbeiten",
-          type: "reference",
-          to: [{ type: "arbeiten" }],
-        },
-      ],
-      validation: (Rule) => Rule.required(),
-    },
 
     orderRankField({ type: "landing" }),
   ],

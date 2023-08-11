@@ -155,6 +155,9 @@ ul {
 
 .teamImageWrapper {
   width: 100%;
+  position: fixed;
+  top: var(--spaceMedium);
+  pointer-events: none;
 }
 
 .teamEntry {
@@ -163,6 +166,10 @@ ul {
 
 .teamEntry:hover {
   font-family: "Signifier-Light-Italic";
+}
+
+.teamFoto {
+  display: none;
 }
 
 .controls {
@@ -202,6 +209,11 @@ ul {
   top: 0;
   left: 0;
   z-index: 100;
+}
+
+.vimeoContainer iframe {
+  position: absolute;
+  top: 0;
 }
 
 /* TEXT */
@@ -300,6 +312,10 @@ ul {
   margin-bottom: var(--spaceMedium);
 }
 
+.sectionMobile .imageWrapper {
+  justify-content: center;
+}
+
 .index {
   font-family: "Signifier-Light-Italic";
   font-size: 10pt;
@@ -340,6 +356,10 @@ ul {
 
 .date {
   margin-top: 30px;
+}
+
+.sectionMobile {
+  display: none;
 }
 
 /* PROZESS */
@@ -431,7 +451,7 @@ ul {
   .sectionLeftMobile {
     display: block;
     position: absolute;
-    top: 0;
+    top: -33px;
     left: 0;
     overflow: hidden;
   }
@@ -446,18 +466,39 @@ ul {
     width: 100%;
     padding: 0;
     margin: 0;
-    margin-top: 8%
+    margin-top: 8%;
+    padding-bottom: 100px;
   }
 
   .arbeitenPageWrapper {
-    padding: 0
+    padding: 0;
   }
   .captionMobile {
     padding-left: var(--spaceMedium);
-    padding-bottom: 50px;
+    padding-bottom: 100px;
   }
   .index {
     font-size: 8pt;
     line-height: 12pt;
+  }
+  .sectionMobile {
+    display: block;
+  }
+  .teamImageWrapper {
+    display: none;
+  }
+
+  .teamFoto {
+    width: 100%;
+    display: block;
+  }
+
+  .pageWrapper {
+    flex-direction: column;
+  }
+
+  .pageSection {
+    width: 100%;
+    padding-bottom: 100px;
   }
 }

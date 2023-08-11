@@ -1,13 +1,13 @@
 
-import { getGalerie } from "../../../../sanity/sanity-utils";
+import { getMarken } from "../../../../sanity/sanity-utils";
 import SinglePageGallery from "../../../../components/SinglePageGallery";
 
 export default async function Page({ searchParams }) {
-  const galerie = await getGalerie();
+  const marken = await getMarken();
 
   return (
     <main className="arbeitenSinglePageWrapper">
-      <SinglePageGallery contents={galerie} id={searchParams.id} />
+      <SinglePageGallery marken={marken} id={searchParams.id} />
     </main>
   );
 }

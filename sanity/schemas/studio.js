@@ -14,15 +14,15 @@ export default defineType({
       name: "vimeolink",
       title: "Vimeo-Video-ID",
       type: "string",
-      hidden: ({document}) => !document?.video,
+      hidden: ({ document }) => !document?.video,
       description:
-        "Hier einfach die Vimdeo-Video-ID eingeben. Das ist die (meist) 9-Stellige Ziffer, am Ende der Video-URL.«",
+        "Hier einfach die Vimeo-Video-ID eingeben. Das ist die (meist) 9-Stellige Ziffer, am Ende der Video-URL.«",
     }),
     defineField({
       name: "introImage",
       title: "Introbild",
       type: "object",
-      hidden: ({document}) => document?.video,
+      hidden: ({ document }) => document?.video,
       fields: [
         {
           name: "bild",
@@ -72,6 +72,18 @@ export default defineType({
               type: "string",
             },
           ],
+        },
+      ],
+    }),
+    defineField({
+      name: "teamFoto",
+      title: "Gruppenfoto",
+      type: "image",
+      fields: [
+        {
+          name: "alt",
+          title: "Alt",
+          type: "string",
         },
       ],
     }),

@@ -1,51 +1,106 @@
 "use client";
 
-import Image from "next/image";
-import ImageComponent from "./ImageComponent";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-// import img01 from "../../../../public/images/02.png";
-import Text from "./Text";
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-const SinglePageGallery = ({ contents, id }) => {
-  const content = contents[0].exhibitions[id];
+import Text from "../components/Text";
+import SwiperInnerSingle from "../components/SwiperInnerSingle";
+import MouseDiv from "../components/MouseDiv";
+
+const SinglePageGallery = ({ marken, id }) => {
+  const [mouseLable, setMouseLable] = useState();
+  const [showInfo, setShowInfo] = useState();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [triggerNext, setTriggerNext] = useState(false);
+  const [triggerPrev, setTriggerPrev] = useState(false);
+
+  const router = useRouter();
+
+  const marke = marken[id];
+
+  console.log(marke, marken, id);
+
   return (
     <>
-      <ImageComponent
-        url={content.bild.bild.url}
-        index={1}
-        right={false}
-        dimensions={content.bild.bild.metadata.dimensions}
-        alt={content.bild.alt}
-        blurDataURL={content.bild.bild.asset.metadata.lqip}
-      />
-      <Text
-        header={content.title}
-        text={content.beschreibung}
-        padding={10}
-        index={+id + 1}
-        info={[
-          { partner: content.infos?.partner },
-          { licht: content.infos?.licht },
-          { fotos: content.infos?.fotos },
-          { jahr: content.infos?.jahr },
-          { ort: content.infos?.ort },
-        ]}
-        dates={{ vernissage: content.start, finissage: content.end }}
-      />
-
-      <div>
-        {content.bilder.map((bild, i) => (
-          <ImageComponent
-            key={i}
-            url={bild.bild.asset.url}
-            index={1}
-            alt={bild.bild.alt}
-            right={bild.bild.right}
-            dimensions={bild.bild.asset.metadata.dimensions}
-            blurDataURL={bild.bild.asset.metadata.lqip}
+      {showInfo && (
+        <div className="infoWrapper">
+          <Text
+            header={marke.title}
+            text={marke.text}
+            padding={10}
+            index={id}
+            info={[
+              { partner: marke.infos?.partner },
+              { licht: marke.infos?.licht },
+              { fotos: marke.infos?.fotos },
+              { jahr: marke.infos?.jahr },
+              { ort: marke.infos?.ort },
+            ]}
+            setShowInfo={setShowInfo}
           />
-        ))}
+        </div>
+      )}
+
+      <MouseDiv lable={mouseLable} />
+      <div className="controls">
+        <p className="infobutton" onClick={() => setShowInfo(!showInfo)}>
+          Info
+        </p>
+        <p>
+          {currentIndex + 1} / {marke.bilder.bilder.length}
+        </p>
       </div>
+
+      <div
+        className="swiperControlsWrapper"
+        style={{ width: "100vw", height: "100vh", position: "fixed" }}
+      >
+        {marke.bilder.bilder.length > 1 && (
+          <div
+            className="swiperPrev"
+            onMouseEnter={() => setMouseLable("←")}
+            onMouseLeave={() => setMouseLable(null)}
+            onClick={() => setTriggerPrev(true)}
+          ></div>
+        )}
+
+        <div
+          className="swiperBackLink"
+          onMouseEnter={() => setMouseLable("×")}
+          onMouseLeave={() => setMouseLable(null)}
+          onClick={() => router.push("/showroom")}
+          style={{width: marke.bilder.bilder.length > 1 ? "auto" : "100vw"}}
+        ></div>
+
+        {marke.bilder.bilder.length > 1 && (
+          <div
+            className="swiperNext"
+            onMouseEnter={() => setMouseLable("→")}
+            onMouseLeave={() => setMouseLable(null)}
+            onClick={() => setTriggerNext(true)}
+          ></div>
+        )}
+      </div>
+
+      <Swiper loop={true} speed={1000}>
+        {marke.bilder.bilder.map((bild, i) => (
+          <SwiperSlide key={i} style={{ cursor: "none" }}>
+            <SwiperInnerSingle
+              slug={bild.slug}
+              image={bild.bild.asset.url}
+              setMouseLable={setMouseLable}
+              setCurrentIndex={setCurrentIndex}
+              triggerNext={triggerNext}
+              triggerPrev={triggerPrev}
+              setTriggerNext={setTriggerNext}
+              setTriggerPrev={setTriggerPrev}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </>
   );
 };

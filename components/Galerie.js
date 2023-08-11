@@ -7,10 +7,8 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 import Image from "next/image";
 
 import ShowRoomInfo from "./ShowRoomInfo";
-import Text from "./Text";
-import ExhibitionEntry from "./ExhibitionEntry";
 
-const Galerie = ({ galerie }) => {
+const Galerie = ({ galerie, marken }) => {
   const [imageHeight, setImageHeight] = useState();
   const { windowHeight, windowWidth } = useWindowDimensions();
 
@@ -99,7 +97,7 @@ const Galerie = ({ galerie }) => {
       <ShowRoomInfo
         text={galerie.beschreibung.text}
         headline={galerie.beschreibung.headline}
-        marken={galerie.marken}
+        marken={marken}
         oeffnungszeiten={galerie.oeffnungszeiten}
       />
     </>

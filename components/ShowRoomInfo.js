@@ -25,42 +25,42 @@ const StudioInfo = ({ text, headline, marken, oeffnungszeiten }) => {
 
   return (
     <div className="studioWrapper" style={{ minHeight: "100vh" }}>
+      {imageIndex != null && (
+        <div className="teamImageWrapper">
+          <Image
+            relative
+            width={columnWidth}
+            height={
+              columnWidth /
+              marken[imageIndex].bild.asset.metadata.dimensions.aspectRatio
+            }
+            src={marken[imageIndex].bild.asset.url}
+            style={{ objectFit: "contain" }}
+            alt={marken[imageIndex].bild.alt}
+            blurDataURL={marken[imageIndex].bild.asset.metadata.lqip}
+            placeholder={"blur"}
+          />
+        </div>
+      )}
+
       <div className="studioCol-3-7" ref={ref}>
-        {imageIndex != null ? (
-          <div className="teamImageWrapper">
-            <Image
-              relative
-              width={columnWidth}
-              height={
-                columnWidth /
-                marken[imageIndex].bild.asset.metadata.dimensions.aspectRatio
-              }
-              src={marken[imageIndex].bild.asset.url}
-              style={{ objectFit: "contain" }}
-              alt={marken[imageIndex].bild.alt}
-              blurDataURL={marken[imageIndex].bild.asset.metadata.lqip}
-              placeholder={"blur"}
-            />
+        <div
+          ref={columnRef}
+          style={{
+            transform: isInView ? "none" : "translateY(200px)",
+            opacity: isInView ? 1 : 0,
+            transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s",
+          }}
+        >
+          <div className="studioHeadline">
+            <span className="index">1</span>
+            <h1>{headline}</h1>
           </div>
-        ) : (
-          <div
-            ref={columnRef}
-            style={{
-              transform: isInView ? "none" : "translateY(200px)",
-              opacity: isInView ? 1 : 0,
-              transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s",
-            }}
-          >
-            <div className="studioHeadline">
-              <span className="index">1</span>
-              <h1>{headline}</h1>
-            </div>
-            <div className="line"></div>
-            <div className="studioText">
-              {text && <PortableText content={text} />}
-            </div>
+          <div className="line"></div>
+          <div className="studioText">
+            {text && <PortableText content={text} />}
           </div>
-        )}
+        </div>
       </div>
 
       <div className="studioCol-1-7">

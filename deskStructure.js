@@ -24,6 +24,12 @@ export const myStructure = (S, context) =>
         S,
         context,
       }),
+      orderableDocumentListDeskItem({
+        type: "marken",
+        title: "Marken",
+        S,
+        context,
+      }),
       S.listItem()
         .title("Showroom")
         .id("galerie")

@@ -28,24 +28,24 @@ const Studio = ({ studio }) => {
             style={{
               height:
                 windowAspectRatio > 1.7777778
-                  ? imageHeight
+                  ? imageHeight - (80 * 0.5625)
                   : imageWidth * 0.5625,
               width:
                 windowAspectRatio > 1.7777778
-                  ? imageHeight * 1.7777778
-                  : imageWidth,
+                  ? imageHeight * 1.7777778 - 80
+                  : imageWidth ,
             }}
           >
             <iframe
               src={`https://player.vimeo.com/video/${studio.vimeolink}?background=true`}
               width={
                 windowAspectRatio > 1.7777778
-                  ? imageHeight * 1.7777778
-                  : imageWidth
+                  ? imageHeight * 1.7777778 - 80
+                  : imageWidth 
               }
               height={
                 windowAspectRatio > 1.7777778
-                  ? imageHeight
+                  ? imageHeight - (80 * 0.5625)
                   : imageWidth * 0.5625
               }
               frameborder="0"
@@ -69,15 +69,11 @@ const Studio = ({ studio }) => {
 
       <div className="sectionLeftMobile">
         {studio.video ? (
-          <div
-            className="vimeoContainer"
-          >
+          <div className="vimeoContainer">
             <iframe
               src={`https://player.vimeo.com/video/${studio.vimeolink}?background=true`}
-              width={1000
-              }
-              height={1000
-              }
+              width={1000}
+              height={1000}
               frameborder="0"
               allow="autoplay; fullscreen; picture-in-picture"
               allowfullscreen
@@ -92,7 +88,7 @@ const Studio = ({ studio }) => {
               alt={galerie.introImage.alt}
               blurDataURL={galerie.introImage.bild.metadata.lqip}
               placeholder="blur"
-              style={{objectFit: "cover"}}
+              style={{ objectFit: "cover" }}
             />
           )
         )}
@@ -103,6 +99,7 @@ const Studio = ({ studio }) => {
         quote={studio.beschreibung.quote}
         author={studio.beschreibung.author}
         team={studio.team}
+        teamFoto={studio.teamFoto}
         leistungen={studio.leistungen}
       />
     </>

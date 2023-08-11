@@ -14,13 +14,28 @@ export async function getLanding() {
 
 export async function getStudio() {
   return client.fetch(
-    groq`*[_type == "studio"]{..., "bild": introImage.bild.asset->{...}, "team": team[]{..., "bild": bild{..., "asset": asset->{...}}}}`
+    groq`*[_type == "studio"]{..., "bild": introImage.bild.asset->{...}, "teamFoto": introImage.bild.asset->{...}, "team": team[]{..., "bild": bild{..., "asset": asset->{...}}}}`
   );
 }
 
 export async function getArbeiten() {
   return client.fetch(
     groq`*[_type == "arbeiten"]|order(orderRank)
+    {..., 
+      "bilder": {bilder[]{"bild": {..., "alt": bild.alt,"asset": bild.asset->{...}}}}, 
+      "bild": 
+        {
+          "asset": bild.asset->{...}, 
+          "alt": bild.alt,
+          "right": bild.right
+        }
+    }`
+  );
+}
+
+export async function getMarken() {
+  return client.fetch(
+    groq`*[_type == "marken"]|order(orderRank)
     {..., 
       "bilder": {bilder[]{"bild": {..., "alt": bild.alt,"asset": bild.asset->{...}}}}, 
       "bild": 

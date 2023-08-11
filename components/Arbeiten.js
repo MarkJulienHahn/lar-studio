@@ -28,6 +28,7 @@ const Arbeiten = ({ arbeiten }) => {
             index={i + 1}
             slug={arbeit.slug.current}
             blurDataURL={arbeit.bild.asset.metadata.lqip}
+            kleiner={arbeit.kleiner}
           />
         ))}
       </motion.div>
