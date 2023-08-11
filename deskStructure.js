@@ -1,39 +1,64 @@
-import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
+import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 
 export const myStructure = (S, context) =>
   S.list()
-    .title('Content')
+    .title("Content")
     .items([
+
+      S.divider(),
       orderableDocumentListDeskItem({
-        type: 'landing',
-        title: 'Slideshow',
+        type: "landing",
+        title: "Slideshow",
         S,
         context,
       }),
 
       S.divider(),
       S.listItem()
-        .title('Studio')
-        .id('studio')
-        .child(S.document().schemaType('studio').documentId('studio')),
+        .title("Studio")
+        .id("studio")
+        .child(S.document().schemaType("studio").documentId("studio")),
       orderableDocumentListDeskItem({
-        type: 'arbeiten',
-        title: 'Arbeiten',
+        type: "arbeiten",
+        title: "Arbeiten",
         S,
         context,
       }),
       S.listItem()
-        .title('Galerie')
-        .id('galerie')
-        .child(S.document().schemaType('galerie').documentId('galerie')),
+        .title("Showroom")
+        .id("galerie")
+        .child(S.document().schemaType("galerie").documentId("galerie")),
+      S.listItem()
+        .title("Prozess Intotext")
+        .id("prozessIntro")
+        .child(
+          S.document().schemaType("prozessIntro").documentId("prozessIntro")
+        ),
       orderableDocumentListDeskItem({
-        type: 'kollektion',
-        title: 'Kollektion',
+        type: "prozess",
+        title: "Prozess",
         S,
         context,
       }),
       S.listItem()
-      .title('Kontakt')
-      .id('kontakt')
-      .child(S.document().schemaType('kontakt').documentId('kontakt')),
-    ])
+        .title("Kontakt")
+        .id("kontakt")
+        .child(S.document().schemaType("kontakt").documentId("kontakt")),
+      S.divider(),
+      S.listItem()
+      .title("Cookies")
+      .id("cookies")
+      .child(S.document().schemaType("cookies").documentId("cookies")),
+      S.listItem()
+      .title("Impressum")
+      .id("impressum")
+      .child(S.document().schemaType("impressum").documentId("impressum")),
+      S.listItem()
+      .title("Datenschutz")
+      .id("datenschutz")
+      .child(S.document().schemaType("datenschutz").documentId("datenschutz")),
+      S.listItem()
+      .title("AGB")
+      .id("agb")
+      .child(S.document().schemaType("agb").documentId("agb")),
+    ]);

@@ -1,4 +1,5 @@
 :root {
+  --spaceSmall: 20px;
   --spaceMedium: 40px;
   --spaceLarge: 300px;
 }
@@ -41,8 +42,13 @@ a {
 
 p,
 h1 {
-  font-size: 30pt;
+  font-size: 15pt;
+  line-height: 20pt;
   font-weight: normal;
+}
+
+em {
+  font-family: "Signifier-Light-Italic";
 }
 
 ul {
@@ -54,7 +60,7 @@ ul {
 .swiperPrev {
   position: absolute;
   left: 0;
-  width: 25%;
+  width: 33.333vw;
   height: 100%;
   cursor: none;
   z-index: 100;
@@ -63,25 +69,24 @@ ul {
 .swiperNext {
   position: absolute;
   right: 0;
-  width: 25%;
+  width: 33.333vw;
   height: 100%;
   cursor: none;
   z-index: 100;
 }
 
-.swiperLink {
+.swiperBackLink {
   position: absolute;
-  width: 50%;
+  left: 33.333vw;
+  width: 33.333vw;
   height: 100%;
+  cursor: none;
   z-index: 100;
-  left: 25vw;
-  cursor: pointer;
 }
 
 .studioPageWrapper {
   width: 100vw;
-  padding: var(--spaceMedium) var(--spaceMedium) var(--spaceMedium)
-    calc(3 * var(--spaceMedium));
+  padding: var(--spaceMedium);
   display: flex;
   flex-direction: column;
 }
@@ -93,22 +98,124 @@ ul {
 .sectionLeft {
   position: relative;
   width: 100vw;
-  /* padding-left: calc(3 * var(--spaceMedium)); */
-  /* padding-bottom: calc(3 * var(--spaceMedium)); */
+}
+
+.sectionLeftMobile {
+  display: none;
 }
 
 .sectionRight {
   display: flex;
   justify-content: flex-end;
-  /* padding-right: calc(4 * var(--spaceMedium)); */
+}
+
+/* STUDIO */
+
+.studioWrapper {
+  width: 100%;
+  padding-top: var(--spaceLarge);
+  display: flex;
+  margin-bottom: 300px;
+}
+
+.studioCol-3-7 {
+  width: 42.85%;
+}
+
+.studioCol-1-7 {
+  width: 14.285%;
+  margin-left: 40px;
+}
+
+.studioHeadline {
+  display: flex;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.studioText,
+.studioList {
+  padding-top: 30px;
+}
+
+.studioText p {
+  padding-bottom: 30px;
+}
+
+.studioText a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.studioQuoteAuthor {
+  font-family: "Signifier-Light-Italic";
+  text-align: right;
+  letter-spacing: 0.5px;
+}
+
+.teamImageWrapper {
+  width: 100%;
+}
+
+.teamEntry {
+  cursor: default;
+}
+
+.teamEntry:hover {
+  font-family: "Signifier-Light-Italic";
+}
+
+.controls {
+  position: fixed;
+  right: var(--spaceMedium);
+  bottom: var(--spaceMedium);
+  text-align: right;
+  z-index: 101;
+  color: white;
+  mix-blend-mode: difference;
+}
+
+.infobutton {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  cursor: pointer;
+}
+
+.textHeadline {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.infoWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  background: white;
+  height: 100vh;
+}
+
+.swiperControlsWrapper {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 
 /* TEXT */
 
+.textOuter {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  padding: var(--spaceMedium);
+  cursor: none;
+}
+
 .textSection {
-  display: flex;
-  padding-bottom: calc(3 * var(--spaceMedium));
-  padding-right: 100px;
+  width: 42.85%;
 }
 
 .textSection p {
@@ -130,9 +237,9 @@ ul {
 }
 
 .line {
-  margin: 25px 20px;
-  width: 100px;
-  height: 2px;
+  margin: 20px 0px;
+  width: 50px;
+  height: 1px;
   background: black;
 }
 
@@ -156,18 +263,19 @@ ul {
 
 .arbeitenPageWrapper {
   width: 100vw;
-  padding: var(--spaceLarge) calc(3 * var(--spaceMedium)) var(--spaceMedium)
-    calc(3 * var(--spaceMedium));
+  padding: var(--spaceMedium);
   display: flex;
   flex-direction: column;
 }
 
 .arbeitenSinglePageWrapper {
   width: 100vw;
-  padding: var(--spaceMedium) var(--spaceMedium) var(--spaceMedium)
-    calc(3 * var(--spaceMedium));
+  height: 100vh;
+  padding: var(--spaceMedium);
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  background: white;
 }
 
 .arbeitenSingleImage {
@@ -178,9 +286,18 @@ ul {
   opacity: 1;
 }
 
+.captionVisible .index {
+  padding: 0 10px;
+}
+
+.lable {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
 .imageWrapper {
   display: flex;
-  margin-bottom: 100px;
+  margin-bottom: var(--spaceMedium);
 }
 
 .index {
@@ -195,7 +312,7 @@ ul {
   font-family: "Signifier-Light-Italic";
   font-size: 15pt;
   line-height: 25pt;
-  padding-right: 5px;
+  padding-right: 2px;
   vertical-align: top;
 }
 
@@ -225,22 +342,122 @@ ul {
   margin-top: 30px;
 }
 
-/* KOLLEKTION */
+/* PROZESS */
 
-.kollektionPageWrapper {
+.prozessPageWrapper {
   min-height: 100vh;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: space-evenly;
-  padding: 100px;
+  padding: var(--spaceMedium);
 }
 
-.kollektionPageWrapper div {
-  width: 25%;
-  min-height: 20vh;
+.prozessTextWrapper {
+  max-width: 500px;
+  padding-bottom: 90px;
+}
+
+/* KONTAKT */
+
+.kontaktTextWrapper {
+  max-width: 400px;
+}
+
+.kontaktTextInner {
+  min-height: calc(100vh - 2 * var(--spaceMedium));
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.kontaktLinks {
+  padding-top: 80px;
+}
+
+.kontaktTextInner a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* IMPRESSUM ETC */
+
+.pageWrapper {
+  padding: var(--spaceMedium);
+  width: 100vw;
+  display: flex;
+}
+
+.pageSection {
+  width: 42.85%;
+}
+
+.pageSection a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    --spaceSmall: 10px;
+    --spaceMedium: 20px;
+    --spaceLarge: 150px;
+  }
+
+  .mouseDiv {
+    display: none;
+  }
+
+  .sectionLeft {
+    display: none;
+  }
+
+  .vimeoContainer {
+    width: 100vw;
+    height: 125vw;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+  }
+
+  .vimeoContainer iframe {
+    position: absolute;
+    top: 0;
+    height: 125vw;
+    object-fit: contain;
+  }
+
+  .sectionLeftMobile {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  .studioWrapper {
+    padding-top: 130vw;
+    display: block;
+  }
+
+  .studioCol-3-7,
+  .studioCol-1-7 {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-top: 8%
+  }
+
+  .arbeitenPageWrapper {
+    padding: 0
+  }
+  .captionMobile {
+    padding-left: var(--spaceMedium);
+    padding-bottom: 50px;
+  }
+  .index {
+    font-size: 8pt;
+    line-height: 12pt;
+  }
 }

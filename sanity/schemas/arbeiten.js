@@ -65,6 +65,7 @@ export default defineType({
       name: "bilder",
       title: "Bilder",
       type: "array",
+      validation: (Rule) => Rule.required(),
       of: [
         {
           name: "bilder",
@@ -75,9 +76,9 @@ export default defineType({
               name: "bild",
               title: "bild",
               type: "image",
+              validation: (Rule) => Rule.required(),
               fields: [
                 { name: "alt", title: "Alt", type: "string" },
-                { name: "right", title: "Rechtsbünding", type: "boolean" },
               ],
             },
           ],

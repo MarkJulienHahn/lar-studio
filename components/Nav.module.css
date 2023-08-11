@@ -3,10 +3,15 @@
   z-index: 10;
   right: var(--spaceMedium);
   top: var(--spaceMedium);
-  width: 100px;
+  width: 80px;
   height: 50px;
   cursor: pointer;
   pointer-events: auto;
+  z-index: 1000;
+}
+
+.iconMobile {
+  display: none;
 }
 
 .menu {
@@ -24,29 +29,65 @@
   position: absolute;
   right: var(--spaceMedium);
   top: var(--spaceMedium);
+  font-size: 30pt;
+  line-height: 0;
+  cursor: pointer;
 }
 
 .menuList {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: var(--spaceMedium);
 }
 
 .listIndex {
   font-family: "Signifier-Light-Italic";
-  font-size: 15pt;
-  line-height: 40pt;
+  font-size: 10pt;
+  line-height: 28pt;
   padding-right: 10px;
   vertical-align: top;
 }
 
 .listEntry {
   font-family: "Signifier-Light";
-  font-size: 30pt;
-  line-height: 50pt;
+  font-size: 20pt;
+  line-height: 35pt;
+  font-style: normal;
   text-transform: uppercase;
   letter-spacing: 10px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .icon {
+    display: none;
+  }
+  .iconMobile {
+    display: block;
+    position: fixed;
+    z-index: 10;
+    right: var(--spaceMedium);
+    top: var(--spaceMedium);
+    width: 50px;
+    pointer-events: auto;
+    z-index: 1000;
+  }
+  .menuList {
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  .listIndex {
+    font-size: 10pt;
+    line-height: 25pt;
+  }
+  .listEntry {
+    font-size: 15pt;
+    line-height: 30pt;
+    letter-spacing: 5px;
+  }
+  .close {
+    line-height: 20pt;
+  }
 }

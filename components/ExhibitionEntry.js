@@ -41,7 +41,6 @@ const ExhibitionEntry = ({
       <div className="imageWrapper">
         <Link
           href={{ pathname: `/galerie/${slug}`, query: { id: index } }}
-          // as={`/arbeiten/${slug}`}
         >
           <Image
             ref={imgRef}

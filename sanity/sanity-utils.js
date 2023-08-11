@@ -8,13 +8,13 @@ const client = createClient({
 
 export async function getLanding() {
   return client.fetch(
-    groq`*[_type == "landing"]{"slug": arbeiten.arbeiten->{slug}, "bild": bild.asset->{url}, "alt": bild.alt}`
+    groq`*[_type == "landing"]{"slug": arbeiten.arbeiten->{slug}, "bild": bild.asset->{...}, "alt": bild.alt}`
   );
 }
 
 export async function getStudio() {
   return client.fetch(
-    groq`*[_type == "studio"]{..., "bild": introImage.bild.asset->{...}}`
+    groq`*[_type == "studio"]{..., "bild": introImage.bild.asset->{...}, "team": team[]{..., "bild": bild{..., "asset": asset->{...}}}}`
   );
 }
 
@@ -46,16 +46,45 @@ export async function getGalerie() {
        {"bild": introImage.bild.asset->{...}, 
         "alt": introImage.alt
        },
+     "marken": marken[]{..., "bild": bild{..., "asset": asset->{...}}}
     }`
   );
 }
 
-export async function getKollektion() {
+export async function getProzess() {
   return client.fetch(
-    groq`*[_type == "kollektion"]|order(orderRank){..., "bild": {"asset": vorschaubild.bild.asset->{...}, "alt": vorschaubild.alt}}`
+    groq`*[_type == "prozess"]|order(orderRank){..., 
+      "bilder": {bilder[]{"bild": {..., "alt": bild.alt,"asset": bild.asset->{...}}}}, 
+      "bild": 
+        {
+          "asset": bild.asset->{...}, 
+          "alt": bild.alt,
+          "right": bild.right
+        }
+    }`
   );
 }
 
 export async function getKontakt() {
   return client.fetch(groq`*[_type == "kontakt"]{...}`);
+}
+
+export async function getCookies() {
+  return client.fetch(groq`*[_type == "cookies"]{...}`);
+}
+
+export async function getProzessIntro() {
+  return client.fetch(groq`*[_type == "prozessIntro"]{...}`);
+}
+
+export async function getImpressum() {
+  return client.fetch(groq`*[_type == "impressum"]{...}`);
+}
+
+export async function getDatenschutz() {
+  return client.fetch(groq`*[_type == "datenschutz"]{...}`);
+}
+
+export async function getAGB() {
+  return client.fetch(groq`*[_type == "agb"]{...}`);
 }

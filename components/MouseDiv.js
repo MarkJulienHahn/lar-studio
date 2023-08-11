@@ -26,10 +26,15 @@ const MouseDiv = (props) => {
     pointerEvents: "none",
     color: "white",
     mixBlendMode: "difference",
-    fontSize: "30pt"
+    fontSize: "30pt",
+    transform: "translate(-10px, -23px)",
   };
 
-  return <div style={mouseElement}>{props.lable}</div>;
+  return (
+    <div style={mouseElement} className={"mouseDiv"}>
+      {props.lable}
+    </div>
+  );
 };
 
 export default MouseDiv;

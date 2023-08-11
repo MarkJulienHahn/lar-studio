@@ -16,6 +16,7 @@ const SinglePageGallery = ({ contents, id }) => {
         right={false}
         dimensions={content.bild.bild.metadata.dimensions}
         alt={content.bild.alt}
+        blurDataURL={content.bild.bild.asset.metadata.lqip}
       />
       <Text
         header={content.title}
@@ -41,6 +42,7 @@ const SinglePageGallery = ({ contents, id }) => {
             alt={bild.bild.alt}
             right={bild.bild.right}
             dimensions={bild.bild.asset.metadata.dimensions}
+            blurDataURL={bild.bild.asset.metadata.lqip}
           />
         ))}
       </div>

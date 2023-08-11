@@ -1,0 +1,65 @@
+.cookiesWrapper {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  z-index: 1000;
+  padding: var(--spaceMedium);
+  transition: transform 0.5s ease;
+  display: flex;
+  justify-content: space-between;
+  animation: fadeIn 1s ease 1.5s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.headline {
+    display: flex;
+}
+
+.headline h1 {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.headline p {
+    font-family: "Signifier-Light-Italic";
+    cursor: pointer;
+    padding-left: 5px;
+}
+
+.text {
+    font-family: "Signifier-Light-Italic";
+    letter-spacing: 0.5px;
+    width: 42vw
+}
+
+.text p {
+    padding-bottom: 30px;
+}
+
+.textWrapper {
+    transition: opacity 1s ease-out 0.5s
+}
+
+.cookiesRight {
+    display: flex;
+    justify-content: space-between;
+    width: 450px;
+}
+
+.cookiesRight h1 {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.cookiesRight p {
+    font-family: "Signifier-Light-Italic";
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}

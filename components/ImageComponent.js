@@ -8,14 +8,14 @@ import Link from "next/link";
 const ImageComponent = ({
   url,
   dimensions,
+  blurDataURL,
   lable,
   index,
-  right,
   slug,
   alt,
 }) => {
   const [show, setShow] = useState(false);
-  const [imgWidth, setImgWidth] = useState(0);
+  const [imageHeight, setImageHeight] = useState();
 
   const { windowHeight } = useWindowDimensions();
   const imgRef = useRef();
@@ -34,73 +34,87 @@ const ImageComponent = ({
   }, [setY]);
 
   useEffect(() => {
-    setImgWidth(
-      dimensions.aspectRatio < 1
-        ? windowHeight * dimensions.aspectRatio
-        : windowHeight * dimensions.aspectRatio * 0.75
-    );
+    setImageHeight(windowHeight - 80);
   }, []);
 
   return (
-    <div className={right ? "sectionRight" : "sectionLeft"}>
-      <div className="imageWrapper">
-        {slug ? (
-          <Link
-            href={{ pathname: `/arbeiten/${slug}`, query: { id: index } }}
-            // as={`/arbeiten/${slug}`}
-          >
-            <Image
-              ref={imgRef}
-              src={url}
-              width={imgWidth}
-              height={imgWidth / dimensions.aspectRatio}
-              alt={alt}
-              onMouseEnter={() => setShow(true)}
-              onMouseLeave={() => setShow(false)}
-              style={{ cursor: "pointer" }}
-            />
-          </Link>
-        ) : (
-          <Image
-            ref={imgRef}
-            src={url}
-            width={imgWidth}
-            height={imgWidth / dimensions.aspectRatio}
-            alt={alt}
-            onMouseEnter={() => setShow(true)}
-            onMouseLeave={() => setShow(false)}
-          />
+    <>
+      <div className={"sectionLeft"}>
+        <div className="imageWrapper">
+          {imageHeight && (
+            <Link
+              href={{ pathname: `/projekte/${slug}`, query: { id: index } }}
+            >
+              <Image
+                ref={imgRef}
+                src={url}
+                height={imageHeight}
+                width={imageHeight * dimensions.aspectRatio}
+                alt={alt}
+                blurDataURL={blurDataURL}
+                placeholder={"blur"}
+                onMouseEnter={() => setShow(true)}
+                onMouseLeave={() => setShow(false)}
+                style={{ cursor: "pointer" }}
+              />
+            </Link>
+          )}
+        </div>
+
+        {lable && (
+          <>
+            <div
+              className={
+                show ? "caption captionVisible" : "caption captionHidden"
+              }
+              style={{ top: y, left: imgRef.current?.clientWidth + 30 }}
+            >
+              <div className="line"></div>
+              <span className="index">{index}</span>
+              <span className="lable">{lable}</span>
+            </div>
+          </>
         )}
       </div>
 
-      {lable && (
-        <>
-          {!right ? (
-            <div
-              className={
-                show ? "caption captionVisible" : "caption captionHidden"
-              }
-              style={{ top: y, left: imgRef.current?.clientWidth + 100 }}
+      <div className={"sectionMobile"}>
+        <div className="imageWrapper">
+          {imageHeight && (
+            <Link
+              href={{ pathname: `/projekte/${slug}`, query: { id: index } }}
             >
-              <div className="line"></div>
-              <span className="index">{index}</span>
-              <span>{lable}</span>
-            </div>
-          ) : (
-            <div
-              className={
-                show ? "caption captionVisible" : "caption captionHidden"
-              }
-              style={{ top: y, right: imgRef.current?.clientWidth + 125 }}
-            >
-              <span className="index">{index}</span>
-              <span>{lable}</span>
-              <div className="line"></div>
-            </div>
+              <Image
+                ref={imgRef}
+                src={url}
+                height={
+                  dimensions.aspectRatio < 1
+                    ? imageHeight
+                    : imageHeight / dimensions.aspectRatio
+                }
+                width={
+                  dimensions.aspectRatio < 1
+                    ? imageHeight * dimensions.aspectRatio
+                    : imageHeight
+                }
+                alt={alt}
+                blurDataURL={blurDataURL}
+                placeholder={"blur"}
+                onMouseEnter={() => setShow(true)}
+                onMouseLeave={() => setShow(false)}
+                style={{ cursor: "pointer" }}
+              />
+            </Link>
           )}
-        </>
-      )}
-    </div>
+        </div>
+        <div className={"captionMobile"}>
+          <div>
+            <span className="index">{index}</span>
+            <span className="lable">{lable}</span>
+          </div>
+          <div className="line"></div>
+        </div>
+      </div>
+    </>
   );
 };
 

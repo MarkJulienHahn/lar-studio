@@ -4,12 +4,13 @@ import Link from "next/link";
 
 import { usePathname } from "next/navigation";
 
-const current = { textDecoration: "line-through", pointerEvents: "none" };
-const notCurrent = { textDecoration: "none" };
+const current = { fontStyle: "italic"};
+const notCurrent = { fontStyle: "normal" };
 
 const Nav_Entry = ({ lable, index, setNav }) => {
   const pathname = usePathname();
   const [currPath, setCurrPath] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   const addLine = () => setCurrPath(true);
 
@@ -22,7 +23,9 @@ const Nav_Entry = ({ lable, index, setNav }) => {
       <span className={styles.listIndex}>{index}</span>
       <span
         className={styles.listEntry}
-        style={currPath ? current : notCurrent}
+        style={currPath || hovered ? current : notCurrent}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
         {lable}
       </span>
