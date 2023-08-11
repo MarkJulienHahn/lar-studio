@@ -7,7 +7,7 @@ import PortableText from "react-portable-text";
 import Image from "next/image";
 import Link from "next/link";
 
-const imageComponentProzess = ({
+const ImageComponentProzess = ({
   url,
   dimensions,
   blurDataURL,
@@ -159,4 +159,4 @@ const imageComponentProzess = ({
   );
 };
 
-export default imageComponentProzess;
+export default ImageComponentProzess;
