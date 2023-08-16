@@ -56,38 +56,38 @@ export default defineType({
       ],
     }),
 
-    defineField({
-      name: "marken",
-      title: "Marken",
-      type: "array",
-      of: [
-        {
-          name: "marken",
-          title: "Marken",
-          type: "object",
-          fields: [
-            { name: "name", title: "Name", type: "string" },
-            {
-              name: "bild",
-              title: "Bild",
-              type: "image",
-            },
-            {
-              name: "alt",
-              title: "Alt",
-              type: "string",
-            },
-            {
-              name: "slug",
-              title: "Slug",
-              type: "slug",
-              options: { source: "document.marken.marken.name" },
-              validation: (Rule) => Rule.required(),
-            },
-          ],
-        },
-      ],
-    }),
+    // defineField({
+    //   name: "marken",
+    //   title: "Marken",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       name: "marken",
+    //       title: "Marken",
+    //       type: "object",
+    //       fields: [
+    //         { name: "name", title: "Name", type: "string" },
+    //         {
+    //           name: "bild",
+    //           title: "Bild",
+    //           type: "image",
+    //         },
+    //         {
+    //           name: "alt",
+    //           title: "Alt",
+    //           type: "string",
+    //         },
+    //         {
+    //           name: "slug",
+    //           title: "Slug",
+    //           type: "slug",
+    //           options: { source: "document.marken.marken.name" },
+    //           validation: (Rule) => Rule.required(),
+    //         },
+    //       ],
+    //     },
+    //   ],
+    // }),
 
     defineField({
       name: "oeffnungszeiten",
