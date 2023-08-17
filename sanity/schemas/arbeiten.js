@@ -55,6 +55,11 @@ export default defineType({
           type: "string",
         },
         {
+          name: "kunst",
+          title: "Kunst",
+          type: "string",
+        },
+        {
           name: "jahr",
           title: "Jahr",
           type: "string",

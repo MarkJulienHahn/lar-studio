@@ -32,8 +32,8 @@ const Nav = () => {
         <div className={styles.icon} onClick={() => setNav(!nav)}>
           <Image
             src={logo}
-            width={80}
-            height={40}
+            width={70}
+            height={35}
             alt="Studio Lar Icon"
             priority
             style={{ objectFit: "contain", objectPosition: "right top" }}
@@ -58,7 +58,7 @@ const Nav = () => {
               <Nav_Entry
                 key={i}
                 lable={entry.lable}
-                index={i + 1}
+                index={i}
                 slug={entry.slug}
                 setNav={setNav}
               />

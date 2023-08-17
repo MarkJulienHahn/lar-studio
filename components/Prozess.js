@@ -7,7 +7,6 @@ import PortableText from "react-portable-text";
 
 const Prozess = ({ prozess, prozessIntro }) => {
   const location = useRouter();
-  console.log(prozessIntro[0].prozessIntro);
 
   return (
     <AnimatePresence wait onExitComplete={() => window.scrollTo(0, 0)}>
@@ -21,7 +20,7 @@ const Prozess = ({ prozess, prozessIntro }) => {
       >
         <div className="prozessTextWrapper">
           <div className="studioHeadline">
-            <span className="index">1</span>
+            {/* <span className="index">1</span> */}
             <h1>Prozess</h1>
           </div>
           <div className="line"></div>

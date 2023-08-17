@@ -8,7 +8,7 @@ const Kontakt = ({ kontakt }) => {
       <div className="kontaktTextInner">
         <div>
           <div className="studioHeadline">
-            <span className="index">1</span>
+            {/* <span className="index">1</span> */}
             <h1>Kontakt</h1>
           </div>
           <div className="line"></div>

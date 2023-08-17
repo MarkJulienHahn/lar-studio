@@ -7,7 +7,7 @@ export default async function Page() {
     <div className="pageWrapper">
       <div className="pageSection">
         <div className="studioHeadline">
-          <span className="index">5</span>
+          {/* <span className="index">5</span> */}
           <h1>Impressum</h1>
         </div>
         <div className="line"></div>

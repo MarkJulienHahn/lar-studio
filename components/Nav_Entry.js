@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { usePathname } from "next/navigation";
 
-const current = { fontStyle: "italic"};
+const current = { fontStyle: "italic" };
 const notCurrent = { fontStyle: "normal" };
 
 const Nav_Entry = ({ lable, index, setNav }) => {
@@ -18,9 +18,11 @@ const Nav_Entry = ({ lable, index, setNav }) => {
     pathname.includes(lable) ? setTimeout(addLine, 500) : setCurrPath(false);
   }, [pathname]);
 
+  const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
+
   return (
     <Link href={`/${lable}`} onClick={() => setNav(false)}>
-      <span className={styles.listIndex}>{index}</span>
+      <span className={styles.listIndex}>{alphabet[index]}</span>
       <span
         className={styles.listEntry}
         style={currPath || hovered ? current : notCurrent}

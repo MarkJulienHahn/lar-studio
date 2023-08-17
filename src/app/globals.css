@@ -49,6 +49,7 @@ h1 {
 
 em {
   font-family: "Signifier-Light-Italic";
+  font-style: normal;
 }
 
 ul {
@@ -158,14 +159,17 @@ ul {
   position: fixed;
   top: var(--spaceMedium);
   pointer-events: none;
+  overflow: hidden;
 }
 
 .teamEntry {
   cursor: default;
+  text-decoration: underline;
 }
 
 .teamEntry:hover {
   font-family: "Signifier-Light-Italic";
+  text-decoration: none;
 }
 
 .teamFoto {
@@ -186,6 +190,7 @@ ul {
   text-transform: uppercase;
   letter-spacing: 5px;
   cursor: pointer;
+  transform: translateX(6px);
 }
 
 .textHeadline {
@@ -258,7 +263,8 @@ ul {
 .caption {
   position: fixed;
   padding-left: 30px;
-  font-size: 18pt;
+  font-size: 15pt;
+  line-height: 20pt;
   transform: translateY(-15px);
   display: flex;
   pointer-events: none;
@@ -288,6 +294,10 @@ ul {
   display: flex;
   flex-direction: row;
   background: white;
+}
+
+.arbeitenSinglePageWrapperMobile {
+  display: none;
 }
 
 .arbeitenSingleImage {
@@ -501,4 +511,57 @@ ul {
     width: 100%;
     padding-bottom: 100px;
   }
+
+  .arbeitenSinglePageWrapper {
+    display: none;
+  }
+
+  .arbeitenSinglePageWrapperMobile {
+    display: block;
+    padding: var(--spaceMedium) 
+  }
+
+  .mobileHeaderImage {
+    padding-top: 60px;
+  }
+
+  .infoWrapper {
+    position: relative;
+    height: auto
+  }
+
+  .textSection {
+    width: 100%
+  }
+  .textOuter {
+    padding-left: 0;
+    padding-right: 20px;
+    height: auto;
+    padding-bottom: 80px;
+  }
+
+  .textList {
+    font-size: 12pt;
+    padding-top: 0;
+  }
+  .line {
+    margin-bottom: 50px;
+  }
+
+  .mobileNavigation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .mobileNavigationInner {
+    display: flex;
+  }
+  .mobileNavigationInner span {
+    font-size: 10pt;
+  }
+  .teamEntry {
+    text-decoration: none;
+    pointer-events: none;
+  }
+
 }

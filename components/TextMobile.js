@@ -1,10 +1,9 @@
-import MouseDiv from "../components/MouseDiv";
+import MouseDiv from "./MouseDiv";
 import PortableText from "react-portable-text";
 
-const Text = ({ header, text, info, index, dates, setShowInfo }) => {
+const TextMobile = ({ header, text, info, index, dates, }) => {
   return (
-    <div className="textOuter" onClick={() => setShowInfo(false)}>
-      <MouseDiv lable={"×"} />
+    <div className="textOuter">
       <div className="textSection">
         <div className="headerWrapper">
           {index && (
@@ -46,4 +45,4 @@ const Text = ({ header, text, info, index, dates, setShowInfo }) => {
   );
 };
 
-export default Text;
+export default TextMobile;

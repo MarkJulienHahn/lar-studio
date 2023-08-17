@@ -13,6 +13,7 @@ const ImageComponent = ({
   index,
   slug,
   alt,
+  length,
   kleiner,
 }) => {
   const [show, setShow] = useState(false);
@@ -123,7 +124,7 @@ const ImageComponent = ({
         </div>
         <div className={"captionMobile"}>
           <div>
-            <span className="index">{index}</span>
+            <span className="index">{(length-index)+1}</span>
             <span className="lable">{lable}</span>
           </div>
           <div className="line"></div>

@@ -3,8 +3,8 @@
   z-index: 10;
   right: var(--spaceMedium);
   top: var(--spaceMedium);
-  width: 80px;
-  height: 50px;
+  width: 70px;
+  height: 35px;
   cursor: pointer;
   pointer-events: auto;
   z-index: 1000;
@@ -43,16 +43,17 @@
 
 .listIndex {
   font-family: "Signifier-Light-Italic";
-  font-size: 10pt;
-  line-height: 28pt;
+  font-size: 8pt;
+  line-height: 19pt;
   padding-right: 10px;
   vertical-align: top;
+  text-transform: uppercase;
 }
 
 .listEntry {
   font-family: "Signifier-Light";
-  font-size: 20pt;
-  line-height: 35pt;
+  font-size: 15pt;
+  line-height: 25pt;
   font-style: normal;
   text-transform: uppercase;
   letter-spacing: 10px;

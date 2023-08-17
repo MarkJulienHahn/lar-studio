@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import PortableText from "react-portable-text";
 
 import Image from "next/image";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 import { useInView } from "framer-motion";
 
@@ -11,6 +12,8 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
   const [imageIndex, setImageIndex] = useState(null);
   const [minHeight, setMinHeight] = useState();
   const [columnWidth, setColumnWidth] = useState();
+
+  const {windowHeight} = useWindowDimensions()
 
   const ref = useRef();
   const columnRef = useRef();
@@ -28,7 +31,7 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
   return (
     <div className="studioWrapper" ref={ref} style={{ minHeight: minHeight }}>
       {imageIndex != null && (
-        <div className="teamImageWrapper">
+        <div className="teamImageWrapper" style={{height: windowHeight - 80}}>
           <Image
             relative
             width={columnWidth}
@@ -54,7 +57,7 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
           }}
         >
           <div className="studioHeadline">
-            <span className="index">1</span>
+            {/* <span className="index">1</span> */}
             <h1>Studio</h1>
           </div>
           <div className="line"></div>
@@ -75,7 +78,7 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
           }}
         >
           <div className="studioHeadline">
-            <span className="index">2</span>
+            {/* <span className="index">2</span> */}
             <h1>Team</h1>
           </div>
           <div className="line"></div>
@@ -117,7 +120,7 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
           }}
         >
           <div className="studioHeadline">
-            <span className="index">3</span>
+            {/* <span className="index">3</span> */}
             <h1>Leistungen</h1>
           </div>
           <div className="line"></div>

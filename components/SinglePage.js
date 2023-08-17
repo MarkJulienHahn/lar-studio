@@ -34,6 +34,7 @@ const SinglePage = ({ contents, id }) => {
               { partner: content.infos?.partner },
               { licht: content.infos?.licht },
               { fotos: content.infos?.fotos },
+              { kunst: content.infos?.kunst },
               { jahr: content.infos?.jahr },
               { ort: content.infos?.ort },
             ]}

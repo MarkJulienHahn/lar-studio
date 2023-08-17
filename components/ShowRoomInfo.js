@@ -53,7 +53,7 @@ const StudioInfo = ({ text, headline, marken, oeffnungszeiten }) => {
           }}
         >
           <div className="studioHeadline">
-            <span className="index">1</span>
+            {/* <span className="index">1</span> */}
             <h1>{headline}</h1>
           </div>
           <div className="line"></div>
@@ -72,7 +72,7 @@ const StudioInfo = ({ text, headline, marken, oeffnungszeiten }) => {
           }}
         >
           <div className="studioHeadline">
-            <span className="index">2</span>
+            {/* <span className="index">2</span> */}
             <h1>Marken</h1>
           </div>
           <div className="line"></div>
@@ -99,7 +99,7 @@ const StudioInfo = ({ text, headline, marken, oeffnungszeiten }) => {
             }}
           >
             <div className="studioHeadline">
-              <span className="index">3</span>
+              {/* <span className="index">3</span> */}
               <h1>{oeffnungszeiten.headline}</h1>
             </div>
             <div className="line"></div>
