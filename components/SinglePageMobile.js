@@ -54,7 +54,7 @@ const SinglePageMobile = ({ contents, id }) => {
       </div>
 
       {content.bilder.bilder.map((bild, i) => (
-        <div style={{ paddingBottom: "16px" }}>
+        <div key={i} style={{ paddingBottom: "16px" }}>
           <Image
             src={bild.bild.asset.url}
             alt="Studio Lar Icon"
