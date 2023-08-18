@@ -28,6 +28,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+
 }
 
 body {
@@ -54,6 +55,10 @@ em {
 
 ul {
   list-style: none;
+}
+
+img {
+  background-repeat: no-repeat !important
 }
 
 /* HOME */
@@ -282,8 +287,8 @@ ul {
 .arbeitenPageWrapper {
   width: 100vw;
   padding: var(--spaceMedium);
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .arbeitenSinglePageWrapper {
@@ -518,7 +523,7 @@ ul {
 
   .arbeitenSinglePageWrapperMobile {
     display: block;
-    padding: var(--spaceMedium) 
+    padding: var(--spaceMedium);
   }
 
   .mobileHeaderImage {
@@ -527,11 +532,11 @@ ul {
 
   .infoWrapper {
     position: relative;
-    height: auto
+    height: auto;
   }
 
   .textSection {
-    width: 100%
+    width: 100%;
   }
   .textOuter {
     padding-left: 0;
@@ -563,5 +568,4 @@ ul {
     text-decoration: none;
     pointer-events: none;
   }
-
 }

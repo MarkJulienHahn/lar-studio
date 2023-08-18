@@ -45,6 +45,7 @@ const ImageComponent = ({
         <div className="imageWrapper">
           {imageHeight && (
             <Link
+              scroll={false}
               href={{ pathname: `/projekte/${slug}`, query: { id: index } }}
             >
               {!kleiner ? (
@@ -65,7 +66,7 @@ const ImageComponent = ({
                   ref={imgRef}
                   src={url}
                   height={imageHeight * 0.8}
-                  width={imageHeight * 0.8  * dimensions.aspectRatio}
+                  width={imageHeight * 0.8 * dimensions.aspectRatio}
                   alt={alt}
                   blurDataURL={blurDataURL}
                   placeholder={"blur"}
@@ -87,7 +88,7 @@ const ImageComponent = ({
               style={{ top: y, left: imgRef.current?.clientWidth + 30 }}
             >
               <div className="line"></div>
-              <span className="index">{index}</span>
+              <span className="index">{length - index + 1}</span>
               <span className="lable">{lable}</span>
             </div>
           </>
@@ -124,7 +125,7 @@ const ImageComponent = ({
         </div>
         <div className={"captionMobile"}>
           <div>
-            <span className="index">{(length-index)+1}</span>
+            <span className="index">{length - index + 1}</span>
             <span className="lable">{lable}</span>
           </div>
           <div className="line"></div>

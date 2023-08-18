@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 
 import { useSwiper } from "swiper/react";
 
 const SwiperInnerSingle = ({
   image,
+  blurDataURL,
+  alt,
   triggerNext,
   triggerPrev,
-  setTriggerNext, 
+  setTriggerNext,
   setTriggerPrev,
   setCurrentIndex,
 }) => {
@@ -39,20 +41,24 @@ const SwiperInnerSingle = ({
 
   useEffect(() => {
     triggerNext && swiper.slideNext();
-    setTimeout(resetTrigger, 100)
+    setTimeout(resetTrigger, 100);
   }, [triggerNext]);
 
   useEffect(() => {
     triggerPrev && swiper.slidePrev();
-    setTimeout(resetTrigger, 100)
+    setTimeout(resetTrigger, 100);
   }, [triggerPrev]);
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <Image
         src={image}
-        fill
-        alt="Studio Lar Icon"
+        layout="fill"
+        objectFit="contain"
+        objectPosition="left"
+        alt={alt}
+        placeholder="blur"
+        blurDataURL={blurDataURL}
         style={{ objectFit: "contain", objectPosition: "left" }}
       />
     </div>

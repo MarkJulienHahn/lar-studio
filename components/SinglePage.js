@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+import Link from "next/link";
+
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -20,6 +22,8 @@ const SinglePage = ({ contents, id }) => {
   const router = useRouter();
 
   const content = contents[id - 1];
+
+  console.log(content)
 
   return (
     <>
@@ -67,7 +71,7 @@ const SinglePage = ({ contents, id }) => {
           className="swiperBackLink"
           onMouseEnter={() => setMouseLable("×")}
           onMouseLeave={() => setMouseLable(null)}
-          onClick={() => router.push("/projekte")}
+          onClick={() => router.push("/projekte", undefined, { scroll: false, shallow: true })}
         ></div>
         <div
           className="swiperNext"
@@ -83,6 +87,8 @@ const SinglePage = ({ contents, id }) => {
             <SwiperInnerSingle
               slug={bild.slug}
               image={bild.bild.asset.url}
+              blurDataURL={bild.bild.asset.metadata.lqip}
+              alt={bild.alt}
               setMouseLable={setMouseLable}
               setCurrentIndex={setCurrentIndex}
               triggerNext={triggerNext}
