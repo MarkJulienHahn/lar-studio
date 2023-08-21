@@ -21,7 +21,7 @@ const Nav_Entry = ({ lable, index, setNav }) => {
   const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
 
   return (
-    <Link href={`/${lable}`} onClick={() => setNav(false)}>
+    <Link href={`/${lable}`} scroll={false} onClick={() => setNav(false)}>
       <span className={styles.listIndex}>{alphabet[index]}</span>
       <span
         className={styles.listEntry}

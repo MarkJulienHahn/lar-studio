@@ -23,7 +23,6 @@ const SinglePage = ({ contents, id }) => {
 
   const content = contents[id - 1];
 
-  console.log(content)
 
   return (
     <>
@@ -71,7 +70,7 @@ const SinglePage = ({ contents, id }) => {
           className="swiperBackLink"
           onMouseEnter={() => setMouseLable("×")}
           onMouseLeave={() => setMouseLable(null)}
-          onClick={() => router.push("/projekte", undefined, { scroll: false, shallow: true })}
+          onClick={() => router.back()}
         ></div>
         <div
           className="swiperNext"

@@ -1,26 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 import ImageComponent from "./ImageComponent";
 
 const Arbeiten = ({ arbeiten }) => {
-  const location = useRouter();
 
   return (
-    // <AnimatePresence
-    //   wait
-    //   onExitComplete={() => window.scrollTo(0, 0)}
-    // >
-    //   <motion.div
-    //     location={location}
-    //     key={location.pathname}
-    //     initial={{ y: 0, opacity: 0 }}
-    //     animate={{ y: 0, opacity: 1 }}
-    //     exit={{ y: 0, opacity: 0 }}
-    //     transition={{ duration: 0.5, ease: "easeOut" }}
-    //   >
-    <div style={{ height: "500vh" }}>
+    <div style={{ minHeight: "10000px" }}>
       {arbeiten.map((arbeit, i) => (
         <ImageComponent
           key={i}
@@ -32,6 +17,7 @@ const Arbeiten = ({ arbeiten }) => {
           blurDataURL={arbeit.bild.asset.metadata.lqip}
           kleiner={arbeit.kleiner}
           length={arbeiten.length}
+          alt={arbeit.bild.alt}
         />
       ))}
     </div>

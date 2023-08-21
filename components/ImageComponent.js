@@ -45,16 +45,20 @@ const ImageComponent = ({
         <div className="imageWrapper">
           {imageHeight && (
             <Link
-              scroll={false}
               href={{ pathname: `/projekte/${slug}`, query: { id: index } }}
+              scroll={false}
+              shallow={true}
             >
+              {/* <div
+                style={{ height: "100vh", width: "100px", background: "blue" }}
+              ></div> */}
               {!kleiner ? (
                 <Image
                   ref={imgRef}
                   src={url}
                   height={imageHeight}
                   width={imageHeight * dimensions.aspectRatio}
-                  alt={alt}
+                  alt={alt ? alt : "placeholder"}
                   blurDataURL={blurDataURL}
                   placeholder={"blur"}
                   onMouseEnter={() => setShow(true)}
@@ -67,7 +71,7 @@ const ImageComponent = ({
                   src={url}
                   height={imageHeight * 0.8}
                   width={imageHeight * 0.8 * dimensions.aspectRatio}
-                  alt={alt}
+                  alt={alt ? alt : "placeholder"}
                   blurDataURL={blurDataURL}
                   placeholder={"blur"}
                   onMouseEnter={() => setShow(true)}
@@ -100,6 +104,7 @@ const ImageComponent = ({
           {imageHeight && (
             <Link
               href={{ pathname: `/projekte/${slug}`, query: { id: index } }}
+              scroll={false}
             >
               <Image
                 src={url}

@@ -6,7 +6,7 @@ export default async function Page() {
   const arbeiten = await getArbeiten();
   return (
     <main className="arbeitenPageWrapper">
-      <Arbeiten arbeiten={arbeiten}/>
+      <Arbeiten arbeiten={arbeiten} />
     </main>
   );
 }
