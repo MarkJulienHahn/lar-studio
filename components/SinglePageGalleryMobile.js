@@ -41,7 +41,7 @@ const SinglePageMobile = ({ contents, id }) => {
           header={content.title}
           text={content.text}
           padding={10}
-          index={id}
+          index={""}
           info={[
             { partner: content.infos?.partner },
             { licht: content.infos?.licht },
@@ -84,12 +84,12 @@ const SinglePageMobile = ({ contents, id }) => {
         </div>
         <Link
           href={{
-            pathname: `/projekte/${contents[id]?.slug.current}`,
+            pathname: `/showroom/${contents[id]?.slug.current}`,
             query: { id: nextId },
           }}
         >
           <div className="mobileNavigationInner">
-            <p>nächstes Projekt</p> <span>{">>"}</span>
+            <p>nächste Marke</p> <span>{">>"}</span>
           </div>
         </Link>
       </div>

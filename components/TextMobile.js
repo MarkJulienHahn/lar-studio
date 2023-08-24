@@ -1,17 +1,17 @@
 import MouseDiv from "./MouseDiv";
 import PortableText from "react-portable-text";
 
-const TextMobile = ({ header, text, info, index, dates, }) => {
+const TextMobile = ({ header, text, info, index, dates, length }) => {
   return (
     <div className="textOuter">
       <div className="textSection">
         <div className="headerWrapper">
           {index && (
             <span className="index" style={{ paddingRight: "10px" }}>
-              {index}
+              {length - index + 1}
             </span>
           )}
-          <h1 className="textHeadline">{header}</h1>
+          <span className="textHeadline">{header}</span>
         </div>
         <div className="line"></div>
         <div>

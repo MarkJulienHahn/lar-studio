@@ -42,6 +42,7 @@ const SinglePage = ({ contents, id }) => {
               { ort: content.infos?.ort },
             ]}
             setShowInfo={setShowInfo}
+            length={contents.length}
           />
         </div>
       )}

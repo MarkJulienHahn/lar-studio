@@ -1,15 +1,25 @@
 import MouseDiv from "../components/MouseDiv";
 import PortableText from "react-portable-text";
 
-const Text = ({ header, text, info, index, dates, setShowInfo }) => {
+const Text = ({
+  header,
+  text,
+  info,
+  index,
+  dates,
+  setShowInfo,
+  setMouseLable,
+  length
+}) => {
+
   return (
     <div className="textOuter" onClick={() => setShowInfo(false)}>
       <MouseDiv lable={"×"} />
       <div className="textSection">
         <div className="headerWrapper">
-          {index && (
+          {length > 0 && (
             <span className="index" style={{ paddingRight: "10px" }}>
-              {index}
+              {length - index + 1}
             </span>
           )}
           <h1 className="textHeadline">{header}</h1>
@@ -27,6 +37,22 @@ const Text = ({ header, text, info, index, dates, setShowInfo }) => {
                   {entry.kunst && <li>Kunst: {entry.kunst}</li>}
                   {entry.jahr && <li>Jahr: {entry.jahr}</li>}
                   {entry.ort && <li>Ort: {entry.ort}</li>}
+                  {entry.link && (
+                    <li
+                      onMouseEnter={() => setMouseLable(null)}
+                      onMouseLeave={() => setMouseLable("×")}
+                    >
+                      Website:&nbsp;
+                      <a
+                        style={{ textDecoration: "underline" }}
+                        href={entry.link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {entry.link.name}
+                      </a>
+                    </li>
+                  )}
                 </span>
               ))}
             </ul>

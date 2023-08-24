@@ -144,9 +144,8 @@ const ImageComponentProzess = ({
               />
             ))}
         </div>
-        <div className={"captionMobile"}>
+        <div className={"captionMobile"} style={{paddingLeft: "0"}}>
           <div>
-            <span className="index">{index}</span>
             <span className="lable">{lable}</span>
           </div>
           <div className="line"></div>

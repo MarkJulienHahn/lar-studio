@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import PortableText from "react-portable-text";
 
 import Image from "next/image";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 import { useInView } from "framer-motion";
 
@@ -9,7 +10,10 @@ import GalleryMarkeEntry from "./GalleryMarkeEntry";
 
 const StudioInfo = ({ text, headline, marken, oeffnungszeiten }) => {
   const [imageIndex, setImageIndex] = useState(null);
+  const [minHeight, setMinHeight] = useState();
   const [columnWidth, setColumnWidth] = useState();
+
+  const { windowHeight } = useWindowDimensions();
 
   const ref = useRef();
   const columnRef = useRef();
@@ -20,22 +24,26 @@ const StudioInfo = ({ text, headline, marken, oeffnungszeiten }) => {
   });
 
   useEffect(() => {
-    setColumnWidth(columnRef.current.clientWidth);
+    setMinHeight(ref.current.clientHeight),
+      setColumnWidth(columnRef.current.clientWidth);
   }, []);
 
   return (
-    <div className="studioWrapper" style={{ minHeight: "100vh" }}>
+    <div className="studioWrapper" ref={ref} style={{ minHeight: minHeight }}>
       {imageIndex != null && (
-        <div className="teamImageWrapper">
+        <div
+          className="teamImageWrapper"
+          style={{ height: windowHeight - 80, width: "calc(42.85% - 30px)" }}
+        >
           <Image
             relative
-            width={columnWidth}
+            width={windowHeight - 80}
             height={
-              columnWidth /
+              (windowHeight - 80) /
               marken[imageIndex].bild.asset.metadata.dimensions.aspectRatio
             }
             src={marken[imageIndex].bild.asset.url}
-            style={{ objectFit: "contain" }}
+            style={{ objectFit: "cover" }}
             alt={marken[imageIndex].bild.alt}
             blurDataURL={marken[imageIndex].bild.asset.metadata.lqip}
             placeholder={"blur"}
@@ -43,7 +51,7 @@ const StudioInfo = ({ text, headline, marken, oeffnungszeiten }) => {
         </div>
       )}
 
-      <div className="studioCol-3-7" ref={ref}>
+      <div className="studioCol-3-7">
         <div
           ref={columnRef}
           style={{

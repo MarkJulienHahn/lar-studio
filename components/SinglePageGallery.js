@@ -18,10 +18,7 @@ const SinglePageGallery = ({ marken, id }) => {
   const [triggerPrev, setTriggerPrev] = useState(false);
 
   const router = useRouter();
-
   const marke = marken[id];
-
-  console.log(marke, marken, id);
 
   return (
     <>
@@ -38,8 +35,10 @@ const SinglePageGallery = ({ marken, id }) => {
               { fotos: marke.infos?.fotos },
               { jahr: marke.infos?.jahr },
               { ort: marke.infos?.ort },
+              { link: marke?.link },
             ]}
             setShowInfo={setShowInfo}
+            setMouseLable={setMouseLable}
           />
         </div>
       )}
@@ -58,31 +57,24 @@ const SinglePageGallery = ({ marken, id }) => {
         className="swiperControlsWrapper"
         style={{ width: "100vw", height: "100vh", position: "fixed" }}
       >
-        {marke.bilder.bilder.length > 1 && (
-          <div
-            className="swiperPrev"
-            onMouseEnter={() => setMouseLable("←")}
-            onMouseLeave={() => setMouseLable(null)}
-            onClick={() => setTriggerPrev(true)}
-          ></div>
-        )}
-
+        <div
+          className="swiperPrev"
+          onMouseEnter={() => setMouseLable("←")}
+          onMouseLeave={() => setMouseLable(null)}
+          onClick={() => setTriggerPrev(true)}
+        ></div>
         <div
           className="swiperBackLink"
           onMouseEnter={() => setMouseLable("×")}
           onMouseLeave={() => setMouseLable(null)}
-          onClick={() => router.push("/showroom")}
-          style={{width: marke.bilder.bilder.length > 1 ? "auto" : "100vw"}}
+          onClick={() => router.back()}
         ></div>
-
-        {marke.bilder.bilder.length > 1 && (
-          <div
-            className="swiperNext"
-            onMouseEnter={() => setMouseLable("→")}
-            onMouseLeave={() => setMouseLable(null)}
-            onClick={() => setTriggerNext(true)}
-          ></div>
-        )}
+        <div
+          className="swiperNext"
+          onMouseEnter={() => setMouseLable("→")}
+          onMouseLeave={() => setMouseLable(null)}
+          onClick={() => setTriggerNext(true)}
+        ></div>
       </div>
 
       <Swiper loop={true} speed={1000}>
@@ -91,6 +83,8 @@ const SinglePageGallery = ({ marken, id }) => {
             <SwiperInnerSingle
               slug={bild.slug}
               image={bild.bild.asset.url}
+              blurDataURL={bild.bild.asset.metadata.lqip}
+              alt={bild.alt}
               setMouseLable={setMouseLable}
               setCurrentIndex={setCurrentIndex}
               triggerNext={triggerNext}

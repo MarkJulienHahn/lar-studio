@@ -40,7 +40,6 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
               team[imageIndex].bild.asset.metadata.dimensions.aspectRatio
             }
             src={team[imageIndex].bild.asset.url}
-            style={{ objectFit: "contain" }}
             alt={team[imageIndex].bild.alt}
             blurDataURL={team[imageIndex].bild.asset.metadata.lqip}
             placeholder="blur"

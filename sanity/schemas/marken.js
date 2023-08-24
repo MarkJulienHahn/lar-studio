@@ -28,6 +28,16 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     },
 
+    {
+      name: "link",
+      title: "Link",
+      type: "object",
+      fields: [
+        { name: "name", title: "Name", type: "string" },
+        { name: "url", title: "Url", type: "url" },
+      ],
+    },
+
     // {
     //   name: "infos",
     //   title: "Infos",
@@ -77,9 +87,7 @@ export default defineType({
               title: "bild",
               type: "image",
               validation: (Rule) => Rule.required(),
-              fields: [
-                { name: "alt", title: "Alt", type: "string" },
-              ],
+              fields: [{ name: "alt", title: "Alt", type: "string" }],
             },
           ],
           preview: {
