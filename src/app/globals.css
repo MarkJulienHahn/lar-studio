@@ -44,7 +44,7 @@ a {
 }
 
 p,
-h1 {
+h1, li {
   font-size: 15pt;
   line-height: 20pt;
   font-weight: normal;
