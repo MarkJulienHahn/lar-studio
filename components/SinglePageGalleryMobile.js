@@ -15,7 +15,7 @@ const SinglePageMobile = ({ contents, id }) => {
   const router = useRouter();
   const { windowWidth } = useWindowDimensions();
 
-  const content = contents[id - 1];
+  const content = contents[id];
 
   return (
     <>

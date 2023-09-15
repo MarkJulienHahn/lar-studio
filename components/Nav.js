@@ -17,7 +17,7 @@ const pages = [
   { lable: "studio" },
   { lable: "projekte" },
   { lable: "showroom" },
-  { lable: "prozess" },
+  { lable: "inspiration" },
   { lable: "kontakt" },
   { lable: "impressum" },
 ];

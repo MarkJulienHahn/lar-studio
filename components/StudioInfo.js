@@ -24,7 +24,7 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
   });
 
   useEffect(() => {
-    setMinHeight(ref.current.clientHeight),
+    setMinHeight(windowHeight - 80),
       setColumnWidth(columnRef.current.clientWidth);
   }, []);
 

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import ImageComponentProzess from "./ImageComponentProzess";
 import PortableText from "react-portable-text";
 
-const Prozess = ({ prozess, prozessIntro }) => {
+const Inspiration = ({ prozess, prozessIntro }) => {
   const location = useRouter();
 
   return (
@@ -21,7 +21,7 @@ const Prozess = ({ prozess, prozessIntro }) => {
         <div className="prozessTextWrapper">
           <div className="studioHeadline">
             {/* <span className="index">1</span> */}
-            <h1>Prozess</h1>
+            <h1>Inspiration</h1>
           </div>
           <div className="line"></div>
           <div className="studioText">
@@ -46,4 +46,4 @@ const Prozess = ({ prozess, prozessIntro }) => {
   );
 };
 
-export default Prozess;
+export default Inspiration;

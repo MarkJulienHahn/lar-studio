@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'prozessIntro',
-  title: 'Prozess Introtext',
+  title: 'Inspiration Introtext',
   type: 'document',
   fields: [
     defineField({
