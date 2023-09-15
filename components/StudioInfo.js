@@ -13,7 +13,7 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
   const [minHeight, setMinHeight] = useState();
   const [columnWidth, setColumnWidth] = useState();
 
-  const {windowHeight} = useWindowDimensions()
+  const { windowHeight } = useWindowDimensions();
 
   const ref = useRef();
   const columnRef = useRef();
@@ -31,7 +31,10 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
   return (
     <div className="studioWrapper" ref={ref} style={{ minHeight: minHeight }}>
       {imageIndex != null && (
-        <div className="teamImageWrapper" style={{height: windowHeight - 80}}>
+        <div
+          className="teamImageWrapper"
+          style={{ height: windowHeight - 80, width: "calc(42.85% - 30px)" }}
+        >
           <Image
             relative
             width={columnWidth}
