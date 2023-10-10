@@ -8,6 +8,11 @@ import Image from "next/image";
 
 import ShowRoomInfo from "./ShowRoomInfo";
 
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper";
+import SwiperInnerSingleGalerie from "../components/SwiperInnerSingleGalerie";
+
 const Galerie = ({ galerie, marken }) => {
   const [imageHeight, setImageHeight] = useState();
   const { windowHeight, windowWidth } = useWindowDimensions();
@@ -18,7 +23,7 @@ const Galerie = ({ galerie, marken }) => {
 
   return (
     <>
-      <div className="sectionLeft">
+      {/* <div className="sectionLeft">
         {galerie.video ? (
           <div
             className="vimeoContainer"
@@ -65,34 +70,63 @@ const Galerie = ({ galerie, marken }) => {
             />
           )
         )}
+      </div> */}
+
+      <div className="sectionLeftSwiper">
+        <Swiper
+          loop={true}
+          autoplay={{
+            delay: 1500,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay]}
+          speed={1000}
+        >
+          {galerie.introSlider.map((bild, i) => (
+            <SwiperSlide key={i}>
+              <SwiperInnerSingleGalerie
+                image={bild.bild.bild.url}
+                blurDataURL={bild.bild.bild.metadata?.lqip}
+                alt={bild.bild.alt}
+                // setMouseLable={setMouseLable}
+                // setCurrentIndex={setCurrentIndex}
+                // triggerNext={triggerNext}
+                // triggerPrev={triggerPrev}
+                // setTriggerNext={setTriggerNext}
+                // setTriggerPrev={setTriggerPrev}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
 
-      <div className="sectionLeftMobile">
-        {galerie.video ? (
-          <div className="vimeoContainer">
-            <iframe
-              src={`https://player.vimeo.com/video/${galerie.vimeolink}?background=true`}
-              width={1000}
-              height={1000}
-              frameborder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-        ) : (
-          imageHeight && (
-            <Image
-              src={galerie.introImage.bild.url}
-              width={windowWidth}
-              height={windowWidth * 1.3333}
-              alt={galerie.introImage.alt}
-              blurDataURL={galerie.introImage.bild.metadata.lqip}
-              placeholder="blur"
-              style={{objectFit: "cover"}}
-            />
-          )
-        )}
-      </div>
+      {/* <div className="sectionLeftMobile">
+        <Swiper
+          loop={true}
+          autoplay={{
+            delay: 1500,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay]}
+          speed={1000}
+        >
+          {galerie.introSlider.map((bild, i) => (
+            <SwiperSlide key={i}>
+              <SwiperInnerSingleGalerie
+                image={bild.bild.bild.url}
+                blurDataURL={bild.bild.bild.metadata?.lqip}
+                alt={bild.bild.alt}
+                // setMouseLable={setMouseLable}
+                // setCurrentIndex={setCurrentIndex}
+                // triggerNext={triggerNext}
+                // triggerPrev={triggerPrev}
+                // setTriggerNext={setTriggerNext}
+                // setTriggerPrev={setTriggerPrev}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div> */}
 
       <ShowRoomInfo
         text={galerie.beschreibung.text}

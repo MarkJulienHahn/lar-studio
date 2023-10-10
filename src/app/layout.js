@@ -7,6 +7,9 @@ import { getCookies } from "../../sanity/sanity-utils";
 export const metadata = {
   title: "Studio Lar",
   description: "Architecture, Design and Products",
+  icons: {
+    icon: '/icon.ico',
+  },
 };
 
 export default async function RootLayout({ children }) {
@@ -16,7 +19,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Nav />
-        <Cookies cookies={cookies}/>
+        <Cookies cookies={cookies} />
         {children}
       </body>
     </html>

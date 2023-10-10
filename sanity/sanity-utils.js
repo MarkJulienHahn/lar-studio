@@ -8,7 +8,7 @@ const client = createClient({
 
 export async function getLanding() {
   return client.fetch(
-    groq`*[_type == "landing"]{"slug": arbeiten.arbeiten->{slug}, "bild": bild.asset->{...}, "alt": bild.alt}`
+    groq`*[_type == "landing"]|order(orderRank){"slug": arbeiten.arbeiten->{slug}, "bild": bild.asset->{...}, "alt": bild.alt}`
   );
 }
 
@@ -51,18 +51,23 @@ export async function getMarken() {
 export async function getGalerie() {
   return client.fetch(
     groq`*[_type == "galerie"]
-    {..., exhibitions[]
-      {..., "bild": 
-         {"bild": bild.asset->{...}, 
-          "alt": bild.alt},
-          "bilder": bilder[]{..., "bild":bild{..., "asset": asset->{...}}}
-      }, 
-     "introImage": 
-       {"bild": introImage.bild.asset->{...}, 
-        "alt": introImage.alt
-       },
-     "marken": marken[]{..., "bild": bild{..., "asset": asset->{...}}}
-    }`
+    {..., "introSlider": introSlider[]{..., "bild": 
+    {"bild": bild.asset->{...}, 
+     "alt": bild.alt},
+     "bilder": bilder[]{..., "bild":bild{..., "asset": asset->{...}}}},
+ exhibitions[]
+ {..., "bild": 
+    {"bild": bild.asset->{...}, 
+     "alt": bild.alt},
+     "bilder": bilder[]{..., "bild":bild{..., "asset": asset->{...}}}
+ }, 
+"introImage": 
+  {"bild": introImage.bild.asset->{...}, 
+   "alt": introImage.alt
+  },
+"marken": marken[]{..., "bild": bild{..., "asset": asset->{...}}},
+
+}`
   );
 }
 

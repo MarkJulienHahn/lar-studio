@@ -5,41 +5,71 @@ export default defineType({
   title: "Showroom",
   type: "document",
   fields: [
+    // defineField({
+    //   name: "video",
+    //   title: "Gibt es ein Introvideo?",
+    //   type: "boolean",
+    // }),
+    // defineField({
+    //   name: "vimeolink",
+    //   title: "Vimeo-Video-ID",
+    //   type: "string",
+    //   hidden: ({ document }) => !document?.video,
+    //   description:
+    //     "Hier einfach die Vimeo-Video-ID eingeben. Das ist die (meist) 9-Stellige Ziffer, am Ende der Video-URL.«",
+    // }),
     defineField({
-      name: "video",
-      title: "Gibt es ein Introvideo?",
-      type: "boolean",
-    }),
-    defineField({
-      name: "vimeolink",
-      title: "Vimeo-Video-ID",
-      type: "string",
-      hidden: ({ document }) => !document?.video,
-      description:
-        "Hier einfach die Vimeo-Video-ID eingeben. Das ist die (meist) 9-Stellige Ziffer, am Ende der Video-URL.«",
-    }),
-    defineField({
-      name: "introImage",
-      title: "Introbild",
-      type: "object",
-      hidden: ({ document }) => document?.video,
-      fields: [
+      name: "introSlider",
+      title: "Intro Slider",
+      type: "array",
+      of: [
         {
-          name: "bild",
-          title: "Bild",
-          type: "image",
-          validation: (Rule) => Rule.required(),
-        },
-        {
-          name: "alt",
-          title: "Alt",
-          type: "string",
-          description:
-            "Hier bitte eine kurze Bildbeschreibung für Screenreader und Suchmaschinen einfügen. Beispiel: »Three students perform during a concert, two playing instruments in the background, and one in the foreground playing a cello, gazing off to his left.«",
-          validation: (Rule) => Rule.required(),
+          name: "introImage",
+          title: "Introbild",
+          type: "object",
+          hidden: ({ document }) => document?.video,
+          fields: [
+            {
+              name: "bild",
+              title: "Bild",
+              type: "image",
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+              description:
+                "Hier bitte eine kurze Bildbeschreibung für Screenreader und Suchmaschinen einfügen. Beispiel: »Three students perform during a concert, two playing instruments in the background, and one in the foreground playing a cello, gazing off to his left.«",
+              validation: (Rule) => Rule.required(),
+            },
+          ],
         },
       ],
     }),
+
+    // defineField({
+    //   name: "introImage",
+    //   title: "Introbild",
+    //   type: "object",
+    //   hidden: ({ document }) => document?.video,
+    //   fields: [
+    //     {
+    //       name: "bild",
+    //       title: "Bild",
+    //       type: "image",
+    //       validation: (Rule) => Rule.required(),
+    //     },
+    //     {
+    //       name: "alt",
+    //       title: "Alt",
+    //       type: "string",
+    //       description:
+    //         "Hier bitte eine kurze Bildbeschreibung für Screenreader und Suchmaschinen einfügen. Beispiel: »Three students perform during a concert, two playing instruments in the background, and one in the foreground playing a cello, gazing off to his left.«",
+    //       validation: (Rule) => Rule.required(),
+    //     },
+    //   ],
+    // }),
 
     defineField({
       name: "beschreibung",

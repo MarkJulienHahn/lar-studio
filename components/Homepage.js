@@ -13,30 +13,32 @@ const Homepage = ({ landing }) => {
   const [mouseLable, setMouseLable] = useState();
 
   return (
-    <>
+    <div className="introOuter">
       <MouseDiv lable={mouseLable} />
-      <Swiper
-        loop={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        modules={[Autoplay]}
-        speed={1000}
-      >
-        {landing.map((bild, i) => (
-          <SwiperSlide key={i}>
-            <SwiperInner
-              slug={bild.slug}
-              image={bild.bild.url}
-              alt={bild.alt}
-              blurDataURL={bild.bild.metadata.lqip}
-              setMouseLable={setMouseLable}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </>
+      <div className="introInner">
+        <Swiper
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay]}
+          speed={1000}
+        >
+          {landing.map((bild, i) => (
+            <SwiperSlide key={i}>
+              <SwiperInner
+                slug={bild.slug}
+                image={bild.bild.url}
+                alt={bild.alt}
+                blurDataURL={bild.bild.metadata.lqip}
+                setMouseLable={setMouseLable}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </div>
   );
 };
 

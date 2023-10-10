@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 import { usePathname } from "next/navigation";
@@ -24,7 +24,29 @@ const pages = [
 
 const Nav = () => {
   const [nav, setNav] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState("");
+
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
+
+
+  useEffect(() => {
+    scrollPosition >= 10 && pathname == "/" && setNav(true);
+  }, [scrollPosition]);
+
+  useEffect(() => {
+    scrollPosition >= 10 &&
+      pathname == "/" &&
+      window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [scrollPosition]);
 
   return (
     !pathname.includes("admin") && (
