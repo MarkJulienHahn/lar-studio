@@ -76,7 +76,7 @@ const Galerie = ({ galerie, marken }) => {
         <Swiper
           loop={true}
           autoplay={{
-            delay: 1500,
+            delay: 3000,
             disableOnInteraction: false,
           }}
           modules={[Autoplay]}

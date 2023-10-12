@@ -33,8 +33,6 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
       setColumnWidth(columnRef.current.clientWidth);
   }, []);
 
-  console.log(team)
-
   return (
     <div className="studioWrapper" ref={ref} style={{ minHeight: minHeight }}>
       {imageIndex != null && (
@@ -53,6 +51,8 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
             alt={team[imageIndex].bild.alt}
             blurDataURL={team[imageIndex].bild.asset.metadata.lqip}
             placeholder="blur"
+            quality={1}
+            priority={true}
           />
         </div>
       )}

@@ -95,6 +95,7 @@ const SinglePage = ({ contents, id }) => {
               triggerPrev={triggerPrev}
               setTriggerNext={setTriggerNext}
               setTriggerPrev={setTriggerPrev}
+              i={i}
             />
           </SwiperSlide>
         ))}

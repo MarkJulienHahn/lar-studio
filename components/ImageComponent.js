@@ -15,6 +15,7 @@ const ImageComponent = ({
   alt,
   length,
   kleiner,
+  i,
 }) => {
   const [show, setShow] = useState(false);
   const [imageHeight, setImageHeight] = useState();
@@ -38,6 +39,8 @@ const ImageComponent = ({
   useEffect(() => {
     setImageHeight(windowHeight - 80);
   }, []);
+
+  console.log(i)
 
   return (
     <>
@@ -64,6 +67,8 @@ const ImageComponent = ({
                   onMouseEnter={() => setShow(true)}
                   onMouseLeave={() => setShow(false)}
                   style={{ cursor: "pointer" }}
+                  priority={i <= 2 ? true : false}
+                  loading={"eager"}
                 />
               ) : (
                 <Image
@@ -77,6 +82,8 @@ const ImageComponent = ({
                   onMouseEnter={() => setShow(true)}
                   onMouseLeave={() => setShow(false)}
                   style={{ cursor: "pointer" }}
+                  priority={i <= 2 ? true : false}
+                  loading={"eager"}
                 />
               )}
             </Link>

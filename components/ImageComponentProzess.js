@@ -66,6 +66,7 @@ const ImageComponentProzess = ({
                   onMouseEnter={() => setShow(true)}
                   onMouseLeave={() => setShow(false)}
                   style={{ cursor: "pointer" }}
+                  priority={true}
                 />
               </a>
             ) : (
@@ -87,6 +88,7 @@ const ImageComponentProzess = ({
                 placeholder={"blur"}
                 onMouseEnter={() => setShow(true)}
                 onMouseLeave={() => setShow(false)}
+                priority={true}
               />
             ))}
         </div>

@@ -14,6 +14,7 @@ const SwiperInnerSingle = ({
   setTriggerNext,
   setTriggerPrev,
   setCurrentIndex,
+  i,
 }) => {
   const [slideConfig, setSlideConfig] = useState({
     isBeginning: true,
@@ -49,6 +50,8 @@ const SwiperInnerSingle = ({
     setTimeout(resetTrigger, 100);
   }, [triggerPrev]);
 
+  console.log(i)
+
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <Image
@@ -60,6 +63,7 @@ const SwiperInnerSingle = ({
         placeholder="blur"
         blurDataURL={blurDataURL}
         style={{ objectFit: "contain", objectPosition: "left" }}
+        priority={i < 10 ? true : false}
       />
     </div>
   );

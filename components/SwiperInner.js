@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { useSwiper } from "swiper/react";
 
-const SwiperInner = ({ image, blurDataURL, setMouseLable }) => {
+const SwiperInner = ({ image, key, blurDataURL, setMouseLable }) => {
   const swiper = useSwiper();
 
   return (
@@ -28,6 +28,7 @@ const SwiperInner = ({ image, blurDataURL, setMouseLable }) => {
         style={{ objectFit: "cover", objectPosition: "center" }}
         placeholder="blur"
         blurDataURL={blurDataURL}
+        priority={true}
       />
     </div>
   );

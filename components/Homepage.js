@@ -24,6 +24,7 @@ const Homepage = ({ landing }) => {
           }}
           modules={[Autoplay]}
           speed={1000}
+          lazy={false}
         >
           {landing.map((bild, i) => (
             <SwiperSlide key={i}>
@@ -33,6 +34,7 @@ const Homepage = ({ landing }) => {
                 alt={bild.alt}
                 blurDataURL={bild.bild.metadata.lqip}
                 setMouseLable={setMouseLable}
+                key={i}
               />
             </SwiperSlide>
           ))}
