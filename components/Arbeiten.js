@@ -3,11 +3,11 @@
 import ImageComponent from "./ImageComponent";
 
 const Arbeiten = ({ arbeiten }) => {
-
   return (
     <div style={{ minHeight: "10000px" }}>
       {arbeiten.map((arbeit, i) => (
         <ImageComponent
+          key={i}
           i={i}
           lable={arbeit.title}
           url={arbeit.bild.asset.url}
