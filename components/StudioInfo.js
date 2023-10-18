@@ -57,8 +57,8 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
                 }
                 src={team[i].bild.asset.url}
                 alt={team[i].bild.alt}
-                blurDataURL={team[i].bild.asset.metadata.lqip}
-                placeholder="blur"
+                // blurDataURL={team[i].bild.asset.metadata.lqip}
+                // placeholder="blur"
                 quality={1}
                 priority={true}
               />
