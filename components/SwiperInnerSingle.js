@@ -59,7 +59,7 @@ const SwiperInnerSingle = ({
         objectPosition="left"
         alt={alt}
         // placeholder="blur"
-        blurDataURL={blurDataURL}
+        // blurDataURL={blurDataURL}
         style={{ objectFit: "contain", objectPosition: "left" }}
         priority={true}
       />

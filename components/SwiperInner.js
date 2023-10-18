@@ -26,8 +26,8 @@ const SwiperInner = ({ image, key, blurDataURL, setMouseLable }) => {
         fill
         alt="Studio Lar Icon"
         style={{ objectFit: "cover", objectPosition: "center" }}
-        placeholder="blur"
-        blurDataURL={blurDataURL}
+        // placeholder="blur"
+        // blurDataURL={blurDataURL}
         priority={true}
       />
     </div>

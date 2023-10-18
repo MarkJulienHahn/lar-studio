@@ -61,8 +61,8 @@ const Studio = ({ studio }) => {
               width={imageHeight * studio.bild.metadata.dimensions.aspectRatio}
               height={imageHeight}
               alt={studio.introImage.alt}
-              blurDataURL={studio.bild.asset.metadata.lqip}
-              placeholder="blur"
+              // blurDataURL={studio.bild.asset.metadata.lqip}
+              // placeholder="blur"
             />
           )
         )}

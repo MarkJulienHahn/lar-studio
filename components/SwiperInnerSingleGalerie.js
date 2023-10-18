@@ -30,8 +30,8 @@ const SwiperInnerSingleGalerie = ({
         objectFit={"contain"}
         objectPosition="left"
         alt={alt}
-        placeholder="blur"
-        blurDataURL={blurDataURL}
+        // placeholder="blur"
+        // blurDataURL={blurDataURL}
         style={windowWidth > 600 ? desktop : mobile}
       />
     </div>

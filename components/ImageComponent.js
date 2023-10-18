@@ -68,7 +68,6 @@ const ImageComponent = ({
                   onMouseLeave={() => setShow(false)}
                   style={{ cursor: "pointer" }}
                   priority={i <= 2 ? true : false}
-                  loading={"eager"}
                 />
               ) : (
                 <Image
@@ -83,7 +82,6 @@ const ImageComponent = ({
                   onMouseLeave={() => setShow(false)}
                   style={{ cursor: "pointer" }}
                   priority={i <= 2 ? true : false}
-                  loading={"eager"}
                 />
               )}
             </Link>
