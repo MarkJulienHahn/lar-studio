@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 const current = { fontStyle: "italic" };
 const notCurrent = { fontStyle: "normal" };
 
-const Nav_Entry = ({ lable, index, setNav }) => {
+const Nav_Entry = ({ lable, url,  index, setNav }) => {
   const pathname = usePathname();
   const [currPath, setCurrPath] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -21,7 +21,7 @@ const Nav_Entry = ({ lable, index, setNav }) => {
   const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
 
   return (
-    <Link href={`/${lable}`} scroll={false} onClick={() => setNav(false)}>
+    <Link href={url} scroll={false} onClick={() => setNav(false)}>
       <span className={styles.listIndex}>{alphabet[index]}</span>
       <span
         className={styles.listEntry}

@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import ImageComponentProzess from "./ImageComponentProzess";
 import PortableText from "react-portable-text";
+import Footer from "./Footer";
 
 const Inspiration = ({ prozess, prozessIntro }) => {
   const location = useRouter();
@@ -41,6 +42,7 @@ const Inspiration = ({ prozess, prozessIntro }) => {
             blurDataURL={eintrag.bild.asset.metadata.lqip}
           />
         ))}
+        <Footer />
       </motion.div>
     </AnimatePresence>
   );

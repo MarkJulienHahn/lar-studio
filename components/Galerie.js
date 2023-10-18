@@ -12,6 +12,7 @@ import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import SwiperInnerSingleGalerie from "../components/SwiperInnerSingleGalerie";
+import Footer from "./Footer";
 
 const Galerie = ({ galerie, marken }) => {
   const [imageHeight, setImageHeight] = useState();
@@ -134,6 +135,7 @@ const Galerie = ({ galerie, marken }) => {
         marken={marken}
         oeffnungszeiten={galerie.oeffnungszeiten}
       />
+      <Footer />
     </>
   );
 };

@@ -602,3 +602,31 @@ img {
     pointer-events: none;
   }
 }
+
+
+/* FOOTER */
+
+.footerWrapper {
+  width: clamp(600px, 50vw, 50vw);
+  display: flex;
+  font-family: "Signifier-Light-Italic";
+  justify-content: space-between;
+  margin-top: 300px;
+  font-size: 15pt;
+  line-height: 20pt;
+}
+
+.footerWrapper a {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+  .footerWrapper {
+    flex-direction: column;
+    margin: var(--spaceMedium);
+    padding-top: 200px;
+  }
+  .footerRow {
+    padding-bottom: 30px;
+  }
+}

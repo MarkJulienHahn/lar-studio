@@ -10,16 +10,20 @@ import Nav_Entry from "./Nav_Entry";
 import styles from "./Nav.module.css";
 import logo from "../public/LAR-icon.png";
 
-const active = { opacity: 1 };
-const inactive = { opacity: 0, pointerEvents: "none" };
+const active = { opacity: 1, paddingTop: "0px" };
+const inactive = {
+  opacity: 0,
+  pointerEvents: "none",
+  paddingTop: "100px",
+};
 
 const pages = [
-  { lable: "studio" },
-  { lable: "projekte" },
-  { lable: "showroom" },
-  { lable: "inspiration" },
-  { lable: "kontakt" },
-  { lable: "impressum" },
+  { lable: "start", url: "/" },
+  { lable: "studio", url: "/studio" },
+  { lable: "projekte", url: "/projekte" },
+  { lable: "showroom", url: "/showroom" },
+  { lable: "inspiration", url: "/inspiration" },
+  { lable: "kontakt", url: "/kontakt" },
 ];
 
 const Nav = () => {
@@ -36,7 +40,6 @@ const Nav = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   });
-
 
   useEffect(() => {
     scrollPosition >= 10 && pathname == "/" && setNav(true);
@@ -80,6 +83,7 @@ const Nav = () => {
               <Nav_Entry
                 key={i}
                 lable={entry.lable}
+                url={entry.url}
                 index={i}
                 slug={entry.slug}
                 setNav={setNav}

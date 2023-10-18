@@ -40,20 +40,30 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
           className="teamImageWrapper"
           style={{ height: windowHeight - 80, width: "calc(42.85% - 30px)" }}
         >
-          <Image
-            relative
-            width={columnWidth}
-            height={
-              columnWidth /
-              team[imageIndex].bild.asset.metadata.dimensions.aspectRatio
-            }
-            src={team[imageIndex].bild.asset.url}
-            alt={team[imageIndex].bild.alt}
-            blurDataURL={team[imageIndex].bild.asset.metadata.lqip}
-            placeholder="blur"
-            quality={1}
-            priority={true}
-          />
+          {team.map((person, i) => (
+            <div
+              style={{
+                position: "absolute",
+                opacity: imageIndex == i ? "1" : "0",
+              }}
+              key={i}
+            >
+              <Image
+                relative
+                width={columnWidth}
+                height={
+                  columnWidth /
+                  team[i].bild.asset.metadata.dimensions.aspectRatio
+                }
+                src={team[i].bild.asset.url}
+                alt={team[i].bild.alt}
+                blurDataURL={team[i].bild.asset.metadata.lqip}
+                placeholder="blur"
+                quality={1}
+                priority={true}
+              />
+            </div>
+          ))}
         </div>
       )}
       <div className="studioCol-3-7">
@@ -66,7 +76,6 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
           }}
         >
           <div className="studioHeadline">
-            {/* <span className="index">1</span> */}
             <h1>Studio</h1>
           </div>
           <div className="line"></div>
@@ -109,26 +118,10 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
                       image={bild.bild.asset.url}
                       blurDataURL={bild.bild.asset.metadata?.lqip}
                       alt={"Team Foto of Studio Lar"}
-                      // setMouseLable={setMouseLable}
-                      // setCurrentIndex={setCurrentIndex}
-                      // triggerNext={triggerNext}
-                      // triggerPrev={triggerPrev}
-                      // setTriggerNext={setTriggerNext}
-                      // setTriggerPrev={setTriggerPrev}
                     />
                   </SwiperSlide>
                 ))}
               </Swiper>
-              // <Image
-              //   relative
-              //   width={columnWidth}
-              //   height={columnWidth / teamFoto.metadata.dimensions.aspectRatio}
-              //   src={teamFoto.url}
-              //   style={{ objectFit: "contain" }}
-              //   alt={teamFoto.metadata.lqip}
-              //   blurDataURL={teamFoto.metadata.lqip}
-              //   placeholder="blur"
-              // />
             )}
           </div>
 
@@ -154,7 +147,6 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
           }}
         >
           <div className="studioHeadline">
-            {/* <span className="index">3</span> */}
             <h1>Leistungen</h1>
           </div>
           <div className="line"></div>

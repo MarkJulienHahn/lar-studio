@@ -6,6 +6,7 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 
 import Image from "next/image";
 import StudioInfo from ".//StudioInfo";
+import Footer from "./Footer";
 
 const Studio = ({ studio }) => {
   const [imageHeight, setImageHeight] = useState();
@@ -102,6 +103,7 @@ const Studio = ({ studio }) => {
         teamFoto={studio.teamFoto}
         leistungen={studio.leistungen}
       />
+      <Footer />
     </>
   );
 };

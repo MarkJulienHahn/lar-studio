@@ -50,8 +50,6 @@ const SwiperInnerSingle = ({
     setTimeout(resetTrigger, 100);
   }, [triggerPrev]);
 
-  console.log(i)
-
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <Image
@@ -60,10 +58,10 @@ const SwiperInnerSingle = ({
         objectFit="contain"
         objectPosition="left"
         alt={alt}
-        placeholder="blur"
+        // placeholder="blur"
         blurDataURL={blurDataURL}
         style={{ objectFit: "contain", objectPosition: "left" }}
-        priority={i < 10 ? true : false}
+        priority={true}
       />
     </div>
   );

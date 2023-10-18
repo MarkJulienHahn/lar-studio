@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "./Footer";
 import ImageComponent from "./ImageComponent";
 
 const Arbeiten = ({ arbeiten }) => {
@@ -20,6 +21,7 @@ const Arbeiten = ({ arbeiten }) => {
           alt={arbeit.bild.alt}
         />
       ))}
+      <Footer />
     </div>
   );
 };

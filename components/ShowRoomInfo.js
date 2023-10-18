@@ -35,19 +35,29 @@ const StudioInfo = ({ text, headline, marken, oeffnungszeiten }) => {
           className="teamImageWrapper"
           style={{ height: windowHeight - 80, width: "calc(42.85% - 30px)" }}
         >
-          <Image
-            relative
-            width={windowHeight - 80}
-            height={
-              (windowHeight - 80) /
-              marken[imageIndex].bild.asset.metadata.dimensions.aspectRatio
-            }
-            src={marken[imageIndex].bild.asset.url}
-            style={{ objectFit: "cover" }}
-            alt={marken[imageIndex].bild.alt}
-            blurDataURL={marken[imageIndex].bild.asset.metadata.lqip}
-            placeholder={"blur"}
-          />
+          {marken.map((person, i) => (
+            <div
+              style={{
+                position: "absolute",
+                opacity: imageIndex == i ? "1" : "0",
+              }}
+              key={i}
+            >
+              <Image
+                relative
+                width={windowHeight - 80}
+                height={
+                  (windowHeight - 80) /
+                  marken[i].bild.asset.metadata.dimensions.aspectRatio
+                }
+                src={marken[i].bild.asset.url}
+                style={{ objectFit: "cover" }}
+                alt={marken[i].bild.alt}
+                blurDataURL={marken[i].bild.asset.metadata.lqip}
+                placeholder={"blur"}
+              />
+            </div>
+          ))}
         </div>
       )}
 
