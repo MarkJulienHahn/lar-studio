@@ -3,17 +3,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import Link from "next/link";
-
-import "swiper/css";
-import { Swiper, SwiperSlide } from "swiper/react";
-
 import Text from "../components/Text";
-import SwiperInnerSingle from "../components/SwiperInnerSingle";
+import ProjekteSingleInner from "../components/ProjekteSingleInner";
 import MouseDiv from "../components/MouseDiv";
+import Footer from "../components/Footer";
 
 const SinglePage = ({ contents, id }) => {
-  const [mouseLable, setMouseLable] = useState();
+  const [mouseLable, setMouseLable] = useState("×");
   const [showInfo, setShowInfo] = useState();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [triggerNext, setTriggerNext] = useState(false);
@@ -22,7 +18,6 @@ const SinglePage = ({ contents, id }) => {
   const router = useRouter();
 
   const content = contents[id - 1];
-
 
   return (
     <>
@@ -62,26 +57,27 @@ const SinglePage = ({ contents, id }) => {
         style={{ width: "100vw", height: "100vh", position: "fixed" }}
       >
         <div
-          className="swiperPrev"
-          onMouseEnter={() => setMouseLable("←")}
-          onMouseLeave={() => setMouseLable(null)}
-          onClick={() => setTriggerPrev(true)}
-        ></div>
-        <div
           className="swiperBackLink"
           onMouseEnter={() => setMouseLable("×")}
           onMouseLeave={() => setMouseLable(null)}
           onClick={() => router.back()}
         ></div>
-        <div
-          className="swiperNext"
-          onMouseEnter={() => setMouseLable("→")}
-          onMouseLeave={() => setMouseLable(null)}
-          onClick={() => setTriggerNext(true)}
-        ></div>
       </div>
 
-      <Swiper loop={true} speed={1000}>
+      {content.bilder.bilder.map((bild, i) => (
+        <ProjekteSingleInner
+          slug={bild.slug}
+          image={bild.bild.asset.url}
+          blurDataURL={bild.bild.asset.metadata.lqip}
+          alt={bild.alt}
+          i={i}
+          setCurrentIndex={setCurrentIndex}
+        />
+      ))}
+
+      <Footer />
+
+      {/* <Swiper loop={true} speed={1000}>
         {content.bilder.bilder.map((bild, i) => (
           <SwiperSlide key={i} style={{ cursor: "none" }}>
             <SwiperInnerSingle
@@ -99,7 +95,7 @@ const SinglePage = ({ contents, id }) => {
             />
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper> */}
     </>
   );
 };

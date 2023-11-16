@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { useSwiper } from "swiper/react";
+import { urlFor } from "../hooks/useImageUrlBuilder";
 
 const SwiperInner = ({ image, key, blurDataURL, setMouseLable }) => {
   const swiper = useSwiper();
@@ -22,7 +22,7 @@ const SwiperInner = ({ image, key, blurDataURL, setMouseLable }) => {
         onClick={() => swiper.slideNext()}
       ></div>
       <Image
-        src={image}
+        src={urlFor(image).quality(50).format("jpg").url()}
         fill
         alt="Studio Lar Icon"
         style={{ objectFit: "cover", objectPosition: "center" }}

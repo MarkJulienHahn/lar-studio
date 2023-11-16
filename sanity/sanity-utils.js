@@ -6,6 +6,8 @@ const client = createClient({
   apiVersion: "2023-06-01",
 });
 
+export default client;
+
 export async function getLanding() {
   return client.fetch(
     groq`*[_type == "landing"]|order(orderRank){"slug": arbeiten.arbeiten->{slug}, "bild": bild.asset->{...}, "alt": bild.alt}`

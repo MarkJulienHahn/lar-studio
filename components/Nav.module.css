@@ -42,7 +42,8 @@
   flex-direction: column;
   padding: var(--spaceMedium);
   overscroll-behavior: contain;
-
+  justify-content: center;
+  align-items: center;
 }
 
 .listIndex {

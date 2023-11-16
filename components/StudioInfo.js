@@ -11,6 +11,8 @@ import SwiperInnerSingleGalerie from "../components/SwiperInnerSingleGalerie";
 
 import { useInView } from "framer-motion";
 
+import { urlFor } from "../hooks/useImageUrlBuilder";
+
 import StudioInfoTeamEntry from "./StudioInfoTeamEntry";
 
 const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
@@ -55,7 +57,11 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
                   columnWidth /
                   team[i].bild.asset.metadata.dimensions.aspectRatio
                 }
-                src={team[i].bild.asset.url}
+                src={urlFor(team[i].bild.asset.url)
+                  .height(Math.floor(windowHeight * 1.2))
+                  .quality(50)
+                  .format("jpg")
+                  .url()}
                 alt={team[i].bild.alt}
                 // blurDataURL={team[i].bild.asset.metadata.lqip}
                 // placeholder="blur"

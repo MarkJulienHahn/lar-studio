@@ -2,6 +2,8 @@ import { useRef, useState, useEffect } from "react";
 
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
+import { urlFor } from "../hooks/useImageUrlBuilder";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,6 +21,7 @@ const ImageComponent = ({
 }) => {
   const [show, setShow] = useState(false);
   const [imageHeight, setImageHeight] = useState();
+  const [URL, setUrl] = useState(null);
 
   const { windowHeight } = useWindowDimensions();
   const imgRef = useRef();
@@ -38,15 +41,20 @@ const ImageComponent = ({
 
   useEffect(() => {
     setImageHeight(windowHeight - 80);
+    setUrl(
+      urlFor(url)
+        .height(Math.floor(windowHeight * 1.2))
+        .quality(50)
+        .format("jpg")
+        .url()
+    );
   }, []);
-
-  console.log(i)
 
   return (
     <>
       <div className={"sectionLeft"}>
         <div className="imageWrapper">
-          {imageHeight && (
+          {imageHeight && URL && (
             <Link
               href={{ pathname: `/projekte/${slug}`, query: { id: index } }}
               scroll={false}
@@ -58,7 +66,7 @@ const ImageComponent = ({
               {!kleiner ? (
                 <Image
                   ref={imgRef}
-                  src={url}
+                  src={URL}
                   height={imageHeight}
                   width={imageHeight * dimensions.aspectRatio}
                   alt={alt ? alt : "placeholder"}
@@ -72,7 +80,7 @@ const ImageComponent = ({
               ) : (
                 <Image
                   ref={imgRef}
-                  src={url}
+                  src={URL}
                   height={imageHeight * 0.8}
                   width={imageHeight * 0.8 * dimensions.aspectRatio}
                   alt={alt ? alt : "placeholder"}
@@ -106,13 +114,13 @@ const ImageComponent = ({
 
       <div className={"sectionMobile"}>
         <div className="imageWrapper">
-          {imageHeight && (
+          {imageHeight && URL && (
             <Link
               href={{ pathname: `/projekte/${slug}`, query: { id: index } }}
               scroll={false}
             >
               <Image
-                src={url}
+                src={URL}
                 height={
                   dimensions.aspectRatio < 1
                     ? imageHeight

@@ -5,6 +5,7 @@ import Image from "next/image";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
 import { useInView } from "framer-motion";
+import { urlFor } from "../hooks/useImageUrlBuilder";
 
 import GalleryMarkeEntry from "./GalleryMarkeEntry";
 
@@ -50,7 +51,11 @@ const StudioInfo = ({ text, headline, marken, oeffnungszeiten }) => {
                   (windowHeight - 80) /
                   marken[i].bild.asset.metadata.dimensions.aspectRatio
                 }
-                src={marken[i].bild.asset.url}
+                src={urlFor(marken[i].bild.asset.url)
+                  .height(Math.floor(windowHeight * 1.2))
+                  .quality(50)
+                  .format("jpg")
+                  .url()}
                 style={{ objectFit: "cover" }}
                 alt={marken[i].bild.alt}
                 blurDataURL={marken[i].bild.asset.metadata.lqip}
