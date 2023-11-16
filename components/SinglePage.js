@@ -66,6 +66,7 @@ const SinglePage = ({ contents, id }) => {
 
       {content.bilder.bilder.map((bild, i) => (
         <ProjekteSingleInner
+          key={i}
           slug={bild.slug}
           image={bild.bild.asset.url}
           blurDataURL={bild.bild.asset.metadata.lqip}
