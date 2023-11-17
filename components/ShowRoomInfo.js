@@ -30,7 +30,11 @@ const StudioInfo = ({ text, headline, marken, oeffnungszeiten }) => {
   }, []);
 
   return (
-    <div className="studioWrapper" ref={ref} style={{ minHeight: minHeight }}>
+    <div
+      className="studioWrapper"
+      ref={ref}
+      // style={{ minHeight: minHeight }}
+    >
       {imageIndex != null && (
         <div
           className="teamImageWrapper"

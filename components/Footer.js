@@ -3,7 +3,7 @@ import NewsletterForm from "./NewsletterForm";
 
 export default function Footer() {
   return (
-    <>
+    <div className="footerOuter">
       <NewsletterForm />
       <div className="footerWrapper">
         <div className="footerRow">
@@ -45,6 +45,6 @@ export default function Footer() {
           <Link href="/agb">AGB</Link>
         </div>
       </div>
-    </>
+    </div>
   );
 }

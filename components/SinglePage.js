@@ -51,52 +51,33 @@ const SinglePage = ({ contents, id }) => {
           {currentIndex + 1} / {content.bilder.bilder.length}
         </p>
       </div>
-
+      {/* 
       <div
         className="swiperControlsWrapper"
         style={{ width: "100vw", height: "100vh", position: "fixed" }}
       >
-        <div
-          className="swiperBackLink"
-          onMouseEnter={() => setMouseLable("×")}
-          onMouseLeave={() => setMouseLable(null)}
-          onClick={() => router.back()}
-        ></div>
-      </div>
+        <div className="swiperBackLink"></div>
+      </div> */}
 
-      {content.bilder.bilder.map((bild, i) => (
-        <ProjekteSingleInner
-          key={i}
-          slug={bild.slug}
-          image={bild.bild.asset.url}
-          blurDataURL={bild.bild.asset.metadata.lqip}
-          alt={bild.alt}
-          i={i}
-          setCurrentIndex={setCurrentIndex}
-        />
-      ))}
-
-      <Footer />
-
-      {/* <Swiper loop={true} speed={1000}>
+      <div
+        onMouseEnter={() => setMouseLable("×")}
+        onMouseLeave={() => setMouseLable(null)}
+        onClick={() => router.back()}
+        style={{ cursor: "none" }}
+      >
         {content.bilder.bilder.map((bild, i) => (
-          <SwiperSlide key={i} style={{ cursor: "none" }}>
-            <SwiperInnerSingle
-              slug={bild.slug}
-              image={bild.bild.asset.url}
-              blurDataURL={bild.bild.asset.metadata.lqip}
-              alt={bild.alt}
-              setMouseLable={setMouseLable}
-              setCurrentIndex={setCurrentIndex}
-              triggerNext={triggerNext}
-              triggerPrev={triggerPrev}
-              setTriggerNext={setTriggerNext}
-              setTriggerPrev={setTriggerPrev}
-              i={i}
-            />
-          </SwiperSlide>
+          <ProjekteSingleInner
+            key={i}
+            slug={bild.slug}
+            image={bild.bild.asset.url}
+            blurDataURL={bild.bild.asset.metadata.lqip}
+            alt={bild.alt}
+            i={i}
+            setCurrentIndex={setCurrentIndex}
+          />
         ))}
-      </Swiper> */}
+      </div>
+      <Footer />
     </>
   );
 };

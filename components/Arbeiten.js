@@ -5,7 +5,7 @@ import ImageComponent from "./ImageComponent";
 
 const Arbeiten = ({ arbeiten }) => {
   return (
-    <div style={{ minHeight: "10000px" }}>
+    <>
       {arbeiten.map((arbeit, i) => (
         <ImageComponent
           key={i}
@@ -22,7 +22,7 @@ const Arbeiten = ({ arbeiten }) => {
         />
       ))}
       <Footer />
-    </div>
+    </>
   );
 };
 

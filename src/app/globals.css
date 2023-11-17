@@ -146,7 +146,6 @@ img {
   width: 100%;
   padding-top: var(--spaceLarge);
   display: flex;
-  margin-bottom: 300px;
 }
 
 .studioCol-3-7 {
@@ -324,7 +323,7 @@ img {
   padding: var(--spaceMedium);
   overflow: hidden;
   background: white;
-  cursor: none;
+  /* cursor: none; */
 }
 
 .arbeitenSinglePageWrapperMobile {
@@ -617,6 +616,14 @@ img {
   text-decoration: underline;
 }
 
+.footerOuter {
+  margin-top: 50vh;
+  height: calc(100vh - 2 * var(--spaceMedium));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* NEWSLETTER */
 
 .newsletterWrapper {
@@ -686,12 +693,11 @@ img {
 
   .formWrapper form {
     display: flex;
-    flex-direction: column;;
+    flex-direction: column;
   }
 
   .formWrapper button {
     text-align: left;
-    padding: var(--spaceSmall) 0
+    padding: var(--spaceSmall) 0;
   }
-
 }
