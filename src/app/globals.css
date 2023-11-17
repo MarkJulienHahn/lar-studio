@@ -618,7 +618,7 @@ img {
 
 .footerOuter {
   margin-top: 50vh;
-  height: calc(100vh - 2 * var(--spaceMedium));
+  min-height: calc(100vh - 2 * var(--spaceMedium));
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -685,6 +685,7 @@ img {
 
   .newsletterWrapper {
     width: calc(100vw - 40px);
+    padding-left: var(--spaceMedium);
   }
 
   .formWrapper input {
