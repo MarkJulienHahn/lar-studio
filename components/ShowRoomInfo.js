@@ -56,7 +56,7 @@ const StudioInfo = ({ text, headline, marken, oeffnungszeiten }) => {
                   marken[i].bild.asset.metadata.dimensions.aspectRatio
                 }
                 src={urlFor(marken[i].bild.asset.url)
-                  .height(Math.floor(windowHeight * 1.2))
+                  .height(Math.floor(windowHeight * 1.5))
                   .quality(50)
                   .format("jpg")
                   .url()}

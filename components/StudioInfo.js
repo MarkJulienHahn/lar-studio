@@ -58,7 +58,7 @@ const StudioInfo = ({ text, quote, author, team, teamFoto, leistungen }) => {
                   team[i].bild.asset.metadata.dimensions.aspectRatio
                 }
                 src={urlFor(team[i].bild.asset.url)
-                  .height(Math.floor(windowHeight * 1.2))
+                  .height(Math.floor(windowHeight * 1.5))
                   .quality(50)
                   .format("jpg")
                   .url()}

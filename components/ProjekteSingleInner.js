@@ -22,14 +22,12 @@ const SwiperInnerSingle = ({ image, alt, blurDataURL, setCurrentIndex, i }) => {
   useEffect(() => {
     setUrl(
       urlFor(image)
-        .height(Math.floor(windowHeight * 1.2))
+        .height(Math.floor(windowHeight * 1.5))
         .quality(50)
         .format("jpg")
         .url()
     );
   }, []);
-
-  console.log(url);
 
   return (
     <div

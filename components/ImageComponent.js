@@ -43,7 +43,7 @@ const ImageComponent = ({
     setImageHeight(windowHeight - 80);
     setUrl(
       urlFor(url)
-        .height(Math.floor(windowHeight * 1.2))
+        .height(Math.floor(windowHeight * 1.5))
         .quality(50)
         .format("jpg")
         .url()
