@@ -32,9 +32,9 @@ const SwiperInnerSingle = ({ image, alt, blurDataURL, setCurrentIndex, i }) => {
   return (
     <div
       style={{
-        width: "100vw",
+        // width: "100vw",
         height: "calc(100vh - 2 * var(--spaceMedium))",
-        marginBottom: "var(--spaceMedium)",
+        // marginBottom: "var(--spaceMedium)",
         position: "relative",
         cursor: "none",
       }}

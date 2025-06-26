@@ -29,12 +29,12 @@ const Studio = ({ studio }) => {
             style={{
               height:
                 windowAspectRatio > 1.7777778
-                  ? imageHeight - (80 * 0.5625)
+                  ? imageHeight - 80 * 0.5625
                   : imageWidth * 0.5625,
               width:
                 windowAspectRatio > 1.7777778
                   ? imageHeight * 1.7777778 - 80
-                  : imageWidth ,
+                  : imageWidth,
             }}
           >
             <iframe
@@ -42,11 +42,11 @@ const Studio = ({ studio }) => {
               width={
                 windowAspectRatio > 1.7777778
                   ? imageHeight * 1.7777778 - 80
-                  : imageWidth 
+                  : imageWidth
               }
               height={
                 windowAspectRatio > 1.7777778
-                  ? imageHeight - (80 * 0.5625)
+                  ? imageHeight - 80 * 0.5625
                   : imageWidth * 0.5625
               }
               frameborder="0"
@@ -96,6 +96,7 @@ const Studio = ({ studio }) => {
       </div>
 
       <StudioInfo
+        headline={studio.headline}
         text={studio.beschreibung.text}
         quote={studio.beschreibung.quote}
         author={studio.beschreibung.author}

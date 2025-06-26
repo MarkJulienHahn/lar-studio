@@ -8,6 +8,46 @@ const client = createClient({
 
 export default client;
 
+export async function getStartseite() {
+  return client.fetch(
+    groq`*[_type == "startseite"]{
+          ..., 
+          architektur {
+            bild {
+              asset->{
+                _id,
+                url
+              },
+              alt
+            },
+            headline,
+            text
+          },
+          design {
+            bild {
+              asset->{
+                _id,
+                url
+              },
+              alt
+            },
+            headline,
+            text
+          },
+          raumpsychologie {
+            bild {
+              asset->{
+                _id,
+                url
+              },
+              alt
+            },
+            headline,
+            text
+          }
+        }[0]`
+  );
+}
 export async function getLanding() {
   return client.fetch(
     groq`*[_type == "landing"]|order(orderRank){"slug": arbeiten.arbeiten->{slug}, "bild": bild.asset->{...}, "alt": bild.alt}`

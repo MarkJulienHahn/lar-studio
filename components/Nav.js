@@ -32,24 +32,24 @@ const Nav = () => {
 
   const pathname = usePathname();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollPosition(window.scrollY);
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  });
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // });
 
-  useEffect(() => {
-    scrollPosition >= 10 && pathname == "/" && setNav(true);
-  }, [scrollPosition]);
+  // useEffect(() => {
+  //   scrollPosition >= 10 && pathname == "/" && setNav(true);
+  // }, [scrollPosition]);
 
-  useEffect(() => {
-    scrollPosition >= 10 &&
-      pathname == "/" &&
-      window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [scrollPosition]);
+  // useEffect(() => {
+  //   scrollPosition >= 10 &&
+  //     pathname == "/" &&
+  //     window.scrollTo({ top: 0, behavior: "smooth" });
+  // }, [scrollPosition]);
 
   return (
     !pathname.includes("admin") && (

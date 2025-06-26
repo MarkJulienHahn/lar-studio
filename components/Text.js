@@ -14,7 +14,7 @@ const Text = ({
 
   return (
     <div className="textOuter" onClick={() => setShowInfo(false)}>
-      <MouseDiv lable={"×"} />
+      {/* <MouseDiv lable={"×"} /> */}
       <div className="textSection">
         <div className="headerWrapper">
           {length > 0 && (

@@ -67,8 +67,8 @@ const ImageComponent = ({
                 <Image
                   ref={imgRef}
                   src={URL}
-                  height={imageHeight}
-                  width={imageHeight * dimensions.aspectRatio}
+                  height={imageHeight * 0.5}
+                  width={imageHeight * 0.5 * dimensions.aspectRatio}
                   alt={alt ? alt : "placeholder"}
                   blurDataURL={blurDataURL}
                   placeholder={"blur"}
@@ -81,8 +81,8 @@ const ImageComponent = ({
                 <Image
                   ref={imgRef}
                   src={URL}
-                  height={imageHeight * 0.8}
-                  width={imageHeight * 0.8 * dimensions.aspectRatio}
+                  height={imageHeight * 0.5}
+                  width={imageHeight * 0.5 * dimensions.aspectRatio}
                   alt={alt ? alt : "placeholder"}
                   blurDataURL={blurDataURL}
                   placeholder={"blur"}

@@ -40,6 +40,7 @@ export default defineType({
         },
       ],
     }),
+    defineField({ name: "headline", type: "string" }),
     defineField({
       name: "beschreibung",
       title: "Beschreibung",
