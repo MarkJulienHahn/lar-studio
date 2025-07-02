@@ -1,10 +1,10 @@
 import Link from "next/link";
 import NewsletterForm from "./NewsletterForm";
 
-export default function Footer() {
+export default function Footer({ hideNewsletter }) {
   return (
     <div className="footerOuter">
-      <NewsletterForm />
+      {!hideNewsletter && <NewsletterForm />}
       <div className="footerWrapper">
         <div className="footerRow">
           LAR GmbH

@@ -28,28 +28,8 @@ const pages = [
 
 const Nav = () => {
   const [nav, setNav] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState("");
 
   const pathname = usePathname();
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     setScrollPosition(window.scrollY);
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // });
-
-  // useEffect(() => {
-  //   scrollPosition >= 10 && pathname == "/" && setNav(true);
-  // }, [scrollPosition]);
-
-  // useEffect(() => {
-  //   scrollPosition >= 10 &&
-  //     pathname == "/" &&
-  //     window.scrollTo({ top: 0, behavior: "smooth" });
-  // }, [scrollPosition]);
 
   return (
     !pathname.includes("admin") && (
@@ -57,8 +37,18 @@ const Nav = () => {
         <div className={styles.icon} onClick={() => setNav(!nav)}>
           <Image
             src={logo}
-            width={70}
-            height={35}
+            width={110}
+            height={55}
+            alt="Studio Lar Icon"
+            priority
+            style={{ objectFit: "contain", objectPosition: "right top" }}
+          />
+        </div>{" "}
+        <div className={styles.iconTablet} onClick={() => setNav(!nav)}>
+          <Image
+            src={logo}
+            width={90}
+            height={45}
             alt="Studio Lar Icon"
             priority
             style={{ objectFit: "contain", objectPosition: "right top" }}
@@ -67,8 +57,8 @@ const Nav = () => {
         <div className={styles.iconMobile} onClick={() => setNav(!nav)}>
           <Image
             src={logo}
-            width={50}
-            height={25}
+            width={70}
+            height={35}
             alt="Studio Lar Icon"
             priority
             style={{ objectFit: "contain", objectPosition: "right top" }}

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper";
+import Image from "next/image";
 
 import Text from "../components/Text";
 import ProjekteSingleInner from "../components/ProjekteSingleInner";
@@ -29,7 +29,7 @@ const SinglePage = ({ contents, id }) => {
           Zurück
         </p>
         <p>
-          {currentIndex + 1} / {content.bilder.bilder.length}
+          {currentIndex} / {content.bilder.bilder.length}
         </p>
       </div>
       <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
@@ -65,7 +65,7 @@ const SinglePage = ({ contents, id }) => {
 
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
-          slidesPerView={2}
+          slidesPerView={1}
           spaceBetween={20}
           loop={true}
         >
@@ -87,24 +87,54 @@ const SinglePage = ({ contents, id }) => {
                 setShowInfo={setShowInfo}
                 length={contents.length}
               />
+
+              <div
+                style={{
+                  width: "60%",
+                  height: "calc(100vh - 2 * var(--spaceMedium))",
+                  position: "absolute",
+                  right: "80px",
+                  bottom: "60px",
+                  cursor: "none",
+                }}
+              >
+                {content.bilder.bilder[0].bild.asset.url && (
+                  <Image
+                    src={content.bilder.bilder[0].bild.asset.url}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="left"
+                    alt={content.bilder.bilder[0].alt}
+                    placeholder="blur"
+                    blurDataURL={
+                      content.bilder.bilder[0].bild.asset.metadata.lqip
+                    }
+                    style={{ objectFit: "contain", objectPosition: "left" }}
+                    priority={true}
+                  />
+                )}
+              </div>
             </div>
           </SwiperSlide>
 
-          {content.bilder.bilder.map((bild, i) => (
-            <SwiperSlide key={i}>
-              <ProjekteSingleInner
-                slug={bild.slug}
-                image={bild.bild.asset.url}
-                blurDataURL={bild.bild.asset.metadata.lqip}
-                alt={bild.alt}
-                i={i}
-                setCurrentIndex={setCurrentIndex}
-              />
-            </SwiperSlide>
-          ))}
+          {content.bilder.bilder.map(
+            (bild, i) =>
+              i > 1 && (
+                <SwiperSlide key={i}>
+                  <ProjekteSingleInner
+                    slug={bild.slug}
+                    image={bild.bild.asset.url}
+                    blurDataURL={bild.bild.asset.metadata.lqip}
+                    alt={bild.alt}
+                    i={i}
+                    setCurrentIndex={setCurrentIndex}
+                  />
+                </SwiperSlide>
+              )
+          )}
         </Swiper>
       </div>
-      <Footer />
+      <Footer hideNewsletter={true} />
     </>
   );
 };

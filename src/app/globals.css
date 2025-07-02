@@ -159,7 +159,7 @@ img {
 .introHeadline {
   position: fixed;
   top: 20px;
-  left: 20px;
+  left: 50px;
   z-index: 100;
 }
 
@@ -170,11 +170,11 @@ img {
 }
 
 .introHeadline h1 {
-  font-size: 30pt;
+  font-size: 27pt;
   line-height: 35pt;
 }
 .introHeadline h2 {
-  font-size: 11pt;
+  font-size: 8pt;
   line-height: 20pt;
   letter-spacing: 0.2em;
   margin-top: 0.5em;
@@ -308,7 +308,7 @@ img {
 
 .infoWrapper {
   /* background: white; */
-  width: 50vh;
+  width: 100%;
   /* background: red; */
   height: 100vh;
   display: flex;
@@ -324,10 +324,14 @@ img {
   z-index: 100;
 }
 
-.vimeoContainer iframe {
+.vimeoContainer {
+  height: 500px;
+}
+
+/* .vimeoContainer iframe {
   position: absolute;
   top: 0;
-}
+} */
 
 /* TEXT */
 
@@ -335,6 +339,7 @@ img {
   /* width: 100vw;
   height: 100vh; */
   /* background: white; */
+  width: 30%;
   padding: var(--spaceMedium);
   cursor: none;
 }
@@ -534,6 +539,20 @@ img {
   cursor: pointer;
 }
 
+@media screen and (max-width: 1000px) {
+  .arbeitenSinglePageWrapper {
+    display: none;
+  }
+
+  .arbeitenSinglePageWrapperMobile {
+    display: block;
+    padding: var(--spaceMedium);
+  }
+  .textOuter {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 600px) {
   :root {
     --spaceSmall: 10px;
@@ -622,15 +641,6 @@ img {
     padding-bottom: 100px;
   }
 
-  .arbeitenSinglePageWrapper {
-    display: none;
-  }
-
-  .arbeitenSinglePageWrapperMobile {
-    display: block;
-    padding: var(--spaceMedium);
-  }
-
   .mobileHeaderImage {
     padding-top: 60px;
   }
@@ -694,7 +704,7 @@ img {
 
 .footerOuter {
   margin-top: 50vh;
-  min-height: calc(100vh - 2 * var(--spaceMedium));
+  /* min-height: calc(100vh - 2 * var(--spaceMedium)); */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -752,7 +762,7 @@ img {
 @media screen and (max-width: 900px) {
   .introHeadline h1 {
     font-size: 20pt;
-    line-height: 23pt;
+    line-height: 28pt;
   }
   .introHeadline h2 {
     font-size: 8pt;
@@ -772,17 +782,28 @@ img {
   .homeEntryText {
     margin-bottom: 70px;
   }
+  .introHeadline {
+    left: 35px;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .introInner {
     height: calc(100vh - 10px);
-    padding: 130px 10px 10px;
+    padding: 100px 10px 10px;
   }
   .introHeadline {
-    top: 10px;
-    left: 10px;
+    top: 15px;
+    left: 15px;
     max-width: 75%;
+  }
+  .introHeadline h1 {
+    font-size: 15pt;
+    line-height: 25pt;
+  }
+  .introHeadline h2 {
+    font-size: 6pt;
+    line-height: 12pt;
   }
   .footerWrapper {
     flex-direction: column;

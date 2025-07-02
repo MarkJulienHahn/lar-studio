@@ -2,15 +2,16 @@
   position: fixed;
   z-index: 10;
   right: var(--spaceMedium);
-  top: var(--spaceMedium);
-  width: 70px;
-  height: 35px;
+  top: 35px;
+  width: 92px;
+  height: 55px;
   cursor: pointer;
   pointer-events: auto;
   z-index: 1000;
 }
 
-.iconMobile {
+.iconMobile,
+.iconTablet {
   display: none;
 }
 
@@ -65,8 +66,25 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .icon {
+    display: none;
+  }
+  .iconTablet {
+    display: block;
+    position: fixed;
+    z-index: 10;
+    right: var(--spaceMedium);
+    top: 24px;
+    width: 70px;
+    pointer-events: auto;
+    z-index: 1000;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .icon,
+  .iconTablet {
     display: none;
   }
   .iconMobile {
@@ -75,7 +93,7 @@
     z-index: 10;
     right: var(--spaceMedium);
     top: var(--spaceMedium);
-    width: 50px;
+    width: 70px;
     pointer-events: auto;
     z-index: 1000;
   }
