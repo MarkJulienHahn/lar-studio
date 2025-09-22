@@ -20,8 +20,8 @@ const Homepage = ({ landing, startseite }) => {
         <MouseDiv lable={mouseLable} />
         <div className="introInner">
           <div className="introHeadline">
-            <h1>{startseite?.headline}</h1>
-            <h2>{startseite?.subheadline}</h2>
+            {startseite?.headline && <h1>{startseite?.headline}</h1>}
+            {startseite?.subheadline && <h2>{startseite?.subheadline}</h2>}
           </div>
           <Swiper
             loop={true}
@@ -51,7 +51,7 @@ const Homepage = ({ landing, startseite }) => {
       <div className="introBody">
         <HomeEntry content={startseite?.architektur} />
         <HomeEntry content={startseite?.design} />
-        <HomeEntry content={startseite?.raumpsychologie} />
+        {/* <HomeEntry content={startseite?.raumpsychologie} /> */}
         <Footer />
       </div>
     </>

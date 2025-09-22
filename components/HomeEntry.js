@@ -16,6 +16,7 @@ const HomeEntry = ({ content }) => {
       </div>
       <div className="homeEntryText">
         <h1>{content?.headline}</h1>
+        <h2>{content?.subheadline}</h2>
         <div class="line"/>
         {content?.text && (
           <div>

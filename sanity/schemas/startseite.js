@@ -26,6 +26,7 @@ export default defineType({
           ],
         },
         {name: 'headline', type: 'string'},
+        {name: 'subheadline', type: 'string'},
         {name: 'text', type: 'blockContent'},
       ],
     }),
@@ -47,30 +48,31 @@ export default defineType({
           ],
         },
         {name: 'headline', type: 'string'},
+        {name: 'subheadline', type: 'string'},
         {name: 'text', type: 'blockContent'},
       ],
     }),
-    defineField({
-      name: 'raumpsychologie',
-      type: 'object',
-      fields: [
-        {
-          name: 'bild',
-          title: 'Bild',
-          type: 'image',
-          validation: (Rule) => Rule.required(),
-          fields: [
-            {
-              name: 'alt',
-              title: 'Alt',
-              type: 'string',
-            },
-          ],
-        },
-        {name: 'headline', type: 'string'},
-        {name: 'text', type: 'blockContent'},
-      ],
-    }),
+    // defineField({
+    //   name: 'raumpsychologie',
+    //   type: 'object',
+    //   fields: [
+    //     {
+    //       name: 'bild',
+    //       title: 'Bild',
+    //       type: 'image',
+    //       validation: (Rule) => Rule.required(),
+    //       fields: [
+    //         {
+    //           name: 'alt',
+    //           title: 'Alt',
+    //           type: 'string',
+    //         },
+    //       ],
+    //     },
+    //     {name: 'headline', type: 'string'},
+    //     {name: 'text', type: 'blockContent'},
+    //   ],
+    // }),
     orderRankField({type: 'landing'}),
   ],
 })

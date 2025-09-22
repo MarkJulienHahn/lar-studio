@@ -21,6 +21,7 @@ export async function getStartseite() {
               alt
             },
             headline,
+            subheadline,
             text
           },
           design {
@@ -32,6 +33,7 @@ export async function getStartseite() {
               alt
             },
             headline,
+            subheadline,
             text
           },
           raumpsychologie {

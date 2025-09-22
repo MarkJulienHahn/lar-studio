@@ -50,9 +50,14 @@ a {
 
 p,
 h1,
+h2,
 li {
   font-size: 15pt;
   line-height: 20pt;
+  font-weight: normal;
+}
+
+h2 {
   font-weight: normal;
 }
 
@@ -161,12 +166,6 @@ img {
   top: 20px;
   left: var(--spaceSmall);
   z-index: 100;
-}
-
-.introHeadline h1,
-.introHeadline h2 {
-  font-family: "Avenir Light";
-  font-weight: normal;
 }
 
 .introHeadline h1 {
