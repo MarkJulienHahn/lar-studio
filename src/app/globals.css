@@ -164,7 +164,7 @@ img {
 .introHeadline {
   position: fixed;
   top: 20px;
-  left: var(--spaceSmall);
+  left: var(--spaceMedium);
   z-index: 100;
 }
 
@@ -207,7 +207,7 @@ img {
 
 .homeEntryText {
   width: 50%;
-  padding-right: 40px;
+  padding-right: 120px;
 }
 
 .homeEntryText h1 {
@@ -403,7 +403,8 @@ img {
   padding: var(--spaceMedium);
   overflow: hidden;
   background: white;
-  /* cursor: none; */
+  padding-top: 120px;
+  height: calc(100vh - 40px);
 }
 
 .arbeitenSinglePageWrapperMobile {

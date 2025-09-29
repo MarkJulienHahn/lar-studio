@@ -32,7 +32,13 @@ const SinglePage = ({ contents, id }) => {
           {currentIndex} / {content.bilder.bilder.length}
         </p>
       </div>
-      <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
+      <div
+        style={{
+          position: "relative",
+          width: "100vw",
+          height: "calc(100vh - 2 * var(--spaceSmall))",
+        }}
+      >
         {/* Klickbereiche */}
         <div
           onClick={() => swiperRef.current?.slidePrev()}
@@ -134,7 +140,7 @@ const SinglePage = ({ contents, id }) => {
           )}
         </Swiper>
       </div>
-      <Footer hideNewsletter={true} />
+      {/* <Footer hideNewsletter={true} /> */}
     </>
   );
 };
