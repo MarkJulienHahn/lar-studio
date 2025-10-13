@@ -6,6 +6,8 @@ import marken from "./marken";
 import galerie from "./galerie";
 import prozessIntro from "./prozessIntro";
 import prozess from "./prozess";
+import haeuserIntro from "./haeuserIntro";
+import retailIntro from "./retailIntro";
 import kontakt from "./kontakt";
 import cookies from "./cookies";
 import impressum from "./impressum";
@@ -23,6 +25,8 @@ export const schemaTypes = [
   galerie,
   prozessIntro,
   prozess,
+  haeuserIntro,
+  retailIntro,  
   kontakt,
   cookies,
   impressum,

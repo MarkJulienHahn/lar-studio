@@ -19,10 +19,15 @@ const inactive = {
 
 const pages = [
   { lable: "start", url: "/" },
-  { lable: "studio", url: "/studio" },
-  { lable: "projekte", url: "/projekte" },
-  { lable: "showroom", url: "/showroom" },
-  { lable: "inspiration", url: "/inspiration" },
+  { lable: "lar studio", url: "/studio" },
+  { lable: "häuser", url: "/haeuser" },
+  { lable: "retail", url: "/retail" },
+  { lable: "hideouts", comingSoon: true },
+  { lable: "selected work", url: "/selected-work" },
+  { space: true },
+  { lable: "lar space", comingSoon: true },
+  // { lable: "showroom", url: "/showroom" },
+  // { lable: "inspiration", url: "/inspiration" },
   { lable: "kontakt", url: "/kontakt" },
 ];
 
@@ -66,19 +71,24 @@ const Nav = () => {
         </div>
         <div className={styles.menu} style={nav ? active : inactive}>
           <div className={styles.close} onClick={() => setNav(!nav)}>
-            ×
+            close
           </div>
           <div className={styles.menuList}>
-            {pages.map((entry, i) => (
-              <Nav_Entry
-                key={i}
-                lable={entry.lable}
-                url={entry.url}
-                index={i}
-                slug={entry.slug}
-                setNav={setNav}
-              />
-            ))}
+            {pages.map((entry, i) =>
+              !entry.space ? (
+                <Nav_Entry
+                  key={i}
+                  lable={entry.lable}
+                  url={entry.url}
+                  index={i}
+                  slug={entry.slug}
+                  setNav={setNav}
+                  comingSoon={entry.comingSoon}
+                />
+              ) : (
+                <div key={i} style={{ height: "1.5rem" }} />
+              )
+            )}
           </div>
         </div>
       </>

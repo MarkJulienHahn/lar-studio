@@ -3,7 +3,7 @@ import { orderRankField } from "@sanity/orderable-document-list";
 
 export default defineType({
   name: "arbeiten",
-  title: "Arbeiten",
+  title: "Projekte",
   type: "document",
   fields: [
     defineField({
@@ -13,6 +13,26 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
 
+    {
+      name: "kategorie",
+      title: "Kategorie",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+      options: {
+        list: [
+          {
+            title: "Häuser",
+            value: "haeuser",
+          },
+          {
+            title: "Retail",
+            value: "retail",
+          },
+        ],
+        layout: "radio",
+      },
+    },
+    { name: "selectedWork", title: "Selected Work", type: "boolean" },
     {
       name: "text",
       title: "Text",

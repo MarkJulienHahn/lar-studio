@@ -3,7 +3,7 @@
 import Footer from "./Footer";
 import ImageComponent from "./ImageComponent";
 
-const Arbeiten = ({ arbeiten }) => {
+const Arbeiten = ({ arbeiten, kategorie }) => {
   return (
     <>
       {arbeiten.map((arbeit, i) => (
@@ -12,6 +12,7 @@ const Arbeiten = ({ arbeiten }) => {
           i={i}
           lable={arbeit.title}
           url={arbeit.bild.asset.url}
+          kategorie={kategorie}
           dimensions={arbeit.bild.asset.metadata.dimensions}
           index={i + 1}
           slug={arbeit.slug.current}

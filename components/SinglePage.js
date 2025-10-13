@@ -26,11 +26,11 @@ const SinglePage = ({ contents, id }) => {
       <MouseDiv lable={mouseLable} />
       <div className="controls">
         <p className="infobutton" onClick={() => router.back()}>
-          Zurück
+          ←
         </p>
-        <p>
+        {/* <p>
           {currentIndex} / {content.bilder.bilder.length}
-        </p>
+        </p> */}
       </div>
       <div
         style={{
@@ -97,7 +97,7 @@ const SinglePage = ({ contents, id }) => {
               <div
                 style={{
                   width: "60%",
-                  height: "calc(100vh - 2 * var(--spaceMedium))",
+                  height: "100%",
                   position: "absolute",
                   right: "80px",
                   bottom: "60px",

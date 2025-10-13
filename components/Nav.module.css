@@ -1,8 +1,8 @@
 .icon {
   position: fixed;
   z-index: 10;
-  right: var(--spaceMedium);
-  top: 35px;
+  right: 60px;
+  top: 40px;
   width: 92px;
   height: 55px;
   cursor: pointer;
@@ -32,7 +32,8 @@
   position: absolute;
   right: var(--spaceMedium);
   top: var(--spaceMedium);
-  font-size: 30pt;
+  font-size: 15pt;
+  letter-spacing: 0.25rem;
   line-height: 0;
   cursor: pointer;
 }
@@ -64,6 +65,23 @@
   text-transform: uppercase;
   letter-spacing: 5px;
   cursor: pointer;
+}
+
+.comingSoon {
+  position: relative; /* parent for absolute pseudo if needed */
+}
+
+.comingSoon::after {
+  content: "Coming\A Soon";
+  white-space: pre; /* respect the \A newline */
+  display: inline-block; /* allow the break to show */
+  font-family: "Avenir Medium";
+  position: absolute;
+  letter-spacing: 0.1rem;
+  font-size: 5.8pt;
+  line-height: 7.5pt;
+  padding-left: 10px;
+  bottom: 7px;
 }
 
 @media screen and (max-width: 900px) {

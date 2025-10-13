@@ -4,7 +4,7 @@ import PortableText from "react-portable-text";
 
 const HomeEntry = ({ content }) => {
   return (
-    <div className="homeEntryWrapper">
+    <div className="homeEntryWrapper" style={{ alignItems: "flex-start" }}>
       <div className="homeEntryImage">
         <Image
           src={content?.bild.asset.url}
@@ -17,7 +17,7 @@ const HomeEntry = ({ content }) => {
       <div className="homeEntryText">
         <h1>{content?.headline}</h1>
         <h2>{content?.subheadline}</h2>
-        <div class="line"/>
+        <div class="line" />
         {content?.text && (
           <div>
             <PortableText content={content?.text} />

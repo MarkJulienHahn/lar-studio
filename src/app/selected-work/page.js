@@ -4,9 +4,11 @@ import Arbeiten from "../../../components/Arbeiten";
 
 export default async function Page() {
   const arbeiten = await getArbeiten();
+  const seletedWork = arbeiten.filter((item) => item.selectedWork === true);
+
   return (
     <main className="arbeitenPageWrapper">
-      <Arbeiten arbeiten={arbeiten} kategorie="projekte"/>
+      <Arbeiten arbeiten={seletedWork} />
     </main>
   );
 }

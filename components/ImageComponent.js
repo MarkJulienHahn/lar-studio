@@ -14,6 +14,7 @@ const ImageComponent = ({
   lable,
   index,
   slug,
+  kategorie,
   alt,
   length,
   kleiner,
@@ -56,7 +57,7 @@ const ImageComponent = ({
         <div className="imageWrapper">
           {imageHeight && URL && (
             <Link
-              href={{ pathname: `/projekte/${slug}`, query: { id: index } }}
+              href={{ pathname: `/${kategorie}/${slug}`, query: { id: index } }}
               scroll={false}
               shallow={true}
             >
@@ -116,7 +117,7 @@ const ImageComponent = ({
         <div className="imageWrapper">
           {imageHeight && URL && (
             <Link
-              href={{ pathname: `/projekte/${slug}`, query: { id: index } }}
+              href={{ pathname: `/${kategorie}/${slug}`, query: { id: index } }}
               scroll={false}
             >
               <Image

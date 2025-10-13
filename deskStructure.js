@@ -17,38 +17,31 @@ export const myStructure = (S, context) =>
       }),
 
       S.divider(),
-      S.listItem()
-        .title("Studio")
-        .id("studio")
-        .child(S.document().schemaType("studio").documentId("studio")),
       orderableDocumentListDeskItem({
         type: "arbeiten",
         title: "Arbeiten",
         S,
         context,
       }),
-      orderableDocumentListDeskItem({
-        type: "marken",
-        title: "Marken",
-        S,
-        context,
-      }),
       S.listItem()
-        .title("Showroom")
-        .id("galerie")
-        .child(S.document().schemaType("galerie").documentId("galerie")),
-      S.listItem()
-        .title("Prozess Intotext")
-        .id("prozessIntro")
+        .title("Häuser Introtext")
+        .id("haeuserIntro")
         .child(
-          S.document().schemaType("prozessIntro").documentId("prozessIntro")
+          S.document().schemaType("haeuserIntro").documentId("haeuserIntro")
         ),
-      orderableDocumentListDeskItem({
-        type: "prozess",
-        title: "Prozess",
-        S,
-        context,
-      }),
+      S.listItem()
+        .title("Retail Introtext")
+        .id("retailIntro")
+        .child(
+          S.document().schemaType("retailIntro").documentId("retailIntro")
+        ),
+
+      S.divider(),
+      S.listItem()
+        .title("Studio")
+        .id("studio")
+        .child(S.document().schemaType("studio").documentId("studio")),
+
       S.listItem()
         .title("Kontakt")
         .id("kontakt")
