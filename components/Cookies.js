@@ -43,10 +43,10 @@ const Cookies = ({ cookies }) => {
               onClick={
                 translation == "translateY(90vh)"
                   ? () => setTranslation("translateY(0vh)")
-                  : () => setTranslation("translateY(90vh)")
+                  : () => setTranslation("translateY(calc(100vh - 100px))")
               }
             >
-              {translation == "translateY(90vh)"
+              {translation == "translateY(calc(100vh - 100px))"
                 ? "(weitere Infos)"
                 : "(weniger Infos)"}
             </p>

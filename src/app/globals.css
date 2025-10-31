@@ -867,7 +867,6 @@ p.infobutton {
 
   .newsletterWrapper {
     width: calc(100vw - 40px);
-    padding-left: var(--spaceMedium);
   }
 
   .formWrapper input {
