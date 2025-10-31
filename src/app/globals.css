@@ -571,6 +571,9 @@ p.infobutton {
 
   .arbeitenSinglePageWrapperMobile {
     display: block;
+    padding: var(--spaceMedium) 0;
+  }
+  .arbeitenSinglePageWrapperMobile .infoWrapper {
     padding: var(--spaceMedium);
   }
   .textOuter {
@@ -668,6 +671,8 @@ p.infobutton {
 
   .mobileHeaderImage {
     padding-top: 60px;
+    position: relative;
+    background: white;
   }
 
   .infoWrapper {
@@ -698,12 +703,36 @@ p.infobutton {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    padding: 0 var(--spaceMedium);
   }
   .mobileNavigationInner {
     display: flex;
   }
   .mobileNavigationInner span {
     font-size: 10pt;
+  }
+  .mobileSwiperNavigation {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - var(--spaceMedium));
+    z-index: 100;
+    display: flex;
+    pointer-events: none;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mobileSwiperNavigationButton {
+    pointer-events: auto;
+    padding: var(--spaceMedium);
+    transform: translateY(-20px);
+    font-size: 2rem;
+    color: black;
+  }
+  .mobileImageWrapper {
+    height: 72vh;
+    display: flex;
+    align-items: center;
+    min-height: 540px;
   }
   .teamEntry {
     text-decoration: none;
@@ -816,11 +845,12 @@ p.infobutton {
   }
   .introHeadline {
     top: 15px;
-    max-width: 75%;
+    padding-top: 2px;
+    max-width: 66vw;
   }
   .introHeadline h1 {
     font-size: 15pt;
-    line-height: 25pt;
+    line-height: 17pt;
   }
   .introHeadline h2 {
     font-size: 6pt;
@@ -857,5 +887,6 @@ p.infobutton {
   .arbeitenIntrotext {
     padding: var(--spaceMedium);
     width: 100%;
+    min-width: unset;
   }
 }

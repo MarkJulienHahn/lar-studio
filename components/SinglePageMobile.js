@@ -1,7 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
+
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import TextMobile from "./TextMobile";
 
@@ -17,10 +20,55 @@ const SinglePageMobile = ({ contents, id }) => {
 
   const content = contents[id - 1];
 
+  const swiperRef = useRef(null);
+
   return (
     <>
       <div className="mobileHeaderImage">
-        <Image
+        <div className="mobileSwiperNavigation">
+          <div
+            className="mobileSwiperNavigationButton"
+            onClick={() => swiperRef.current?.slidePrev()}
+          >
+            ←
+          </div>
+          <div
+            className="mobileSwiperNavigationButton"
+            onClick={() => swiperRef.current?.slideNext()}
+          >
+            →
+          </div>
+        </div>
+        <Swiper
+          spaceBetween={20}
+          loop={true}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+        >
+          {content.bilder.bilder.map((bild, i) => (
+            <SwiperSlide key={i} >
+              <div className="mobileImageWrapper">
+                <Image
+                  src={bild.bild.asset.url}
+                  alt="Studio Lar Image"
+                  style={{
+                    objectFit: "contain",
+                    width: "100%",
+                  }}
+                  width={windowWidth - 40}
+                  height={
+                    (windowWidth - 40) /
+                    bild.bild.asset.metadata.dimensions.aspectRatio
+                  }
+                  placeholder={"blur"}
+                  blurDataURL={bild.bild.asset.metadata.lqip}
+                  // Add onClick to go to next slide
+                  onClick={() => swiperRef.current?.slideNext()}
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        {/* <Image
           src={content.bild.asset.url}
           alt="Studio Lar Icon"
           style={{
@@ -33,7 +81,7 @@ const SinglePageMobile = ({ contents, id }) => {
             (windowWidth - 40) /
             content.bild.asset.metadata.dimensions.aspectRatio
           }
-        />
+        /> */}
       </div>
 
       <div className="infoWrapper">
@@ -54,7 +102,7 @@ const SinglePageMobile = ({ contents, id }) => {
         />
       </div>
 
-      {content.bilder.bilder.map((bild, i) => (
+      {/* {content.bilder.bilder.map((bild, i) => (
         <div key={i} style={{ paddingBottom: "16px" }}>
           <Image
             src={bild.bild.asset.url}
@@ -73,7 +121,7 @@ const SinglePageMobile = ({ contents, id }) => {
             blurDataURL={bild.bild.asset.metadata.lqip}
           />
         </div>
-      ))}
+      ))} */}
 
       <div className="mobileNavigation">
         <div onClick={() => router.push("/projekte")}>

@@ -10,7 +10,6 @@ import Image from "next/image";
 import Text from "../components/Text";
 import ProjekteSingleInner from "../components/ProjekteSingleInner";
 import MouseDiv from "../components/MouseDiv";
-import Footer from "../components/Footer";
 
 const SinglePage = ({ contents, id }) => {
   const [mouseLable, setMouseLable] = useState("×");
