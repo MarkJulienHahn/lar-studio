@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useSwiper } from "swiper/react";
 import { urlFor } from "../hooks/useImageUrlBuilder";
 
-const SwiperInner = ({ image, key, blurDataURL, setMouseLable }) => {
+const SwiperInner = ({ image, setMouseLable }) => {
   const swiper = useSwiper();
 
   return (
@@ -26,8 +26,6 @@ const SwiperInner = ({ image, key, blurDataURL, setMouseLable }) => {
         fill
         alt="Studio Lar Icon"
         style={{ objectFit: "cover", objectPosition: "center" }}
-        // placeholder="blur"
-        // blurDataURL={blurDataURL}
         priority={true}
       />
     </div>

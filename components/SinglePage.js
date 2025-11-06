@@ -35,7 +35,7 @@ const SinglePage = ({ contents, id }) => {
         style={{
           position: "relative",
           width: "100vw",
-          height: "calc(100vh - 2 * var(--spaceSmall))",
+          // height: "calc(100vh - 2 * var(--spaceSmall))",
         }}
       >
         {/* Klickbereiche */}
@@ -96,10 +96,10 @@ const SinglePage = ({ contents, id }) => {
               <div
                 style={{
                   width: "60%",
-                  height: "100%",
+                  height: "calc(100vh - 160px)",
                   position: "absolute",
                   right: "80px",
-                  bottom: "60px",
+                  top: "0",
                   cursor: "none",
                 }}
               >
@@ -114,7 +114,10 @@ const SinglePage = ({ contents, id }) => {
                     blurDataURL={
                       content.bilder.bilder[0].bild.asset.metadata.lqip
                     }
-                    style={{ objectFit: "contain", objectPosition: "left" }}
+                    style={{
+                      objectFit: "contain",
+                      objectPosition: "right top",
+                    }}
                     priority={true}
                   />
                 )}

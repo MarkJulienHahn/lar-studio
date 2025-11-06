@@ -52,7 +52,7 @@ export async function getStartseite() {
 }
 export async function getLanding() {
   return client.fetch(
-    groq`*[_type == "landing"]|order(orderRank){kategorie, selectedWork, "slug": arbeiten.arbeiten->{slug}, "bild": bild.asset->{...}, "alt": bild.alt}`
+    groq`*[_type == "landing"]|order(orderRank){kategorie, selectedWork, "slug": arbeiten.arbeiten->{slug}, "bild": image.bild.asset->{...}, "alt": image.alt}`
   );
 }
 

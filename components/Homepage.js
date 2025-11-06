@@ -14,6 +14,8 @@ import Footer from "./Footer";
 const Homepage = ({ landing, startseite }) => {
   const [mouseLable, setMouseLable] = useState();
 
+  console.log(landing[0].bild.url);
+
   return (
     <>
       <div className="introOuter">
@@ -33,18 +35,21 @@ const Homepage = ({ landing, startseite }) => {
             speed={1000}
             lazy={false}
           >
-            {landing.map((bild, i) => (
-              <SwiperSlide key={i}>
-                <SwiperInner
-                  slug={bild.slug}
-                  image={bild.bild.url}
-                  alt={bild.alt}
-                  blurDataURL={bild.bild.metadata.lqip}
-                  setMouseLable={setMouseLable}
-                  key={i}
-                />
-              </SwiperSlide>
-            ))}
+            {landing.map(
+              (bild, i) =>
+                bild.bild?.url && (
+                  <SwiperSlide key={i}>
+                    <SwiperInner
+                      slug={bild.slug}
+                      image={bild.bild.url}
+                      alt={bild.alt}
+                      blurDataURL={bild.bild.metadata.lqip}
+                      setMouseLable={setMouseLable}
+                      key={i}
+                    />
+                  </SwiperSlide>
+                )
+            )}
           </Swiper>
         </div>
       </div>
