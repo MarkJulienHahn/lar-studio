@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import PortableText from "react-portable-text";
 
-const HomeEntry = ({ content }) => {
+const HomeEntry = ({ content, subContent }) => {
   return (
     <div className="homeEntryWrapper" style={{ alignItems: "flex-start" }}>
       <div className="homeEntryImage">
@@ -15,12 +15,26 @@ const HomeEntry = ({ content }) => {
         />
       </div>
       <div className="homeEntryText">
-        <h1>{content?.headline}</h1>
-        <h2>{content?.subheadline}</h2>
-        <div class="line" />
-        {content?.text && (
-          <div>
-            <PortableText content={content?.text} />
+        <div className="homeEntryText__section">
+          <h1>{content?.headline}</h1>
+          <h2>{content?.subheadline}</h2>
+          <div class="line" />
+          {content?.text && (
+            <div>
+              <PortableText content={content?.text} />
+            </div>
+          )}
+        </div>
+        {subContent && (
+          <div className="homeEntryText__section">
+            <h1>{subContent?.headline}</h1>
+            <h2>{subContent?.subheadline}</h2>
+            <div class="line" />
+            {subContent?.text && (
+              <div>
+                <PortableText content={subContent?.text} />
+              </div>
+            )}
           </div>
         )}
       </div>

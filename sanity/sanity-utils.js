@@ -24,7 +24,7 @@ export async function getStartseite() {
             subheadline,
             text
           },
-          design {
+          innenarchitektur {
             bild {
               asset->{
                 _id,
@@ -36,7 +36,7 @@ export async function getStartseite() {
             subheadline,
             text
           },
-          raumpsychologie {
+          produkt {
             bild {
               asset->{
                 _id,
@@ -45,6 +45,7 @@ export async function getStartseite() {
               alt
             },
             headline,
+            subheadline,
             text
           }
         }[0]`

@@ -221,6 +221,10 @@ img {
   letter-spacing: 5px;
 }
 
+.homeEntryText__section {
+  margin-bottom: var(--spaceMedium)
+}
+
 /* STUDIO */
 
 .studioWrapper {

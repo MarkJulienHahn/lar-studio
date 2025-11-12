@@ -14,8 +14,6 @@ import Footer from "./Footer";
 const Homepage = ({ landing, startseite }) => {
   const [mouseLable, setMouseLable] = useState();
 
-  console.log(landing[0].bild.url);
-
   return (
     <>
       <div className="introOuter">
@@ -55,8 +53,8 @@ const Homepage = ({ landing, startseite }) => {
       </div>
       <div className="introBody">
         <HomeEntry content={startseite?.architektur} />
-        <HomeEntry content={startseite?.design} />
-        {/* <HomeEntry content={startseite?.raumpsychologie} /> */}
+        <HomeEntry content={startseite?.innenarchitektur} />
+        <HomeEntry content={startseite?.produkt} subContent={startseite?.design}/>
         <Footer />
       </div>
     </>
