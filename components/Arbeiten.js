@@ -32,5 +32,4 @@ const Arbeiten = ({ arbeiten, kategorie }) => {
   );
 };
 
-
 export default Arbeiten;
