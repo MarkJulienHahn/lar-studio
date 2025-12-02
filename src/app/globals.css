@@ -222,7 +222,7 @@ img {
 }
 
 .homeEntryText__section {
-  margin-bottom: var(--spaceMedium)
+  margin-bottom: var(--spaceMedium);
 }
 
 /* STUDIO */
@@ -606,6 +606,10 @@ p.infobutton {
     display: none;
   }
 
+  .homeEntryText__section {
+    margin-bottom: var(--spaceLarge);
+  }
+
   .vimeoContainer {
     width: 100vw;
     height: 125vw;
@@ -760,9 +764,12 @@ p.infobutton {
   text-decoration: underline;
 }
 
+.footerMobileWrapper {
+  margin-left: var(--spaceSmall) 
+}
+
 .footerOuter {
   margin-top: 50vh;
-  /* min-height: calc(100vh - 2 * var(--spaceMedium)); */
   display: flex;
   flex-direction: column;
   justify-content: space-between;

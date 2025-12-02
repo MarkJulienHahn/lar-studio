@@ -24,7 +24,13 @@ const SinglePage = ({ contents, id }) => {
     <>
       <MouseDiv lable={mouseLable} />
       <div className="controls">
-        <p className="infobutton" onClick={() => router.back()}>
+        <p
+          className="infobutton"
+          onClick={() => {
+            router.back();
+            window.scrollTo(0, 0);
+          }}
+        >
           ←
         </p>
         {/* <p>

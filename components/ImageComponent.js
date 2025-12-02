@@ -19,6 +19,7 @@ const ImageComponent = ({
   length,
   kleiner,
   i,
+  comingSoon,
 }) => {
   const [show, setShow] = useState(false);
   const [imageHeight, setImageHeight] = useState();
@@ -51,19 +52,15 @@ const ImageComponent = ({
     );
   }, []);
 
-  return (
+  return URL ? (
     <>
       <div className={"sectionLeft"}>
         <div className="imageWrapper">
-          {imageHeight && URL && (
+          {!comingSoon ? (
             <Link
               href={{ pathname: `/${kategorie}/${slug}`, query: { id: index } }}
-              scroll={false}
               shallow={true}
             >
-              {/* <div
-                style={{ height: "100vh", width: "100px", background: "blue" }}
-              ></div> */}
               {!kleiner ? (
                 <Image
                   ref={imgRef}
@@ -94,6 +91,32 @@ const ImageComponent = ({
                 />
               )}
             </Link>
+          ) : !kleiner ? (
+            <Image
+              ref={imgRef}
+              src={URL}
+              height={imageHeight * 0.5}
+              width={imageHeight * 0.5 * dimensions.aspectRatio}
+              alt={alt ? alt : "placeholder"}
+              blurDataURL={blurDataURL}
+              placeholder={"blur"}
+              onMouseEnter={() => setShow(true)}
+              onMouseLeave={() => setShow(false)}
+              priority={i <= 2 ? true : false}
+            />
+          ) : (
+            <Image
+              ref={imgRef}
+              src={URL}
+              height={imageHeight * 0.5}
+              width={imageHeight * 0.5 * dimensions.aspectRatio}
+              alt={alt ? alt : "placeholder"}
+              blurDataURL={blurDataURL}
+              placeholder={"blur"}
+              onMouseEnter={() => setShow(true)}
+              onMouseLeave={() => setShow(false)}
+              priority={i <= 2 ? true : false}
+            />
           )}
         </div>
 
@@ -107,7 +130,14 @@ const ImageComponent = ({
             >
               <div className="line"></div>
               <span className="index">{length - index + 1}</span>
-              <span className="lable">{lable}</span>
+              <div>
+                <div className="lable">{lable}</div>
+                {comingSoon && (
+                  <div className="lable" style={{ textTransform: "lowercase" }}>
+                    Coming Soon
+                  </div>
+                )}
+              </div>
             </div>
           </>
         )}
@@ -118,7 +148,6 @@ const ImageComponent = ({
           {imageHeight && URL && (
             <Link
               href={{ pathname: `/${kategorie}/${slug}`, query: { id: index } }}
-              scroll={false}
             >
               <Image
                 src={URL}
@@ -145,13 +174,20 @@ const ImageComponent = ({
         <div className={"captionMobile"}>
           <div>
             <span className="index">{length - index + 1}</span>
-            <span className="lable">{lable}</span>
+            <div>
+              <div className="lable">{lable}</div>
+              {comingSoon && (
+                <div className="lable" style={{ textTransform: "lowercase" }}>
+                  Coming Soon
+                </div>
+              )}
+            </div>
           </div>
           <div className="line"></div>
         </div>
       </div>
     </>
-  );
+  ) : null;
 };
 
 export default ImageComponent;

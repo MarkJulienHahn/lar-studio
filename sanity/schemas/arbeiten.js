@@ -7,96 +7,87 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
+      name: "comingSoon",
+      title: "Coming Soon",
+      type: "boolean",
+    }),
+    defineField({
       name: "title",
       title: "Titel",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
-
-    {
+    defineField({
       name: "kategorie",
       title: "Kategorie",
       type: "string",
       validation: (Rule) => Rule.required(),
       options: {
         list: [
-          {
-            title: "Häuser",
-            value: "haeuser",
-          },
-          {
-            title: "Retail",
-            value: "retail",
-          },
+          { title: "Häuser", value: "haeuser" },
+          { title: "Retail", value: "retail" },
         ],
         layout: "radio",
       },
-    },
-    { name: "selectedWork", title: "Selected Work", type: "boolean" },
-    {
+    }),
+    defineField({
+      name: "selectedWork",
+      title: "Selected Work",
+      type: "boolean",
+      hidden: ({ parent }) => parent?.comingSoon === true,
+    }),
+    defineField({
       name: "text",
       title: "Text",
       type: "blockContent",
-      validation: (Rule) => Rule.required(),
-    },
-
-    {
+      hidden: ({ parent }) => parent?.comingSoon === true,
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (context.parent?.comingSoon) {
+            return true;
+          }
+          return value ? true : "Text ist erforderlich";
+        }),
+    }),
+    defineField({
       name: "bild",
       title: "Preview Bild",
       type: "image",
       fields: [{ name: "alt", title: "Alt", type: "string" }],
       validation: (Rule) => Rule.required(),
-    },
-
-    {
+    }),
+    defineField({
       name: "kleiner",
       title: "Previewbild: Kleines Querformat",
       type: "boolean",
-    },
-
-    {
+      hidden: ({ parent }) => parent?.comingSoon === true,
+    }),
+    defineField({
       name: "infos",
       title: "Infos",
       type: "object",
+      hidden: ({ parent }) => parent?.comingSoon === true,
       fields: [
-        {
-          name: "partner",
-          title: "Partner",
-          type: "string",
-        },
-        {
-          name: "licht",
-          title: "Licht",
-          type: "string",
-        },
-        {
-          name: "fotos",
-          title: "Fotos",
-          type: "string",
-        },
-        {
-          name: "kunst",
-          title: "Kunst",
-          type: "string",
-        },
-        {
-          name: "jahr",
-          title: "Jahr",
-          type: "string",
-        },
-        {
-          name: "ort",
-          title: "Ort",
-          type: "string",
-        },
+        { name: "partner", title: "Partner", type: "string" },
+        { name: "licht", title: "Licht", type: "string" },
+        { name: "fotos", title: "Fotos", type: "string" },
+        { name: "kunst", title: "Kunst", type: "string" },
+        { name: "jahr", title: "Jahr", type: "string" },
+        { name: "ort", title: "Ort", type: "string" },
       ],
-    },
-
-    {
+    }),
+    defineField({
       name: "bilder",
       title: "Bilder",
       type: "array",
-      validation: (Rule) => Rule.required(),
+      hidden: ({ parent }) => parent?.comingSoon === true,
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (context.parent?.comingSoon) {
+            return true;
+          }
+          return value && value.length > 0 ? true : "Bilder sind erforderlich";
+        }),
       of: [
         {
           name: "bilder",
@@ -118,36 +109,39 @@ export default defineType({
             },
             prepare({ title, image }) {
               return {
-                title: title,
+                title: title || "Bild",
                 media: image,
               };
             },
           },
         },
       ],
-    },
-
-    {
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
       options: { source: "title" },
-      validation: (Rule) => Rule.required(),
-    },
-
+      hidden: ({ parent }) => parent?.comingSoon === true,
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (context.parent?.comingSoon) {
+            return true;
+          }
+          return value?.current ? true : "Slug ist erforderlich";
+        }),
+    }),
     orderRankField({ type: "arbeiten" }),
   ],
   preview: {
     select: {
       title: "title",
-      media: "vorschaubild.image",
+      media: "bild",
     },
     prepare(selection) {
-      const title = selection.title;
-      const media = selection.image;
       return {
-        title: title,
-        media: media,
+        title: selection.title,
+        media: selection.media,
       };
     },
   },

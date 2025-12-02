@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import ImageComponent from "./ImageComponent";
 
 const Arbeiten = ({ arbeiten, kategorie }) => {
+
   return (
     <>
       {arbeiten.map((arbeit, i) => (
@@ -15,14 +16,17 @@ const Arbeiten = ({ arbeiten, kategorie }) => {
           kategorie={kategorie}
           dimensions={arbeit.bild.asset.metadata.dimensions}
           index={i + 1}
-          slug={arbeit.slug.current}
+          slug={arbeit.slug?.current}
           blurDataURL={arbeit.bild.asset.metadata.lqip}
           kleiner={arbeit.kleiner}
           length={arbeiten.length}
           alt={arbeit.bild.alt}
+          comingSoon={arbeit.comingSoon}
         />
       ))}
-      <Footer />
+      <div className="footerMobileWrapper">
+        <Footer />
+      </div>
     </>
   );
 };
