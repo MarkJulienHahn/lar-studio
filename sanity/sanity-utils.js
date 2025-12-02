@@ -1,0 +1,163 @@
+import { createClient, groq } from "next-sanity";
+
+const client = createClient({
+  projectId: "abp66gug",
+  dataset: "production",
+  apiVersion: "2023-06-01",
+});
+
+export default client;
+
+export async function getStartseite() {
+  return client.fetch(
+    groq`*[_type == "startseite"]{
+          ..., 
+          architektur {
+            bild {
+              asset->{
+                _id,
+                url
+              },
+              alt
+            },
+            headline,
+            subheadline,
+            text
+          },
+          innenarchitektur {
+            bild {
+              asset->{
+                _id,
+                url
+              },
+              alt
+            },
+            headline,
+            subheadline,
+            text
+          },
+          produkt {
+            bild {
+              asset->{
+                _id,
+                url
+              },
+              alt
+            },
+            headline,
+            subheadline,
+            text
+          }
+        }[0]`
+  );
+}
+export async function getLanding() {
+  return client.fetch(
+    groq`*[_type == "landing"]|order(orderRank){kategorie, selectedWork, "slug": arbeiten.arbeiten->{slug}, "bild": image.bild.asset->{...}, "alt": image.alt}`
+  );
+}
+
+export async function getStudio() {
+  return client.fetch(
+    groq`*[_type == "studio"]{..., "bild": introImage.bild.asset->{...}, "teamFoto": introImage.bild.asset->{...}, "team": team[]{..., "bild": bild{..., "asset": asset->{...}}}}`
+  );
+}
+
+export async function getHaeuserIntro() {
+  return client.fetch(groq`*[_type == "haeuserIntro"]{ueberschrift, text}[0]`);
+}
+
+export async function getRetailIntro() {
+  return client.fetch(groq`*[_type == "retailIntro"]{ueberschrift, text}[0]`);
+}
+
+export async function getArbeiten() {
+  return client.fetch(
+    groq`*[_type == "arbeiten"]|order(orderRank)
+    {..., 
+      "bilder": {bilder[]{"bild": {..., "alt": bild.alt,"asset": bild.asset->{...}}}}, 
+      "bild": 
+        {
+          "asset": bild.asset->{...}, 
+          "alt": bild.alt,
+          "right": bild.right
+        }
+    }`
+  );
+}
+
+export async function getMarken() {
+  return client.fetch(
+    groq`*[_type == "marken"]|order(orderRank)
+    {..., 
+      "bilder": {bilder[]{"bild": {..., "alt": bild.alt,"asset": bild.asset->{...}}}}, 
+      "bild": 
+        {
+          "asset": bild.asset->{...}, 
+          "alt": bild.alt,
+          "right": bild.right
+        }
+    }`
+  );
+}
+
+export async function getGalerie() {
+  return client.fetch(
+    groq`*[_type == "galerie"]
+    {..., "introSlider": introSlider[]{..., "bild": 
+    {"bild": bild.asset->{...}, 
+     "alt": bild.alt},
+     "bilder": bilder[]{..., "bild":bild{..., "asset": asset->{...}}}},
+ exhibitions[]
+ {..., "bild": 
+    {"bild": bild.asset->{...}, 
+     "alt": bild.alt},
+     "bilder": bilder[]{..., "bild":bild{..., "asset": asset->{...}}}
+ }, 
+"introImage": 
+  {"bild": introImage.bild.asset->{...}, 
+   "alt": introImage.alt
+  },
+"marken": marken[]{..., "bild": bild{..., "asset": asset->{...}}},
+
+}`
+  );
+}
+
+export async function getProzess() {
+  return client.fetch(
+    groq`*[_type == "prozess"]|order(orderRank){..., 
+      "bilder": {bilder[]{"bild": {..., "alt": bild.alt,"asset": bild.asset->{...}}}}, 
+      "bild": 
+        {
+          "asset": bild.asset->{...}, 
+          "alt": bild.alt,
+          "right": bild.right
+        }
+    }`
+  );
+}
+
+export async function getKontakt() {
+  return client.fetch(groq`*[_type == "kontakt"]{...}`);
+}
+
+export async function getCookies() {
+  return client.fetch(groq`*[_type == "cookies"]{...}`);
+}
+
+export async function getProzessIntro() {
+  return client.fetch(groq`*[_type == "prozessIntro"]{...}`);
+}
+
+export async function getImpressum() {
+  return client.fetch(groq`*[_type == "impressum"]{...}`);
+}
+
+export async function getDatenschutz() {
+  return client.fetch(groq`*[_type == "datenschutz"]{...}`);
+}
+
+export async function getAGB() {
+  return client.fetch(groq`*[_type == "agb"]{...}`);
+}

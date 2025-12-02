@@ -1,0 +1,135 @@
+.icon {
+  position: fixed;
+  z-index: 10;
+  right: 60px;
+  top: 40px;
+  width: 92px;
+  height: 55px;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 1000;
+}
+
+.iconMobile,
+.iconTablet {
+  display: none;
+}
+
+.menu {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+  overscroll-behavior: contain;
+  transition: all 0.8s ease;
+}
+
+.close {
+  position: absolute;
+  right: var(--spaceMedium);
+  top: var(--spaceMedium);
+  font-size: 15pt;
+  letter-spacing: 0.25rem;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.menuList {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spaceMedium);
+  overscroll-behavior: contain;
+  justify-content: center;
+  align-items: center;
+}
+
+.listIndex {
+  font-family: "Signifier-Light-Italic";
+  font-size: 8pt;
+  line-height: 19pt;
+  padding-right: 10px;
+  vertical-align: top;
+  text-transform: uppercase;
+}
+
+.listEntry {
+  font-family: "Signifier-Light";
+  font-size: 15pt;
+  line-height: 25pt;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  cursor: pointer;
+}
+
+.comingSoon {
+  position: relative; /* parent for absolute pseudo if needed */
+}
+
+.comingSoon::after {
+  content: "Coming\A Soon";
+  white-space: pre; /* respect the \A newline */
+  display: inline-block; /* allow the break to show */
+  font-family: "Avenir Medium";
+  position: absolute;
+  letter-spacing: 0.1rem;
+  font-size: 5.8pt;
+  line-height: 7.5pt;
+  padding-left: 10px;
+  bottom: 7px;
+}
+
+@media screen and (max-width: 900px) {
+  .icon {
+    display: none;
+  }
+  .iconTablet {
+    display: block;
+    position: fixed;
+    z-index: 10;
+    right: var(--spaceMedium);
+    top: 24px;
+    width: 70px;
+    pointer-events: auto;
+    z-index: 1000;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .icon,
+  .iconTablet {
+    display: none;
+  }
+  .iconMobile {
+    display: block;
+    position: fixed;
+    z-index: 10;
+    right: var(--spaceMedium);
+    top: var(--spaceMedium);
+    width: 70px;
+    pointer-events: auto;
+    z-index: 1000;
+  }
+  .menuList {
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  .listIndex {
+    font-size: 10pt;
+    line-height: 25pt;
+  }
+  .listEntry {
+    font-size: 15pt;
+    line-height: 30pt;
+    letter-spacing: 5px;
+  }
+  .close {
+    line-height: 20pt;
+  }
+}
