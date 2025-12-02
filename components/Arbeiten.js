@@ -25,11 +25,12 @@ const Arbeiten = ({ arbeiten, kategorie }) => {
         />
       ))}
       <div className="footerMobileWrapper">
-        
+
         <Footer />
       </div>
     </>
   );
 };
+
 
 export default Arbeiten;
