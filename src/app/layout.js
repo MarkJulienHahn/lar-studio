@@ -5,6 +5,7 @@ import "./globals.css";
 import { getCookies } from "../../sanity/sanity-utils";
 
 export const metadata = {
+  metadataBase: new URL("https://www.larstudio.de"),
   title: "LAR STUDIO",
   description: "Architecture, Design and Products",
   icons: {
