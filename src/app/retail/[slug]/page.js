@@ -1,18 +1,21 @@
-import { getArbeiten } from "../../../../sanity/sanity-utils";
+import { resolveArbeit, generateArbeitMetadata } from "../../arbeitenRoute";
 import SinglePage from "../../../../components/SinglePage";
 import SinglePageMobile from "../../../../components/SinglePageMobile";
 
-export default async function Page({ searchParams }) {
-  const arbeiten = await getArbeiten();
-  const retail = arbeiten.filter((item) => item.kategorie === "retail");
+export async function generateMetadata({ params }) {
+  return generateArbeitMetadata(params.slug, "retail");
+}
+
+export default async function Page({ params }) {
+  const { contents: retail, id } = await resolveArbeit(params.slug, "retail");
 
   return (
     <>
       <main className="arbeitenSinglePageWrapper">
-        <SinglePage contents={retail} id={searchParams.id} />
+        <SinglePage contents={retail} id={id} />
       </main>
       <main className="arbeitenSinglePageWrapperMobile">
-        <SinglePageMobile contents={retail} id={searchParams.id} />
+        <SinglePageMobile contents={retail} id={id} />
       </main>
     </>
   );
