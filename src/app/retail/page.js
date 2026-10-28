@@ -2,6 +2,11 @@ import { getArbeiten, getRetailIntro } from "../../../sanity/sanity-utils";
 
 import Arbeiten from "../../../components/Arbeiten";
 import PortableText from "react-portable-text";
+import { pageMetadata } from "../seo";
+
+export async function generateMetadata() {
+  return pageMetadata("retailIntro");
+}
 
 export default async function Page() {
   const retailIntro = await getRetailIntro();

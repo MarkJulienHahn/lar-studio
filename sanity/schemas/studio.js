@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { seoField } from "./seo";
 
 export default defineType({
   name: "studio",
@@ -100,6 +101,7 @@ export default defineType({
         },
       ],
     }),
+    seoField(),
   ],
   preview: {
     select: {

@@ -49,7 +49,7 @@ const SinglePageMobile = ({ contents, id }) => {
               <div className="mobileImageWrapper">
                 <Image
                   src={bild.bild.asset.url}
-                  alt="Studio Lar Image"
+                  alt={bild.bild.alt || content.title}
                   style={{
                     objectFit: "contain",
                     width: "100%",

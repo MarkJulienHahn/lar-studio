@@ -1,5 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { orderRankField } from "@sanity/orderable-document-list";
+import { seoField } from "./seo";
 
 export default defineType({
   name: "retailIntro",
@@ -18,6 +19,7 @@ export default defineType({
       type: "blockContent",
       validation: (Rule) => Rule.required(),
     },
+    seoField(),
 
     orderRankField({ type: "arbeiten" }),
   ],

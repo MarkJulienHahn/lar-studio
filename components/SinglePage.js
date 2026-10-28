@@ -115,7 +115,7 @@ const SinglePage = ({ contents, id }) => {
                     layout="fill"
                     objectFit="contain"
                     objectPosition="left"
-                    alt={content.bilder.bilder[0].alt}
+                    alt={content.bilder.bilder[0].bild.alt || content.title}
                     placeholder="blur"
                     blurDataURL={
                       content.bilder.bilder[0].bild.asset.metadata.lqip
@@ -139,7 +139,7 @@ const SinglePage = ({ contents, id }) => {
                     slug={bild.slug}
                     image={bild.bild.asset.url}
                     blurDataURL={bild.bild.asset.metadata.lqip}
-                    alt={bild.alt}
+                    alt={bild.bild.alt || content.title}
                     i={i}
                     setCurrentIndex={setCurrentIndex}
                   />

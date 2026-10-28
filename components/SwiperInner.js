@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useSwiper } from "swiper/react";
 import { urlFor } from "../hooks/useImageUrlBuilder";
 
-const SwiperInner = ({ image, setMouseLable }) => {
+const SwiperInner = ({ image, alt, setMouseLable }) => {
   const swiper = useSwiper();
 
   return (
@@ -24,7 +24,7 @@ const SwiperInner = ({ image, setMouseLable }) => {
       <Image
         src={urlFor(image).quality(50).format("jpg").url()}
         fill
-        alt="Studio Lar Icon"
+        alt={alt || "LAR STUDIO"}
         style={{ objectFit: "cover", objectPosition: "center" }}
         priority={true}
       />

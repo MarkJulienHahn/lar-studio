@@ -161,3 +161,7 @@ export async function getDatenschutz() {
 export async function getAGB() {
   return client.fetch(groq`*[_type == "agb"]{...}`);
 }
+
+export async function getSeo(type) {
+  return client.fetch(groq`*[_type == $type][0].seo`, { type });
+}
