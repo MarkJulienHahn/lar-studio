@@ -48,6 +48,7 @@ const Homepage = ({ landing, startseite }) => {
                       dimensions={bild.bild.metadata?.dimensions}
                       priority={i === firstSlide}
                       eager={preload}
+                      hold={!preload && i !== firstSlide}
                       blurDataURL={bild.bild.metadata.lqip}
                       setMouseLable={setMouseLable}
                       key={i}

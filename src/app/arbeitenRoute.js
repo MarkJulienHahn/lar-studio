@@ -48,7 +48,11 @@ export async function resolveArbeit(slug, kategorie) {
   const arbeit = contents[index];
   if (!isPublicArbeit(arbeit)) notFound();
 
-  return { contents, arbeit, id: index + 1 };
+  // Nur das aktuelle Projekt vollständig an die Seite geben, von den übrigen reicht der Slug
+  // (Nummerierung, „nächstes Projekt“). Sonst landen die Daten aller Projekte im HTML.
+  const pageContents = contents.map((item, i) => (i === index ? item : { slug: item.slug }));
+
+  return { contents: pageContents, arbeit, id: index + 1 };
 }
 
 export async function generateArbeitMetadata(slug, kategorie) {

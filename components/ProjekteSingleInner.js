@@ -45,6 +45,7 @@ const SwiperInnerSingle = ({
         // "contain" in voller Höhe: Breite ergibt sich aus dem Seitenverhältnis
         sizes={`${sizesPrefix}, min(100vw, calc((100vh - 160px) * ${dimensions?.aspectRatio.toFixed(3)}))`}
         eager={eager}
+        hold={!eager}
       />
     </div>
   );

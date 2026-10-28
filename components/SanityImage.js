@@ -20,6 +20,7 @@ const SanityImage = ({
   quality = 80,
   priority = false,
   eager = false,
+  hold = false,
   fill = false,
   blurDataURL,
   objectFit,
@@ -38,13 +39,15 @@ const SanityImage = ({
     <img
       {...rest}
       alt={alt}
-      src={sanityUrl(src, widths.find((w) => w >= 1920) || widths.at(-1), quality)}
-      srcSet={widths.map((w) => `${sanityUrl(src, w, quality)} ${w}w`).join(", ")}
-      sizes={sizes}
+      // hold: noch gar nicht laden (lazy reicht in der Slideshow nicht, Chrome lädt
+      // Nachbar-Slides sonst sofort mit und bremst damit das erste Bild)
+      src={hold ? undefined : sanityUrl(src, widths.find((w) => w >= 1920) || widths.at(-1), quality)}
+      srcSet={hold ? undefined : widths.map((w) => `${sanityUrl(src, w, quality)} ${w}w`).join(", ")}
+      sizes={hold ? undefined : sizes}
       loading={priority || eager ? "eager" : "lazy"}
       fetchpriority={priority ? "high" : undefined}
       decoding="async"
-      ref={(img) => img?.complete && setLoaded(true)}
+      ref={(img) => img?.complete && img.currentSrc && setLoaded(true)}
       onLoad={() => setLoaded(true)}
       style={{
         ...(fill && {
@@ -56,6 +59,7 @@ const SanityImage = ({
         }),
         objectFit,
         objectPosition,
+        ...(hold && { color: "transparent" }),
         ...(blurDataURL &&
           !loaded && {
             backgroundImage: `url("${blurDataURL}")`,

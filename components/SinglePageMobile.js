@@ -59,6 +59,7 @@ const SinglePageMobile = ({ contents, id }) => {
                   sizes="(min-width: 1001px) 1px, calc(100vw - 40px)"
                   priority={i === 0}
                   eager={preload}
+                  hold={!preload && i !== 0}
                   width={windowWidth - 40}
                   height={
                     (windowWidth - 40) /
