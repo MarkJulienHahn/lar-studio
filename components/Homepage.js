@@ -1,24 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 
 import SwiperInner from "../components/SwiperInner";
+import { usePreloadAfterLoad } from "./SanityImage";
 import MouseDiv from "../components/MouseDiv";
 import HomeEntry from "./HomeEntry";
 import Footer from "./Footer";
 
 const Homepage = ({ landing, startseite }) => {
   const [mouseLable, setMouseLable] = useState();
+  const sliderRef = useRef(null);
+  const preload = usePreloadAfterLoad(sliderRef);
+  const firstSlide = landing.findIndex((bild) => bild.bild?.url);
 
   return (
     <>
       <div className="introOuter">
         <MouseDiv lable={mouseLable} />
-        <div className="introInner">
+        <div className="introInner" ref={sliderRef}>
           <div className="introHeadline">
             {startseite?.headline && <h1>{startseite?.headline}</h1>}
             {startseite?.subheadline && <h2>{startseite?.subheadline}</h2>}
@@ -41,6 +45,9 @@ const Homepage = ({ landing, startseite }) => {
                       slug={bild.slug}
                       image={bild.bild.url}
                       alt={bild.alt}
+                      dimensions={bild.bild.metadata?.dimensions}
+                      priority={i === firstSlide}
+                      eager={preload}
                       blurDataURL={bild.bild.metadata.lqip}
                       setMouseLable={setMouseLable}
                       key={i}

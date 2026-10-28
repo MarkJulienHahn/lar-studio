@@ -1,9 +1,7 @@
-import Image from "next/image";
-
 import { useSwiper } from "swiper/react";
-import { urlFor } from "../hooks/useImageUrlBuilder";
+import SanityImage from "./SanityImage";
 
-const SwiperInner = ({ image, alt, setMouseLable }) => {
+const SwiperInner = ({ image, alt, dimensions, priority, eager, setMouseLable }) => {
   const swiper = useSwiper();
 
   return (
@@ -21,12 +19,21 @@ const SwiperInner = ({ image, alt, setMouseLable }) => {
         onMouseLeave={() => setMouseLable(null)}
         onClick={() => swiper.slideNext()}
       ></div>
-      <Image
-        src={urlFor(image).quality(50).format("jpg").url()}
+      <SanityImage
+        src={image}
         fill
         alt={alt || "LAR STUDIO"}
-        style={{ objectFit: "cover", objectPosition: "center" }}
-        priority={true}
+        objectFit="cover"
+        objectPosition="center"
+        originalWidth={dimensions?.width}
+        // Bildschirm schmaler als das Bild: "cover" füllt die Höhe, das Bild wird breiter als 100vw
+        sizes={
+          dimensions
+            ? `(max-aspect-ratio: ${dimensions.width}/${dimensions.height}) calc(100vh * ${dimensions.aspectRatio.toFixed(3)}), 100vw`
+            : "100vw"
+        }
+        priority={priority}
+        eager={eager}
       />
     </div>
   );

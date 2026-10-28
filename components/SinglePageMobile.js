@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import TextMobile from "./TextMobile";
 
-import Image from "next/image";
+import SanityImage, { usePreloadAfterLoad } from "./SanityImage";
 import Link from "next/link";
 
 import useWindowDimensions from "../hooks/useWindowDimensions";
@@ -21,10 +21,12 @@ const SinglePageMobile = ({ contents, id }) => {
   const content = contents[id - 1];
 
   const swiperRef = useRef(null);
+  const sliderRef = useRef(null);
+  const preload = usePreloadAfterLoad(sliderRef);
 
   return (
     <>
-      <div className="mobileHeaderImage">
+      <div className="mobileHeaderImage" ref={sliderRef}>
         <div className="mobileSwiperNavigation">
           <div
             className="mobileSwiperNavigationButton"
@@ -47,19 +49,21 @@ const SinglePageMobile = ({ contents, id }) => {
           {content.bilder.bilder.map((bild, i) => (
             <SwiperSlide key={i} >
               <div className="mobileImageWrapper">
-                <Image
+                <SanityImage
                   src={bild.bild.asset.url}
                   alt={bild.bild.alt || content.title}
-                  style={{
-                    objectFit: "contain",
-                    width: "100%",
-                  }}
+                  objectFit="contain"
+                  style={{ width: "100%" }}
+                  originalWidth={bild.bild.asset.metadata.dimensions.width}
+                  // Mobil-Slideshow ist ab 1001px ausgeblendet: dort nur die kleinste Bildgröße anfragen
+                  sizes="(min-width: 1001px) 1px, calc(100vw - 40px)"
+                  priority={i === 0}
+                  eager={preload}
                   width={windowWidth - 40}
                   height={
                     (windowWidth - 40) /
                     bild.bild.asset.metadata.dimensions.aspectRatio
                   }
-                  placeholder={"blur"}
                   blurDataURL={bild.bild.asset.metadata.lqip}
                   // Add onClick to go to next slide
                   onClick={() => swiperRef.current?.slideNext()}

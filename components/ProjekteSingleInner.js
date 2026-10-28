@@ -1,33 +1,27 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-import Image from "next/legacy/image";
 import { useInView } from "react-intersection-observer";
 
-import { urlFor } from "../hooks/useImageUrlBuilder";
-import useWindowDimensions from "../hooks/useWindowDimensions";
+import SanityImage from "./SanityImage";
 
-const SwiperInnerSingle = ({ image, alt, blurDataURL, setCurrentIndex, i }) => {
-  const [url, setUrl] = useState(null);
+const SwiperInnerSingle = ({
+  image,
+  alt,
+  blurDataURL,
+  dimensions,
+  sizesPrefix,
+  eager,
+  setCurrentIndex,
+  i,
+}) => {
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.7,
   });
 
-  const { windowHeight } = useWindowDimensions();
-
   useEffect(() => {
     inView && setCurrentIndex(i);
   }, [inView]);
-
-  useEffect(() => {
-    setUrl(
-      urlFor(image)
-        .height(Math.floor(windowHeight * 2))
-        .quality(50)
-        .format("jpg")
-        .url()
-    );
-  }, []);
 
   return (
     <div
@@ -40,19 +34,18 @@ const SwiperInnerSingle = ({ image, alt, blurDataURL, setCurrentIndex, i }) => {
       }}
       ref={ref}
     >
-      {url && (
-        <Image
-          src={url}
-          layout="fill"
-          objectFit="contain"
-          objectPosition="left"
-          alt={alt}
-          placeholder="blur"
-          blurDataURL={blurDataURL}
-          style={{ objectFit: "contain", objectPosition: "left" }}
-          priority={i <= 10 ? true : false}
-        />
-      )}
+      <SanityImage
+        src={image}
+        fill
+        alt={alt}
+        blurDataURL={blurDataURL}
+        objectFit="contain"
+        objectPosition="left"
+        originalWidth={dimensions?.width}
+        // "contain" in voller Höhe: Breite ergibt sich aus dem Seitenverhältnis
+        sizes={`${sizesPrefix}, min(100vw, calc((100vh - 160px) * ${dimensions?.aspectRatio.toFixed(3)}))`}
+        eager={eager}
+      />
     </div>
   );
 };
