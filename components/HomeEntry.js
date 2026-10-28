@@ -8,7 +8,7 @@ const HomeEntry = ({ content, subContent }) => {
       <div className="homeEntryImage">
         <Image
           src={content?.bild.asset.url}
-          alt={content?.bild.asset.url}
+          alt={content?.bild.alt || content?.headline || ""}
           width={600}
           height={600}
           responsive

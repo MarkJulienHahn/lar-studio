@@ -2,6 +2,11 @@ import { getArbeiten, getHaeuserIntro } from "../../../sanity/sanity-utils";
 
 import Arbeiten from "../../../components/Arbeiten";
 import PortableText from "react-portable-text";
+import { pageMetadata } from "../seo";
+
+export async function generateMetadata() {
+  return pageMetadata("haeuserIntro");
+}
 
 export default async function Page() {
   const haeuserIntro = await getHaeuserIntro();

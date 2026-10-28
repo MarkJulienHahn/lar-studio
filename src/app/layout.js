@@ -3,11 +3,12 @@ import Cookies from "../../components/Cookies";
 import "./globals.css";
 
 import { getCookies } from "../../sanity/sanity-utils";
+import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "./seo";
 
 export const metadata = {
   metadataBase: new URL("https://www.larstudio.de"),
-  title: "LAR STUDIO",
-  description: "Architecture, Design and Products",
+  title: DEFAULT_TITLE,
+  description: DEFAULT_DESCRIPTION,
   icons: {
     icon: '/icon.ico',
   },

@@ -67,7 +67,7 @@ const ImageComponent = ({
                   src={URL}
                   height={imageHeight * 0.5}
                   width={imageHeight * 0.5 * dimensions.aspectRatio}
-                  alt={alt ? alt : "placeholder"}
+                  alt={alt || lable}
                   blurDataURL={blurDataURL}
                   placeholder={"blur"}
                   onMouseEnter={() => setShow(true)}
@@ -81,7 +81,7 @@ const ImageComponent = ({
                   src={URL}
                   height={imageHeight * 0.5}
                   width={imageHeight * 0.5 * dimensions.aspectRatio}
-                  alt={alt ? alt : "placeholder"}
+                  alt={alt || lable}
                   blurDataURL={blurDataURL}
                   placeholder={"blur"}
                   onMouseEnter={() => setShow(true)}
@@ -97,7 +97,7 @@ const ImageComponent = ({
               src={URL}
               height={imageHeight * 0.5}
               width={imageHeight * 0.5 * dimensions.aspectRatio}
-              alt={alt ? alt : "placeholder"}
+              alt={alt || lable}
               blurDataURL={blurDataURL}
               placeholder={"blur"}
               onMouseEnter={() => setShow(true)}
@@ -110,7 +110,7 @@ const ImageComponent = ({
               src={URL}
               height={imageHeight * 0.5}
               width={imageHeight * 0.5 * dimensions.aspectRatio}
-              alt={alt ? alt : "placeholder"}
+              alt={alt || lable}
               blurDataURL={blurDataURL}
               placeholder={"blur"}
               onMouseEnter={() => setShow(true)}
@@ -161,7 +161,7 @@ const ImageComponent = ({
                     ? imageHeight * dimensions.aspectRatio
                     : imageHeight
                 }
-                alt={alt}
+                alt={alt || lable}
                 blurDataURL={blurDataURL}
                 placeholder={"blur"}
                 onMouseEnter={() => setShow(true)}

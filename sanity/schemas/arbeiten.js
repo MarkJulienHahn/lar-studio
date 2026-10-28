@@ -1,5 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { orderRankField } from "@sanity/orderable-document-list";
+import { seoField } from "./seo";
 
 export default defineType({
   name: "arbeiten",
@@ -131,6 +132,7 @@ export default defineType({
           return value?.current ? true : "Slug ist erforderlich";
         }),
     }),
+    seoField(({ parent }) => parent?.comingSoon === true),
     orderRankField({ type: "arbeiten" }),
   ],
   preview: {

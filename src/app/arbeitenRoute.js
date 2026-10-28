@@ -1,5 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import { getArbeiten } from "../../sanity/sanity-utils";
+import { seoMetadata, DEFAULT_TITLE } from "./seo";
 
 export const SITE_URL = "https://www.larstudio.de";
 
@@ -52,5 +53,8 @@ export async function resolveArbeit(slug, kategorie) {
 
 export async function generateArbeitMetadata(slug, kategorie) {
   const { arbeit } = await resolveArbeit(slug, kategorie);
-  return { alternates: { canonical: arbeitPath(arbeit) } };
+  return {
+    ...seoMetadata(arbeit.seo, `${arbeit.title.trim()} | ${DEFAULT_TITLE}`),
+    alternates: { canonical: arbeitPath(arbeit) },
+  };
 }

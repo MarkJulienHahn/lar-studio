@@ -1,5 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { orderRankField } from "@sanity/orderable-document-list";
+import { seoField } from "./seo";
 
 export default defineType({
   name: "startseite",
@@ -83,6 +84,7 @@ export default defineType({
         { name: "text", type: "blockContent" },
       ],
     }),
+    seoField(),
     orderRankField({ type: "landing" }),
   ],
 });

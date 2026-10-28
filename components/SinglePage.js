@@ -5,11 +5,14 @@ import { useRouter } from "next/navigation";
 
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Image from "next/image";
 
 import Text from "../components/Text";
 import ProjekteSingleInner from "../components/ProjekteSingleInner";
 import MouseDiv from "../components/MouseDiv";
+import SanityImage, { usePreloadAfterLoad } from "./SanityImage";
+
+// Desktop-Slideshow ist bis 1000px ausgeblendet: dort nur die kleinste Bildgröße anfragen
+const HIDDEN_ON_MOBILE = "(max-width: 1000px) 1px";
 
 const SinglePage = ({ contents, id }) => {
   const [mouseLable, setMouseLable] = useState("×");
@@ -17,6 +20,8 @@ const SinglePage = ({ contents, id }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const swiperRef = useRef(null);
+  const sliderRef = useRef(null);
+  const preload = usePreloadAfterLoad(sliderRef);
   const router = useRouter();
   const content = contents[id - 1];
 
@@ -38,6 +43,7 @@ const SinglePage = ({ contents, id }) => {
         </p> */}
       </div>
       <div
+        ref={sliderRef}
         style={{
           position: "relative",
           width: "100vw",
@@ -110,20 +116,20 @@ const SinglePage = ({ contents, id }) => {
                 }}
               >
                 {content.bilder.bilder[0].bild.asset.url && (
-                  <Image
+                  <SanityImage
                     src={content.bilder.bilder[0].bild.asset.url}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="left"
-                    alt={content.bilder.bilder[0].alt}
-                    placeholder="blur"
+                    fill
+                    alt={content.bilder.bilder[0].bild.alt || content.title}
                     blurDataURL={
                       content.bilder.bilder[0].bild.asset.metadata.lqip
                     }
-                    style={{
-                      objectFit: "contain",
-                      objectPosition: "right top",
-                    }}
+                    objectFit="contain"
+                    objectPosition="right top"
+                    originalWidth={
+                      content.bilder.bilder[0].bild.asset.metadata.dimensions
+                        .width
+                    }
+                    sizes={`${HIDDEN_ON_MOBILE}, min(60vw, calc((100vh - 160px) * ${content.bilder.bilder[0].bild.asset.metadata.dimensions.aspectRatio.toFixed(3)}))`}
                     priority={true}
                   />
                 )}
@@ -138,8 +144,11 @@ const SinglePage = ({ contents, id }) => {
                   <ProjekteSingleInner
                     slug={bild.slug}
                     image={bild.bild.asset.url}
+                    dimensions={bild.bild.asset.metadata.dimensions}
+                    sizesPrefix={HIDDEN_ON_MOBILE}
+                    eager={preload}
                     blurDataURL={bild.bild.asset.metadata.lqip}
-                    alt={bild.alt}
+                    alt={bild.bild.alt || content.title}
                     i={i}
                     setCurrentIndex={setCurrentIndex}
                   />
