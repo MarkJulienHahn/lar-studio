@@ -1,18 +1,22 @@
-import Image from "next/image";
 import React from "react";
 import PortableText from "react-portable-text";
+
+import SanityImage from "./SanityImage";
 
 const HomeEntry = ({ content, subContent }) => {
   return (
     <div className="homeEntryWrapper" style={{ alignItems: "flex-start" }}>
       <div className="homeEntryImage">
-        <Image
-          src={content?.bild.asset.url}
-          alt={content?.bild.alt || content?.headline || ""}
-          width={600}
-          height={600}
-          responsive
-        />
+        {content?.bild.asset.url && (
+          <SanityImage
+            src={content.bild.asset.url}
+            alt={content.bild.alt || content.headline || ""}
+            width={600}
+            height={600}
+            // halbe Breite (max. 1600px Inhalt), bis 900px volle Breite
+            sizes="(max-width: 900px) 100vw, min(50vw, 800px)"
+          />
+        )}
       </div>
       <div className="homeEntryText">
         <div className="homeEntryText__section">

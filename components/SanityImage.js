@@ -30,9 +30,10 @@ const SanityImage = ({
 }) => {
   const [loaded, setLoaded] = useState(false);
 
-  // Nie größer als das Original anfragen
-  const widths = originalWidth
-    ? [...WIDTHS.filter((w) => w < originalWidth), originalWidth]
+  // Nie größer als das Original anfragen (Breite steht sonst auch in der Sanity-URL: …-1792x1792.jpg)
+  const maxWidth = originalWidth || Number(src?.match(/-(\d+)x\d+\.\w+$/)?.[1]);
+  const widths = maxWidth
+    ? [...WIDTHS.filter((w) => w < maxWidth), maxWidth]
     : WIDTHS;
 
   return (
