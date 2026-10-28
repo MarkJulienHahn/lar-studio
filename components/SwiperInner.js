@@ -1,7 +1,7 @@
 import { useSwiper } from "swiper/react";
 import SanityImage from "./SanityImage";
 
-const SwiperInner = ({ image, alt, dimensions, priority, eager, setMouseLable }) => {
+const SwiperInner = ({ image, alt, dimensions, priority, eager, hold, setMouseLable }) => {
   const swiper = useSwiper();
 
   return (
@@ -34,6 +34,7 @@ const SwiperInner = ({ image, alt, dimensions, priority, eager, setMouseLable })
         }
         priority={priority}
         eager={eager}
+        hold={hold}
       />
     </div>
   );
