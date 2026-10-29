@@ -21,13 +21,15 @@
 @font-face {
   font-family: "Avenir Light";
   font-style: normal;
-  src: url(../../public/fonts/Avenir-Light.ttf) format("truetype");
+  src: url(../../public/fonts/Avenir-Light.woff2) format("woff2"),
+    url(../../public/fonts/Avenir-Light.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Avenir Medium";
   font-style: normal;
-  src: url(../../public/fonts/Avenir-Medium.ttf) format("truetype");
+  src: url(../../public/fonts/Avenir-Medium.woff2) format("woff2"),
+    url(../../public/fonts/Avenir-Medium.ttf) format("truetype");
 }
 
 * {
