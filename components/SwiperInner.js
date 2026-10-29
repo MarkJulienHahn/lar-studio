@@ -1,6 +1,5 @@
 import { useSwiper } from "swiper/react";
 import SanityImage from "./SanityImage";
-import { coverSizes } from "../hooks/sanityImageAttrs";
 
 const SwiperInner = ({ image, alt, dimensions, priority, eager, hold, setMouseLable }) => {
   const swiper = useSwiper();
@@ -27,7 +26,12 @@ const SwiperInner = ({ image, alt, dimensions, priority, eager, hold, setMouseLa
         objectFit="cover"
         objectPosition="center"
         originalWidth={dimensions?.width}
-        sizes={coverSizes(dimensions)}
+        // Bildschirm schmaler als das Bild: "cover" füllt die Höhe, das Bild wird breiter als 100vw
+        sizes={
+          dimensions
+            ? `(max-aspect-ratio: ${dimensions.width}/${dimensions.height}) calc(100vh * ${dimensions.aspectRatio.toFixed(3)}), 100vw`
+            : "100vw"
+        }
         priority={priority}
         eager={eager}
         hold={hold}

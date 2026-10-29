@@ -2,7 +2,15 @@
 
 import { useEffect, useState } from "react";
 
-import { sanityImageAttrs } from "../hooks/sanityImageAttrs";
+import { urlFor } from "../hooks/useImageUrlBuilder";
+
+// Bildbreiten fürs srcset: Der Browser wählt anhand von `sizes` und Pixeldichte
+// die passende Größe, statt immer das Original in voller Auflösung zu laden.
+// (next/image kann das hier nicht, weil `images.unoptimized` gesetzt ist.)
+const WIDTHS = [640, 750, 828, 1080, 1200, 1920, 2048, 2560, 3840];
+
+const sanityUrl = (src, width, quality) =>
+  urlFor(src).width(width).quality(quality).auto("format").url();
 
 const SanityImage = ({
   src,
@@ -22,7 +30,11 @@ const SanityImage = ({
 }) => {
   const [loaded, setLoaded] = useState(false);
 
-  const { src: fallbackSrc, srcSet } = sanityImageAttrs(src, { originalWidth, quality });
+  // Nie größer als das Original anfragen (Breite steht sonst auch in der Sanity-URL: …-1792x1792.jpg)
+  const maxWidth = originalWidth || Number(src?.match(/-(\d+)x\d+\.\w+$/)?.[1]);
+  const widths = maxWidth
+    ? [...WIDTHS.filter((w) => w < maxWidth), maxWidth]
+    : WIDTHS;
 
   return (
     <img
@@ -30,8 +42,8 @@ const SanityImage = ({
       alt={alt}
       // hold: noch gar nicht laden (lazy reicht in der Slideshow nicht, Chrome lädt
       // Nachbar-Slides sonst sofort mit und bremst damit das erste Bild)
-      src={hold ? undefined : fallbackSrc}
-      srcSet={hold ? undefined : srcSet}
+      src={hold ? undefined : sanityUrl(src, widths.find((w) => w >= 1920) || widths.at(-1), quality)}
+      srcSet={hold ? undefined : widths.map((w) => `${sanityUrl(src, w, quality)} ${w}w`).join(", ")}
       sizes={hold ? undefined : sizes}
       loading={priority || eager ? "eager" : "lazy"}
       fetchpriority={priority ? "high" : undefined}
